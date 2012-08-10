@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="a27b7896-6981-4af3-a273-fbbb835753f0" name="PC@PC-PC 2012-07-02 00:04:55" runUser="PC-PC\PC" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3b433da5-8bdf-4d84-8a00-442453038e74">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="PC_PC-PC 2012-07-02 00_04_55">
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Bson.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Driver.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\bsn.dal.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-07-02T00:04:55.4553014-03:00" queuing="2012-07-02T00:04:55.5243053-03:00" start="2012-07-02T00:04:55.5373061-03:00" finish="2012-07-02T00:04:55.7983210-03:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestarFelizola_" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f647950d-40ad-251e-e698-f4d95a4db016">
+      <Execution id="d48dd2eb-c899-42ea-b8c8-1de86f3bd619" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.bsn.testes.dados.SitesTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestarFelizola_" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="f647950d-40ad-251e-e698-f4d95a4db016" executionId="d48dd2eb-c899-42ea-b8c8-1de86f3bd619" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d48dd2eb-c899-42ea-b8c8-1de86f3bd619" testId="f647950d-40ad-251e-e698-f4d95a4db016" testName="TestarFelizola_" computerName="PC-PC" duration="00:00:00.0194337" startTime="2012-07-02T00:04:55.5433064-03:00" endTime="2012-07-02T00:04:55.7843202-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d48dd2eb-c899-42ea-b8c8-1de86f3bd619">
+    </UnitTestResult>
+  </Results>
+</TestRun>

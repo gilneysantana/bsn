@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="37e6f876-9ac7-451b-9c31-51c1e0efe370" name="PC@PC-PC 2012-06-30 02:50:15" runUser="PC-PC\PC" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3b433da5-8bdf-4d84-8a00-442453038e74">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="PC_PC-PC 2012-06-30 02_50_15">
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Bson.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Driver.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\bsn.dal.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-30T02:50:15.0153737-03:00" queuing="2012-06-30T02:50:16.0894352-03:00" start="2012-06-30T02:50:16.3094478-03:00" finish="2012-06-30T02:50:41.9129122-03:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TestarFelizola_" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f647950d-40ad-251e-e698-f4d95a4db016">
+      <Execution id="4ba9f083-c1c8-480d-a1fc-09bd945c0321" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.bsn.testes.dados.SitesTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestarFelizola_" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="f647950d-40ad-251e-e698-f4d95a4db016" executionId="4ba9f083-c1c8-480d-a1fc-09bd945c0321" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4ba9f083-c1c8-480d-a1fc-09bd945c0321" testId="f647950d-40ad-251e-e698-f4d95a4db016" testName="TestarFelizola_" computerName="PC-PC" duration="00:00:24.6035352" startTime="2012-06-30T02:50:16.5114593-03:00" endTime="2012-06-30T02:50:41.8399080-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ba9f083-c1c8-480d-a1fc-09bd945c0321">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method bsn.testes.bsn.testes.dados.SitesTest.TestarFelizola_ threw exception: 
+System.ApplicationException: O arquivo '.\dados\felizolaimobiliaria.com.br-id=860.htm' não existe.</Message>
+          <StackTrace>    at bsn.core.Pagina.CarregarDoArquivo(String caminhoArquivo) in C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\Pagina.cs:line 54
+   at bsn.testes.bsn.testes.dados.SitesTest.TestarFelizola_() in C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bsn.testes.dados\SitesTest.cs:line 21
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

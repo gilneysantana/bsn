@@ -1,0 +1,7 @@
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\bsn.dal.dll
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\bsn.dal.pdb
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\MongoDB.Bson.dll
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\MongoDB.Driver.dll
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\obj\Debug\bsn.dal.dll
+C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\obj\Debug\bsn.dal.pdb

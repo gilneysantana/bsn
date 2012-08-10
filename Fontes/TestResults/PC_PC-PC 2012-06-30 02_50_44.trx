@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4929e448-a3a0-4e11-b4d6-16029d1ee99e" name="PC@PC-PC 2012-06-30 02:50:44" runUser="PC-PC\PC" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="3b433da5-8bdf-4d84-8a00-442453038e74">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="PC_PC-PC 2012-06-30 02_50_44">
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Bson.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.testes\bin\Debug\MongoDB.Driver.dll" />
+      <DeploymentItem filename="C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\bsn.dal\bin\Debug\bsn.dal.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-06-30T02:50:44.7640753-03:00" queuing="2012-06-30T02:50:45.7691328-03:00" start="2012-06-30T02:50:45.9871452-03:00" finish="2012-06-30T02:51:18.6380127-03:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="56" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="55" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="PC-PC" outcome="Error" timestamp="2012-06-30T02:51:18.5660086-03:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="RegexPrecoTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="6a6976cc-2b3f-5994-b391-27013bcc262a">
+      <Execution id="83cf9ce0-f1ef-4ca7-80f3-8d8c7403e7a3" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RegexPrecoTest" />
+    </UnitTest>
+    <UnitTest name="retrieveTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="48cfa31e-c995-f8bd-a145-f4c486ec352d">
+      <Execution id="c001db31-74a8-4d58-9c4c-4c93c785f3e3" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="retrieveTest" />
+    </UnitTest>
+    <UnitTest name="getPhoneNumberTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="cc12d89e-03af-d849-790c-d1c82ad78f45">
+      <Execution id="9b7b78f3-0326-4527-a29a-baf556bcfb77" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getPhoneNumberTest" />
+    </UnitTest>
+    <UnitTest name="GetSiteInfonetMongoInfonet" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="2a3693e1-d1d4-1361-bf39-bcd62f65504c">
+      <Execution id="61657317-c161-4918-9fdd-68ea5d6f2533" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetSiteInfonetMongoInfonet" />
+    </UnitTest>
+    <UnitTest name="PaginaConstructorTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="83cd4b8d-4c02-62c0-beba-0952bfcb3bb1">
+      <Execution id="a22a3f64-e006-4448-aad2-c05f084717d8" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PaginaConstructorTest" />
+    </UnitTest>
+    <UnitTest name="ActiveAnnoucementIsAnnoucementTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="fc23e177-694b-ee89-05ed-f7a945d80a04">
+      <Execution id="be0fb5bb-ae7c-463e-9b8e-95de3ec8217d" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ActiveAnnoucementIsAnnoucementTest" />
+    </UnitTest>
+    <UnitTest name="IdTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="fa334ddd-d82c-9fb0-d8b7-fd0aa767efda">
+      <Execution id="5b64e5d0-09a6-40c7-8b17-27583e118cf1" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="IdTest" />
+    </UnitTest>
+    <UnitTest name="isValidPageTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="5563289a-8135-277f-2a7f-feefb03b5eb5">
+      <Execution id="4edad0df-7057-44fc-abba-553cf56709b9" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="isValidPageTest" />
+    </UnitTest>
+    <UnitTest name="RemovedAnnouncementSignatureTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="65b1a735-3de2-3a71-9b25-323bd23f557e">
+      <Execution id="50b55186-4f14-4edd-86c3-841ba4c6129f" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RemovedAnnouncementSignatureTest" />
+    </UnitTest>
+    <UnitTest name="setPhoneNumberTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="caa6c26d-62bc-e705-127a-4f22802bcdb0">
+      <Execution id="8503fdb0-f68e-43f0-9614-92abe50cd338" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setPhoneNumberTest" />
+    </UnitTest>
+    <UnitTest name="getTextsInIgnoredPagesTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="7df6e744-46e2-f346-3513-53e0d3dd5f7d">
+      <Execution id="540e643e-6068-4152-889e-a0bfc36e2ff1" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getTextsInIgnoredPagesTest" />
+    </UnitTest>
+    <UnitTest name="SiteClassificadoConstructorTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="977d10a7-25f3-505d-59bf-208d54a8dbb6">
+      <Execution id="2f8c75ab-abd0-4133-aa8c-50e579e1bbfc" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="SiteClassificadoConstructorTest" />
+    </UnitTest>
+    <UnitTest name="RegexBairroTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="b8133cef-caec-432d-c60c-f792c1356424">
+      <Execution id="59000643-2d64-43e5-8bac-01fa27e70cab" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RegexBairroTest" />
+    </UnitTest>
+    <UnitTest name="ActiveAnnoucementIsValidTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="3c4c0693-eeb3-3493-7983-fc3dd9aa2513">
+      <Execution id="552eff36-f010-402e-93f8-622f5f96cd7e" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ActiveAnnoucementIsValidTest" />
+    </UnitTest>
+    <UnitTest name="PararTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="dbee80ea-94db-3fdd-925d-c9340afcfd2b">
+      <Execution id="abb53002-d5ed-409c-9c08-9258270ef28d" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.EngineTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PararTest" />
+    </UnitTest>
+    <UnitTest name="AnnoucementeSignatureTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f1863733-713b-3d74-c344-4595b3c5d0ea">
+      <Execution id="e8cfc727-e764-478f-aaca-0d5d1b1a5cc0" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AnnoucementeSignatureTest" />
+    </UnitTest>
+    <UnitTest name="setNumberOfRoomsTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="db6baa02-a9f5-368e-455f-b6f3c6d76b83">
+      <Execution id="73673270-131f-4c0f-8448-7ff755ceb430" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setNumberOfRoomsTest" />
+    </UnitTest>
+    <UnitTest name="setTemplateUrlTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="cfacbd58-3e0f-3567-d1af-c72f7e1c24e0">
+      <Execution id="3e645400-0fe4-4aa6-bf80-4507e6a35c77" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setTemplateUrlTest" />
+    </UnitTest>
+    <UnitTest name="isPageNotFoundTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="5368c8eb-5bb5-a8cb-2dc3-1cb85f98ee4b">
+      <Execution id="e6d0de45-79c8-4c19-8291-3507c636afc8" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="isPageNotFoundTest" />
+    </UnitTest>
+    <UnitTest name="AnuncioConstructorTest1" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="1236b1e3-a21f-06a6-8800-ecaf66d22d63">
+      <Execution id="758967c8-1ed8-46d6-bf86-ccb5ada15416" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AnuncioConstructorTest1" />
+    </UnitTest>
+    <UnitTest name="ExpiredAnnouncementIsNotValidTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="02495e72-679a-012b-3ce3-de11ca9c2c09">
+      <Execution id="650aea55-cfc4-4c15-a0cf-d64d881ea45a" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ExpiredAnnouncementIsNotValidTest" />
+    </UnitTest>
+    <UnitTest name="TemplateUrlTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="71d867b4-693e-970e-3cde-7db77311d000">
+      <Execution id="41e6e5b4-ba69-48b2-b7f1-462220171ee3" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TemplateUrlTest" />
+    </UnitTest>
+    <UnitTest name="ToStringTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="d75814a2-bdfd-d346-ed92-4ba8314971c7">
+      <Execution id="a96befd6-e523-4f10-b285-59d7da5c3045" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ToStringTest" />
+    </UnitTest>
+    <UnitTest name="teste" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="552b1b97-0f72-2d2f-7a21-e916174348ec">
+      <Execution id="acd72656-2ab0-4f15-b4f4-8a14146048cb" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.BuscadorTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="teste" />
+    </UnitTest>
+    <UnitTest name="nextRealEstateTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="8624d0e0-435c-ae66-f21f-a38248e0bba4">
+      <Execution id="767e2edf-9696-42cb-b50f-1c88f35511ad" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.BuscadorTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="nextRealEstateTest" />
+    </UnitTest>
+    <UnitTest name="testRetrievePageInvalidUrl" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="b1d85730-def1-51ba-584f-9cb39d895ef3">
+      <Execution id="319900d4-5235-4ce7-8fde-d3a99250f0e4" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="testRetrievePageInvalidUrl" />
+    </UnitTest>
+    <UnitTest name="LastValidPageRequestTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="5ac14d65-a48c-91f2-3358-ed9359375156">
+      <Execution id="f923d631-b43b-4a5d-8314-4f0e3a13797b" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LastValidPageRequestTest" />
+    </UnitTest>
+    <UnitTest name="setContactTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="eaa1b93d-9e04-0de2-a512-b56c2ba8f8f2">
+      <Execution id="ef6174c2-594b-4444-83ca-ac00850a69cf" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setContactTest" />
+    </UnitTest>
+    <UnitTest name="setAreaTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="2768c13e-d39a-7b70-ff84-ca680cb07ba1">
+      <Execution id="76cc5ad0-103c-4448-bfe5-904d961cd34f" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setAreaTest" />
+    </UnitTest>
+    <UnitTest name="getContactTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="42cbf37a-c30c-3672-6b13-6419bff38d4a">
+      <Execution id="6669af33-9f48-4829-ae39-563e71d5e780" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getContactTest" />
+    </UnitTest>
+    <UnitTest name="getLinkAdTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="a43d1409-a06a-1fd9-4bb6-e576d6fed4b8">
+      <Execution id="4275d812-8238-48db-9d20-aabb81bc44a2" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getLinkAdTest" />
+    </UnitTest>
+    <UnitTest name="LinkTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="fb21a266-314e-0f4e-a168-8d6ac8b25057">
+      <Execution id="5be396fb-0f5f-4036-a7d4-a468112009e7" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LinkTest" />
+    </UnitTest>
+    <UnitTest name="GetSitePorNomeTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="fb5fa2a2-905c-9518-fc01-5d7f609ff7cb">
+      <Execution id="5f96b2f3-c395-4c14-9526-3525aa1e0c6b" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetSitePorNomeTest" />
+    </UnitTest>
+    <UnitTest name="AnuncioConstructorTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f04168ba-7ed2-09a4-2e16-412a0ab7c2cd">
+      <Execution id="d24c744a-4a78-49e0-8c5f-2a2d598e0a29" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="AnuncioConstructorTest" />
+    </UnitTest>
+    <UnitTest name="TestarFelizola_" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f647950d-40ad-251e-e698-f4d95a4db016">
+      <Execution id="bf441ee2-9266-4c0a-9bf1-3be3ff138ed7" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.bsn.testes.dados.SitesTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TestarFelizola_" />
+    </UnitTest>
+    <UnitTest name="getAreaTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="9bca0463-631b-b06f-e589-1a7af4651a21">
+      <Execution id="6a00dd45-5119-4339-ba58-c7df33865413" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getAreaTest" />
+    </UnitTest>
+    <UnitTest name="IniciarTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f38e60c2-ebf3-cc3a-4fa0-0cc3a670f21f">
+      <Execution id="71990aa9-2a3a-4f34-b403-d7512252554c" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.EngineTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="IniciarTest" />
+    </UnitTest>
+    <UnitTest name="setPriceAndGetPriceTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="8807962d-0936-7ba0-3944-2762f3f44a96">
+      <Execution id="ed2dc7fb-4a4d-4b70-83d2-bd05afbe1c3b" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setPriceAndGetPriceTest" />
+    </UnitTest>
+    <UnitTest name="isAnnouncementTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="c4ac07b3-6017-d4bf-5a58-0edee35de7c1">
+      <Execution id="e8e89420-7583-4853-8e7f-76df680c3080" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="isAnnouncementTest" />
+    </UnitTest>
+    <UnitTest name="BairroTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="6af8db8b-2cd7-d359-0db8-c8c21ea4c02b">
+      <Execution id="21c4d2c7-a947-4f3c-84c5-5256faa9516e" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="BairroTest" />
+    </UnitTest>
+    <UnitTest name="ExpiredAnnouncementSignatureTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="c40ab77e-57c1-6106-41df-08d33d527246">
+      <Execution id="ece97ece-3627-4fe6-b1e0-ae4f0ec24c3c" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ExpiredAnnouncementSignatureTest" />
+    </UnitTest>
+    <UnitTest name="getNumberOfRoomsTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="7d982a6d-9704-8080-b098-c57b71ec3c51">
+      <Execution id="32bcb82d-05d0-4ea0-8514-249a780c8c88" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getNumberOfRoomsTest" />
+    </UnitTest>
+    <UnitTest name="EngineConstructorTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="5fa21879-07c9-aec9-5188-805a3fb7e086">
+      <Execution id="8b92405b-3349-4a36-a6ba-4e64c91cabe1" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.EngineTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="EngineConstructorTest" />
+    </UnitTest>
+    <UnitTest name="LinkTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="f36a005e-adb8-d007-0a86-9707547f994b">
+      <Execution id="891d6d4e-a5be-49c8-b815-489e89844488" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="LinkTest" />
+    </UnitTest>
+    <UnitTest name="NomeTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="e86c7cd6-f690-befe-c5f2-70bf10a49f15">
+      <Execution id="69c16dd0-c47b-4c1c-8116-b904d543e5e6" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="NomeTest" />
+    </UnitTest>
+    <UnitTest name="GetContentTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="ba2a49ab-ae45-5b0f-55e5-ee743b7da6b8">
+      <Execution id="38f5bfbc-c7fe-4b2d-b8c7-ecce5d90801f" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetContentTest" />
+    </UnitTest>
+    <UnitTest name="testNewWithNullContent" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="b789d7ab-6ba0-6f38-710d-5beb6f7ce5c3">
+      <Execution id="9cc72b5d-0f0f-4679-bf97-c7c20b58360a" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="testNewWithNullContent" />
+    </UnitTest>
+    <UnitTest name="setPhoneNumberAndGetPhoneNumberTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="cc8c5708-de93-a6b4-7f90-c5c4de51dfef">
+      <Execution id="371cd1b3-562c-4c54-98f5-80e1b808a4b2" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setPhoneNumberAndGetPhoneNumberTest" />
+    </UnitTest>
+    <UnitTest name="testRetrievePage" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="b2f6292e-2f70-1d4d-c018-f254231951b9">
+      <Execution id="826551cb-19a9-4f16-8263-9e81a4a9d93a" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.PaginaTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="testRetrievePage" />
+    </UnitTest>
+    <UnitTest name="setContactAndGetContactTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="4eb63158-fc83-45a8-aa0f-056ceacb33a8">
+      <Execution id="b21124ef-9e6c-4ce0-8612-ea769798f1a0" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setContactAndGetContactTest" />
+    </UnitTest>
+    <UnitTest name="PrecoTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="b4ba9c00-49f9-0088-6d40-cac877ebdcc6">
+      <Execution id="f2bab7c5-c79e-441a-9d39-02e3f46b7386" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PrecoTest" />
+    </UnitTest>
+    <UnitTest name="PageNotFoundSignatureTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="16ef14d7-8913-5496-2d62-f31c876a55cf">
+      <Execution id="f3b4ece7-c4b6-4453-b34b-a3b4fb4d8410" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="PageNotFoundSignatureTest" />
+    </UnitTest>
+    <UnitTest name="getAnnouncementURLTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="fda67e4d-76e8-c9d7-e71a-20f6a3b66518">
+      <Execution id="86440415-090e-4b15-ab88-9d74a8b9505b" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.SiteClassificadoTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="getAnnouncementURLTest" />
+    </UnitTest>
+    <UnitTest name="setNumberOfRoomsAndGetNumberOfRoomsTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="6c1df49d-cc6b-447c-540f-81457e14180d">
+      <Execution id="80e56a6b-3cff-4617-a918-0dc1c4dd3a8f" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setNumberOfRoomsAndGetNumberOfRoomsTest" />
+    </UnitTest>
+    <UnitTest name="numberOfPagesNotFoundEqualsZero" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="d1d185b5-ba98-cf38-0f1e-482f3390343e">
+      <Execution id="54163883-594a-434e-a937-5b7369e3d3f2" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.BuscadorTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="numberOfPagesNotFoundEqualsZero" />
+    </UnitTest>
+    <UnitTest name="setAreaAndGetAreaTest" storage="c:\users\pc\documents\visual studio 2010\projects\bsn\bsn.testes\bin\debug\bsn.testes.dll" id="ecd375f6-c741-c7c3-7e2d-ab021902b7d4">
+      <Execution id="0862e13c-1d91-461e-843b-0d524ddeb681" />
+      <TestMethod codeBase="C:/Users/PC/Documents/Visual Studio 2010/Projects/bsn/bsn.testes/bin/Debug/bsn.testes.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="bsn.testes.AnuncioTest, bsn.testes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="setAreaAndGetAreaTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="02495e72-679a-012b-3ce3-de11ca9c2c09" executionId="650aea55-cfc4-4c15-a0cf-d64d881ea45a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1236b1e3-a21f-06a6-8800-ecaf66d22d63" executionId="758967c8-1ed8-46d6-bf86-ccb5ada15416" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16ef14d7-8913-5496-2d62-f31c876a55cf" executionId="f3b4ece7-c4b6-4453-b34b-a3b4fb4d8410" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2768c13e-d39a-7b70-ff84-ca680cb07ba1" executionId="76cc5ad0-103c-4448-bfe5-904d961cd34f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2a3693e1-d1d4-1361-bf39-bcd62f65504c" executionId="61657317-c161-4918-9fdd-68ea5d6f2533" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c4c0693-eeb3-3493-7983-fc3dd9aa2513" executionId="552eff36-f010-402e-93f8-622f5f96cd7e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42cbf37a-c30c-3672-6b13-6419bff38d4a" executionId="6669af33-9f48-4829-ae39-563e71d5e780" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48cfa31e-c995-f8bd-a145-f4c486ec352d" executionId="c001db31-74a8-4d58-9c4c-4c93c785f3e3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4eb63158-fc83-45a8-aa0f-056ceacb33a8" executionId="b21124ef-9e6c-4ce0-8612-ea769798f1a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5368c8eb-5bb5-a8cb-2dc3-1cb85f98ee4b" executionId="e6d0de45-79c8-4c19-8291-3507c636afc8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="552b1b97-0f72-2d2f-7a21-e916174348ec" executionId="acd72656-2ab0-4f15-b4f4-8a14146048cb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5563289a-8135-277f-2a7f-feefb03b5eb5" executionId="4edad0df-7057-44fc-abba-553cf56709b9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ac14d65-a48c-91f2-3358-ed9359375156" executionId="f923d631-b43b-4a5d-8314-4f0e3a13797b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fa21879-07c9-aec9-5188-805a3fb7e086" executionId="8b92405b-3349-4a36-a6ba-4e64c91cabe1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65b1a735-3de2-3a71-9b25-323bd23f557e" executionId="50b55186-4f14-4edd-86c3-841ba4c6129f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a6976cc-2b3f-5994-b391-27013bcc262a" executionId="83cf9ce0-f1ef-4ca7-80f3-8d8c7403e7a3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6af8db8b-2cd7-d359-0db8-c8c21ea4c02b" executionId="21c4d2c7-a947-4f3c-84c5-5256faa9516e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6c1df49d-cc6b-447c-540f-81457e14180d" executionId="80e56a6b-3cff-4617-a918-0dc1c4dd3a8f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="71d867b4-693e-970e-3cde-7db77311d000" executionId="41e6e5b4-ba69-48b2-b7f1-462220171ee3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d982a6d-9704-8080-b098-c57b71ec3c51" executionId="32bcb82d-05d0-4ea0-8514-249a780c8c88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7df6e744-46e2-f346-3513-53e0d3dd5f7d" executionId="540e643e-6068-4152-889e-a0bfc36e2ff1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83cd4b8d-4c02-62c0-beba-0952bfcb3bb1" executionId="a22a3f64-e006-4448-aad2-c05f084717d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8624d0e0-435c-ae66-f21f-a38248e0bba4" executionId="767e2edf-9696-42cb-b50f-1c88f35511ad" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8807962d-0936-7ba0-3944-2762f3f44a96" executionId="ed2dc7fb-4a4d-4b70-83d2-bd05afbe1c3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="977d10a7-25f3-505d-59bf-208d54a8dbb6" executionId="2f8c75ab-abd0-4133-aa8c-50e579e1bbfc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9bca0463-631b-b06f-e589-1a7af4651a21" executionId="6a00dd45-5119-4339-ba58-c7df33865413" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a43d1409-a06a-1fd9-4bb6-e576d6fed4b8" executionId="4275d812-8238-48db-9d20-aabb81bc44a2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b1d85730-def1-51ba-584f-9cb39d895ef3" executionId="319900d4-5235-4ce7-8fde-d3a99250f0e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2f6292e-2f70-1d4d-c018-f254231951b9" executionId="826551cb-19a9-4f16-8263-9e81a4a9d93a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b4ba9c00-49f9-0088-6d40-cac877ebdcc6" executionId="f2bab7c5-c79e-441a-9d39-02e3f46b7386" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b789d7ab-6ba0-6f38-710d-5beb6f7ce5c3" executionId="9cc72b5d-0f0f-4679-bf97-c7c20b58360a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b8133cef-caec-432d-c60c-f792c1356424" executionId="59000643-2d64-43e5-8bac-01fa27e70cab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ba2a49ab-ae45-5b0f-55e5-ee743b7da6b8" executionId="38f5bfbc-c7fe-4b2d-b8c7-ecce5d90801f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c40ab77e-57c1-6106-41df-08d33d527246" executionId="ece97ece-3627-4fe6-b1e0-ae4f0ec24c3c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4ac07b3-6017-d4bf-5a58-0edee35de7c1" executionId="e8e89420-7583-4853-8e7f-76df680c3080" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="caa6c26d-62bc-e705-127a-4f22802bcdb0" executionId="8503fdb0-f68e-43f0-9614-92abe50cd338" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc12d89e-03af-d849-790c-d1c82ad78f45" executionId="9b7b78f3-0326-4527-a29a-baf556bcfb77" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cc8c5708-de93-a6b4-7f90-c5c4de51dfef" executionId="371cd1b3-562c-4c54-98f5-80e1b808a4b2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cfacbd58-3e0f-3567-d1af-c72f7e1c24e0" executionId="3e645400-0fe4-4aa6-bf80-4507e6a35c77" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1d185b5-ba98-cf38-0f1e-482f3390343e" executionId="54163883-594a-434e-a937-5b7369e3d3f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d75814a2-bdfd-d346-ed92-4ba8314971c7" executionId="a96befd6-e523-4f10-b285-59d7da5c3045" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db6baa02-a9f5-368e-455f-b6f3c6d76b83" executionId="73673270-131f-4c0f-8448-7ff755ceb430" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dbee80ea-94db-3fdd-925d-c9340afcfd2b" executionId="abb53002-d5ed-409c-9c08-9258270ef28d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e86c7cd6-f690-befe-c5f2-70bf10a49f15" executionId="69c16dd0-c47b-4c1c-8116-b904d543e5e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eaa1b93d-9e04-0de2-a512-b56c2ba8f8f2" executionId="ef6174c2-594b-4444-83ca-ac00850a69cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ecd375f6-c741-c7c3-7e2d-ab021902b7d4" executionId="0862e13c-1d91-461e-843b-0d524ddeb681" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f04168ba-7ed2-09a4-2e16-412a0ab7c2cd" executionId="d24c744a-4a78-49e0-8c5f-2a2d598e0a29" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1863733-713b-3d74-c344-4595b3c5d0ea" executionId="e8cfc727-e764-478f-aaca-0d5d1b1a5cc0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f36a005e-adb8-d007-0a86-9707547f994b" executionId="891d6d4e-a5be-49c8-b815-489e89844488" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f38e60c2-ebf3-cc3a-4fa0-0cc3a670f21f" executionId="71990aa9-2a3a-4f34-b403-d7512252554c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f647950d-40ad-251e-e698-f4d95a4db016" executionId="bf441ee2-9266-4c0a-9bf1-3be3ff138ed7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa334ddd-d82c-9fb0-d8b7-fd0aa767efda" executionId="5b64e5d0-09a6-40c7-8b17-27583e118cf1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb21a266-314e-0f4e-a168-8d6ac8b25057" executionId="5be396fb-0f5f-4036-a7d4-a468112009e7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb5fa2a2-905c-9518-fc01-5d7f609ff7cb" executionId="5f96b2f3-c395-4c14-9526-3525aa1e0c6b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fc23e177-694b-ee89-05ed-f7a945d80a04" executionId="be0fb5bb-ae7c-463e-9b8e-95de3ec8217d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fda67e4d-76e8-c9d7-e71a-20f6a3b66518" executionId="86440415-090e-4b15-ab88-9d74a8b9505b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="650aea55-cfc4-4c15-a0cf-d64d881ea45a" testId="02495e72-679a-012b-3ce3-de11ca9c2c09" testName="ExpiredAnnouncementIsNotValidTest" computerName="PC-PC" duration="00:00:32.4248546" startTime="2012-06-30T02:50:46.1431541-03:00" endTime="2012-06-30T02:51:18.5680087-03:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="650aea55-cfc4-4c15-a0cf-d64d881ea45a">
+    </UnitTestResult>
+    <UnitTestResult executionId="758967c8-1ed8-46d6-bf86-ccb5ada15416" testId="1236b1e3-a21f-06a6-8800-ecaf66d22d63" testName="AnuncioConstructorTest1" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="758967c8-1ed8-46d6-bf86-ccb5ada15416">
+    </UnitTestResult>
+    <UnitTestResult executionId="f3b4ece7-c4b6-4453-b34b-a3b4fb4d8410" testId="16ef14d7-8913-5496-2d62-f31c876a55cf" testName="PageNotFoundSignatureTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3b4ece7-c4b6-4453-b34b-a3b4fb4d8410">
+    </UnitTestResult>
+    <UnitTestResult executionId="76cc5ad0-103c-4448-bfe5-904d961cd34f" testId="2768c13e-d39a-7b70-ff84-ca680cb07ba1" testName="setAreaTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="76cc5ad0-103c-4448-bfe5-904d961cd34f">
+    </UnitTestResult>
+    <UnitTestResult executionId="61657317-c161-4918-9fdd-68ea5d6f2533" testId="2a3693e1-d1d4-1361-bf39-bcd62f65504c" testName="GetSiteInfonetMongoInfonet" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="61657317-c161-4918-9fdd-68ea5d6f2533">
+    </UnitTestResult>
+    <UnitTestResult executionId="552eff36-f010-402e-93f8-622f5f96cd7e" testId="3c4c0693-eeb3-3493-7983-fc3dd9aa2513" testName="ActiveAnnoucementIsValidTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="552eff36-f010-402e-93f8-622f5f96cd7e">
+    </UnitTestResult>
+    <UnitTestResult executionId="6669af33-9f48-4829-ae39-563e71d5e780" testId="42cbf37a-c30c-3672-6b13-6419bff38d4a" testName="getContactTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6669af33-9f48-4829-ae39-563e71d5e780">
+    </UnitTestResult>
+    <UnitTestResult executionId="c001db31-74a8-4d58-9c4c-4c93c785f3e3" testId="48cfa31e-c995-f8bd-a145-f4c486ec352d" testName="retrieveTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c001db31-74a8-4d58-9c4c-4c93c785f3e3">
+    </UnitTestResult>
+    <UnitTestResult executionId="b21124ef-9e6c-4ce0-8612-ea769798f1a0" testId="4eb63158-fc83-45a8-aa0f-056ceacb33a8" testName="setContactAndGetContactTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b21124ef-9e6c-4ce0-8612-ea769798f1a0">
+    </UnitTestResult>
+    <UnitTestResult executionId="e6d0de45-79c8-4c19-8291-3507c636afc8" testId="5368c8eb-5bb5-a8cb-2dc3-1cb85f98ee4b" testName="isPageNotFoundTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6d0de45-79c8-4c19-8291-3507c636afc8">
+    </UnitTestResult>
+    <UnitTestResult executionId="acd72656-2ab0-4f15-b4f4-8a14146048cb" testId="552b1b97-0f72-2d2f-7a21-e916174348ec" testName="teste" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="acd72656-2ab0-4f15-b4f4-8a14146048cb">
+    </UnitTestResult>
+    <UnitTestResult executionId="4edad0df-7057-44fc-abba-553cf56709b9" testId="5563289a-8135-277f-2a7f-feefb03b5eb5" testName="isValidPageTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4edad0df-7057-44fc-abba-553cf56709b9">
+    </UnitTestResult>
+    <UnitTestResult executionId="f923d631-b43b-4a5d-8314-4f0e3a13797b" testId="5ac14d65-a48c-91f2-3358-ed9359375156" testName="LastValidPageRequestTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f923d631-b43b-4a5d-8314-4f0e3a13797b">
+    </UnitTestResult>
+    <UnitTestResult executionId="8b92405b-3349-4a36-a6ba-4e64c91cabe1" testId="5fa21879-07c9-aec9-5188-805a3fb7e086" testName="EngineConstructorTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b92405b-3349-4a36-a6ba-4e64c91cabe1">
+    </UnitTestResult>
+    <UnitTestResult executionId="50b55186-4f14-4edd-86c3-841ba4c6129f" testId="65b1a735-3de2-3a71-9b25-323bd23f557e" testName="RemovedAnnouncementSignatureTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50b55186-4f14-4edd-86c3-841ba4c6129f">
+    </UnitTestResult>
+    <UnitTestResult executionId="83cf9ce0-f1ef-4ca7-80f3-8d8c7403e7a3" testId="6a6976cc-2b3f-5994-b391-27013bcc262a" testName="RegexPrecoTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="83cf9ce0-f1ef-4ca7-80f3-8d8c7403e7a3">
+    </UnitTestResult>
+    <UnitTestResult executionId="21c4d2c7-a947-4f3c-84c5-5256faa9516e" testId="6af8db8b-2cd7-d359-0db8-c8c21ea4c02b" testName="BairroTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21c4d2c7-a947-4f3c-84c5-5256faa9516e">
+    </UnitTestResult>
+    <UnitTestResult executionId="80e56a6b-3cff-4617-a918-0dc1c4dd3a8f" testId="6c1df49d-cc6b-447c-540f-81457e14180d" testName="setNumberOfRoomsAndGetNumberOfRoomsTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="80e56a6b-3cff-4617-a918-0dc1c4dd3a8f">
+    </UnitTestResult>
+    <UnitTestResult executionId="41e6e5b4-ba69-48b2-b7f1-462220171ee3" testId="71d867b4-693e-970e-3cde-7db77311d000" testName="TemplateUrlTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="41e6e5b4-ba69-48b2-b7f1-462220171ee3">
+    </UnitTestResult>
+    <UnitTestResult executionId="32bcb82d-05d0-4ea0-8514-249a780c8c88" testId="7d982a6d-9704-8080-b098-c57b71ec3c51" testName="getNumberOfRoomsTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32bcb82d-05d0-4ea0-8514-249a780c8c88">
+    </UnitTestResult>
+    <UnitTestResult executionId="540e643e-6068-4152-889e-a0bfc36e2ff1" testId="7df6e744-46e2-f346-3513-53e0d3dd5f7d" testName="getTextsInIgnoredPagesTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="540e643e-6068-4152-889e-a0bfc36e2ff1">
+    </UnitTestResult>
+    <UnitTestResult executionId="a22a3f64-e006-4448-aad2-c05f084717d8" testId="83cd4b8d-4c02-62c0-beba-0952bfcb3bb1" testName="PaginaConstructorTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a22a3f64-e006-4448-aad2-c05f084717d8">
+    </UnitTestResult>
+    <UnitTestResult executionId="767e2edf-9696-42cb-b50f-1c88f35511ad" testId="8624d0e0-435c-ae66-f21f-a38248e0bba4" testName="nextRealEstateTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="767e2edf-9696-42cb-b50f-1c88f35511ad">
+    </UnitTestResult>
+    <UnitTestResult executionId="ed2dc7fb-4a4d-4b70-83d2-bd05afbe1c3b" testId="8807962d-0936-7ba0-3944-2762f3f44a96" testName="setPriceAndGetPriceTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed2dc7fb-4a4d-4b70-83d2-bd05afbe1c3b">
+    </UnitTestResult>
+    <UnitTestResult executionId="2f8c75ab-abd0-4133-aa8c-50e579e1bbfc" testId="977d10a7-25f3-505d-59bf-208d54a8dbb6" testName="SiteClassificadoConstructorTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f8c75ab-abd0-4133-aa8c-50e579e1bbfc">
+    </UnitTestResult>
+    <UnitTestResult executionId="6a00dd45-5119-4339-ba58-c7df33865413" testId="9bca0463-631b-b06f-e589-1a7af4651a21" testName="getAreaTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6a00dd45-5119-4339-ba58-c7df33865413">
+    </UnitTestResult>
+    <UnitTestResult executionId="4275d812-8238-48db-9d20-aabb81bc44a2" testId="a43d1409-a06a-1fd9-4bb6-e576d6fed4b8" testName="getLinkAdTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4275d812-8238-48db-9d20-aabb81bc44a2">
+    </UnitTestResult>
+    <UnitTestResult executionId="319900d4-5235-4ce7-8fde-d3a99250f0e4" testId="b1d85730-def1-51ba-584f-9cb39d895ef3" testName="testRetrievePageInvalidUrl" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="319900d4-5235-4ce7-8fde-d3a99250f0e4">
+    </UnitTestResult>
+    <UnitTestResult executionId="826551cb-19a9-4f16-8263-9e81a4a9d93a" testId="b2f6292e-2f70-1d4d-c018-f254231951b9" testName="testRetrievePage" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="826551cb-19a9-4f16-8263-9e81a4a9d93a">
+    </UnitTestResult>
+    <UnitTestResult executionId="f2bab7c5-c79e-441a-9d39-02e3f46b7386" testId="b4ba9c00-49f9-0088-6d40-cac877ebdcc6" testName="PrecoTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2bab7c5-c79e-441a-9d39-02e3f46b7386">
+    </UnitTestResult>
+    <UnitTestResult executionId="9cc72b5d-0f0f-4679-bf97-c7c20b58360a" testId="b789d7ab-6ba0-6f38-710d-5beb6f7ce5c3" testName="testNewWithNullContent" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cc72b5d-0f0f-4679-bf97-c7c20b58360a">
+    </UnitTestResult>
+    <UnitTestResult executionId="59000643-2d64-43e5-8bac-01fa27e70cab" testId="b8133cef-caec-432d-c60c-f792c1356424" testName="RegexBairroTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59000643-2d64-43e5-8bac-01fa27e70cab">
+    </UnitTestResult>
+    <UnitTestResult executionId="38f5bfbc-c7fe-4b2d-b8c7-ecce5d90801f" testId="ba2a49ab-ae45-5b0f-55e5-ee743b7da6b8" testName="GetContentTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38f5bfbc-c7fe-4b2d-b8c7-ecce5d90801f">
+    </UnitTestResult>
+    <UnitTestResult executionId="ece97ece-3627-4fe6-b1e0-ae4f0ec24c3c" testId="c40ab77e-57c1-6106-41df-08d33d527246" testName="ExpiredAnnouncementSignatureTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ece97ece-3627-4fe6-b1e0-ae4f0ec24c3c">
+    </UnitTestResult>
+    <UnitTestResult executionId="e8e89420-7583-4853-8e7f-76df680c3080" testId="c4ac07b3-6017-d4bf-5a58-0edee35de7c1" testName="isAnnouncementTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8e89420-7583-4853-8e7f-76df680c3080">
+    </UnitTestResult>
+    <UnitTestResult executionId="8503fdb0-f68e-43f0-9614-92abe50cd338" testId="caa6c26d-62bc-e705-127a-4f22802bcdb0" testName="setPhoneNumberTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8503fdb0-f68e-43f0-9614-92abe50cd338">
+    </UnitTestResult>
+    <UnitTestResult executionId="9b7b78f3-0326-4527-a29a-baf556bcfb77" testId="cc12d89e-03af-d849-790c-d1c82ad78f45" testName="getPhoneNumberTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b7b78f3-0326-4527-a29a-baf556bcfb77">
+    </UnitTestResult>
+    <UnitTestResult executionId="371cd1b3-562c-4c54-98f5-80e1b808a4b2" testId="cc8c5708-de93-a6b4-7f90-c5c4de51dfef" testName="setPhoneNumberAndGetPhoneNumberTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="371cd1b3-562c-4c54-98f5-80e1b808a4b2">
+    </UnitTestResult>
+    <UnitTestResult executionId="3e645400-0fe4-4aa6-bf80-4507e6a35c77" testId="cfacbd58-3e0f-3567-d1af-c72f7e1c24e0" testName="setTemplateUrlTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e645400-0fe4-4aa6-bf80-4507e6a35c77">
+    </UnitTestResult>
+    <UnitTestResult executionId="54163883-594a-434e-a937-5b7369e3d3f2" testId="d1d185b5-ba98-cf38-0f1e-482f3390343e" testName="numberOfPagesNotFoundEqualsZero" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54163883-594a-434e-a937-5b7369e3d3f2">
+    </UnitTestResult>
+    <UnitTestResult executionId="a96befd6-e523-4f10-b285-59d7da5c3045" testId="d75814a2-bdfd-d346-ed92-4ba8314971c7" testName="ToStringTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a96befd6-e523-4f10-b285-59d7da5c3045">
+    </UnitTestResult>
+    <UnitTestResult executionId="73673270-131f-4c0f-8448-7ff755ceb430" testId="db6baa02-a9f5-368e-455f-b6f3c6d76b83" testName="setNumberOfRoomsTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73673270-131f-4c0f-8448-7ff755ceb430">
+    </UnitTestResult>
+    <UnitTestResult executionId="abb53002-d5ed-409c-9c08-9258270ef28d" testId="dbee80ea-94db-3fdd-925d-c9340afcfd2b" testName="PararTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abb53002-d5ed-409c-9c08-9258270ef28d">
+    </UnitTestResult>
+    <UnitTestResult executionId="69c16dd0-c47b-4c1c-8116-b904d543e5e6" testId="e86c7cd6-f690-befe-c5f2-70bf10a49f15" testName="NomeTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69c16dd0-c47b-4c1c-8116-b904d543e5e6">
+    </UnitTestResult>
+    <UnitTestResult executionId="ef6174c2-594b-4444-83ca-ac00850a69cf" testId="eaa1b93d-9e04-0de2-a512-b56c2ba8f8f2" testName="setContactTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef6174c2-594b-4444-83ca-ac00850a69cf">
+    </UnitTestResult>
+    <UnitTestResult executionId="0862e13c-1d91-461e-843b-0d524ddeb681" testId="ecd375f6-c741-c7c3-7e2d-ab021902b7d4" testName="setAreaAndGetAreaTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0862e13c-1d91-461e-843b-0d524ddeb681">
+    </UnitTestResult>
+    <UnitTestResult executionId="d24c744a-4a78-49e0-8c5f-2a2d598e0a29" testId="f04168ba-7ed2-09a4-2e16-412a0ab7c2cd" testName="AnuncioConstructorTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d24c744a-4a78-49e0-8c5f-2a2d598e0a29">
+    </UnitTestResult>
+    <UnitTestResult executionId="e8cfc727-e764-478f-aaca-0d5d1b1a5cc0" testId="f1863733-713b-3d74-c344-4595b3c5d0ea" testName="AnnoucementeSignatureTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8cfc727-e764-478f-aaca-0d5d1b1a5cc0">
+    </UnitTestResult>
+    <UnitTestResult executionId="891d6d4e-a5be-49c8-b815-489e89844488" testId="f36a005e-adb8-d007-0a86-9707547f994b" testName="LinkTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="891d6d4e-a5be-49c8-b815-489e89844488">
+    </UnitTestResult>
+    <UnitTestResult executionId="71990aa9-2a3a-4f34-b403-d7512252554c" testId="f38e60c2-ebf3-cc3a-4fa0-0cc3a670f21f" testName="IniciarTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71990aa9-2a3a-4f34-b403-d7512252554c">
+    </UnitTestResult>
+    <UnitTestResult executionId="bf441ee2-9266-4c0a-9bf1-3be3ff138ed7" testId="f647950d-40ad-251e-e698-f4d95a4db016" testName="TestarFelizola_" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf441ee2-9266-4c0a-9bf1-3be3ff138ed7">
+    </UnitTestResult>
+    <UnitTestResult executionId="5b64e5d0-09a6-40c7-8b17-27583e118cf1" testId="fa334ddd-d82c-9fb0-d8b7-fd0aa767efda" testName="IdTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b64e5d0-09a6-40c7-8b17-27583e118cf1">
+    </UnitTestResult>
+    <UnitTestResult executionId="5be396fb-0f5f-4036-a7d4-a468112009e7" testId="fb21a266-314e-0f4e-a168-8d6ac8b25057" testName="LinkTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5be396fb-0f5f-4036-a7d4-a468112009e7">
+    </UnitTestResult>
+    <UnitTestResult executionId="5f96b2f3-c395-4c14-9526-3525aa1e0c6b" testId="fb5fa2a2-905c-9518-fc01-5d7f609ff7cb" testName="GetSitePorNomeTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f96b2f3-c395-4c14-9526-3525aa1e0c6b">
+    </UnitTestResult>
+    <UnitTestResult executionId="be0fb5bb-ae7c-463e-9b8e-95de3ec8217d" testId="fc23e177-694b-ee89-05ed-f7a945d80a04" testName="ActiveAnnoucementIsAnnoucementTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="be0fb5bb-ae7c-463e-9b8e-95de3ec8217d">
+    </UnitTestResult>
+    <UnitTestResult executionId="86440415-090e-4b15-ab88-9d74a8b9505b" testId="fda67e4d-76e8-c9d7-e71a-20f6a3b66518" testName="getAnnouncementURLTest" computerName="PC-PC" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="NotExecuted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86440415-090e-4b15-ab88-9d74a8b9505b">
+    </UnitTestResult>
+  </Results>
+</TestRun>
