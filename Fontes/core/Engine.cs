@@ -11,8 +11,8 @@ namespace bsn.core
         {
             int tamanhoRajada = 10;
 
-            var sitesCollection = new bsn.dal.MongoDB().obterTodosRegistros<Site>("sites");
-            var anunciosCollection = new bsn.dal.MongoDB().obterTodosRegistros<Anuncio>("anuncios");
+            var sitesCollection = new bsn.dal.RepositorioMongoDB().obterTodosRegistros<Site>("sites");
+            var anunciosCollection = new bsn.dal.RepositorioMongoDB().obterTodosRegistros<Anuncio>("anuncios");
 
             foreach (var site in sitesCollection.FindAll())
             {

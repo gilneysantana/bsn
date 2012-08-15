@@ -1,9 +1,0 @@
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.pdb
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\bsn.dal.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\MongoDB.Bson.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\MongoDB.Driver.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\bsn.dal.pdb
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\core.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\core.pdb

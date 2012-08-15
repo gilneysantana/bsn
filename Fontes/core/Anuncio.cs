@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using bsn.dal;
 
 namespace bsn.core
 {
@@ -132,9 +133,7 @@ namespace bsn.core
 
         public static int ObterMaxCodigoAnuncio(string site)
         {
-            var anuncios = new bsn.dal.MongoDB().obterTodosRegistros2("anuncios");
-
-            return (from a in anuncios
+            return (from a in RepositorioFactory.Repositorio<Anuncio>(Colecao.anuncios)
                     select a).Max<Anuncio>(a => a.getNumberOfRooms());
         }
     }

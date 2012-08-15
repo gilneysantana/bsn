@@ -193,7 +193,7 @@ namespace bsn.core
      
         public static Site GetSitePorNome(string nomeSite)
         {
-            var collection = new bsn.dal.MongoDB().obterTodosRegistros<Site>("sites");
+            var collection = new bsn.dal.RepositorioMongoDB().obterTodosRegistros<Site>("sites");
             var query = Query.EQ("Nome", nomeSite);
             return collection.FindOne(query);
         }
@@ -217,5 +217,7 @@ namespace bsn.core
             novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, pagina));
             return novoAnuncio;
         }
+
+        public int LastValidPageRequest { get; set; }
     }
 }

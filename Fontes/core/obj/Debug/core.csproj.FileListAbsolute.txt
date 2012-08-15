@@ -1,5 +1,0 @@
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\bin\Debug\core.pdb
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\core.dll
-C:\Users\PC\Documents\Visual Studio 2010\Projects\bsn\core\obj\Debug\core.pdb
