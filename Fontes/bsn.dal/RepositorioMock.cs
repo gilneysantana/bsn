@@ -10,7 +10,9 @@ namespace bsn.dal
     {
         public IQueryable<T> Repositorio<T>(string colecao)
         {
-            return new ArrayList().AsQueryable();
+            //return new ArrayList().AsQueryable();
+
+            return new System.Collections.Generic.List<T>().AsQueryable<T>();
         }
 
     }
