@@ -21,7 +21,9 @@ namespace bsn.dal
                     break;
             }
 
-            return new RepositorioMongoDB().Repositorio<T>(descricaoColecao);
+            //return new RepositorioMongoDB().Repositorio<T>(descricaoColecao);
+            return new RepositorioMock().Repositorio<T>(descricaoColecao);
+
         }
     }
 
