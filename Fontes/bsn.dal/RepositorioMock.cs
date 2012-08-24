@@ -6,13 +6,21 @@ using System.Text;
 
 namespace bsn.dal
 {
-    class RepositorioMock
+    public class RepositorioMock
     {
-        public IQueryable<T> Repositorio<T>(string colecao)
-        {
-            //return new ArrayList().AsQueryable();
+        //private List<T>
 
-            return new System.Collections.Generic.List<T>().AsQueryable<T>();
+        public IQueryable<T> Repositorio<T>(List<T> colecao)
+        {
+            if (colecao == "sites")
+            {
+                var repositorioSite = new System.Collections.Generic.List<T>();
+
+                //repositorioSite.Add();
+                return repositorioSite.AsQueryable<T>();
+            }
+
+            return null;
         }
 
     }

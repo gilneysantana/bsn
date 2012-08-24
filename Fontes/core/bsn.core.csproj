@@ -52,6 +52,7 @@
     <Compile Include="Anuncio.cs" />
     <Compile Include="Buscador.cs" />
     <Compile Include="RecuperadorPagina.cs" />
+    <Compile Include="RepositorioFactory.cs" />
     <Compile Include="Site.cs" />
   </ItemGroup>
   <ItemGroup>
