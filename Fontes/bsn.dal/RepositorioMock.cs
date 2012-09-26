@@ -6,22 +6,18 @@ using System.Text;
 
 namespace bsn.dal
 {
-    public class RepositorioMock
+    public class RepositorioMock<T> : RepositorioMongoDB
     {
-        //private List<T>
+        private List<T> colecao;
 
-        public IQueryable<T> Repositorio<T>(List<T> colecao)
+        public RepositorioMock(List<T> colecao)
         {
-            if (colecao == "sites")
-            {
-                var repositorioSite = new System.Collections.Generic.List<T>();
-
-                //repositorioSite.Add();
-                return repositorioSite.AsQueryable<T>();
-            }
-
-            return null;
+            this.colecao = colecao;
         }
 
+        public IQueryable<T> Repositorio()
+        {
+            return colecao.AsQueryable<T>();
+        }
     }
 }

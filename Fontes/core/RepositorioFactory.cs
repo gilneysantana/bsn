@@ -8,49 +8,22 @@ namespace bsn.core
 {
     public class RepositorioFactory
     {
-        public static IQueryable<T> Repositorio<T>(Colecao colecao)
+
+
+        public static IQueryable<Site> RepositorioSite()
         {
-            string descricaoColecao = string.Empty;
+                var repositorioSite = new System.Collections.Generic.List<Site>();
+                return new RepositorioMock<Site>(repositorioSite).Repositorio();
+        }
 
-            switch (colecao)
-            {
-                case Colecao.anuncios:
-                    descricaoColecao = "anuncios";
-                    break;
-                case Colecao.sites:
-                    descricaoColecao = "sites";
-                    break;
-            }
-
-            #region RetornaMock
-            if (descricaoColecao == "sites")
-            {
-                var repositorioSite = new System.Collections.Generic.List<T>();
-
-                switch (typeof(T).ToString())
-                {
-                    case "Site":
-                        repositorioSite.Add(((T)new Site()));
-                        break;
-                    case "Anuncio":
-                        break;
-                }
-
-                //repositorioSite.Add();
-                return repositorioSite.AsQueryable<T>();
-            }
-
-            return null;
-
-            #endregion
-
-            //return new RepositorioMongoDB().Repositorio<T>(descricaoColecao);
-            return new RepositorioMock().Repositorio<T>(descricaoColecao);
-
+        public static IQueryable<Anuncio> RepositorioAnuncio()
+        {
+                var repositorioSite = new System.Collections.Generic.List<Anuncio>();
+                return new RepositorioMock<Anuncio>(repositorioSite).Repositorio();
         }
     }
 
-    public enum Colecao
+    public enum EnumColecao
     {
         anuncios,
         sites

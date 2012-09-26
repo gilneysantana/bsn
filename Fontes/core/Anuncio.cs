@@ -133,7 +133,7 @@ namespace bsn.core
 
         public static int ObterMaxCodigoAnuncio(string site)
         {
-            return (from a in RepositorioFactory.Repositorio<Anuncio>(Colecao.anuncios)
+            return (from a in RepositorioFactory.Repositorio<Anuncio>(EnumColecao.anuncios)
                     select a).Max<Anuncio>(a => a.getNumberOfRooms());
         }
     }
