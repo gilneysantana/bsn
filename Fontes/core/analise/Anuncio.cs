@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Linq;
 using bsn.dal;
+using System.Collections.Generic;
 
-namespace bsn.core
+using MongoDB.Driver.Linq;
+using MongoDB.Bson;
+
+namespace bsn.core.analise
 {
 
     /**
@@ -11,18 +15,29 @@ namespace bsn.core
      * @author The BSN Team
      * 
      */
+    [Serializable]
     public class Anuncio
     {
+        private ObjectId id;
+        private Alvo paginaOrigem;
         private string bairro;
         private int numeroQuartos;
         private decimal area;
-        private decimal preco;
-        private string link;
+        private TipoImovel tipoImovel;
+        private TipoTransacao tipoTransacao;
 
-        public string Link
+        private decimal preco;
+
+        public ObjectId Id
         {
-            get { return link; }
-            set { link = value; }
+            get { return id; }
+            set { id = value; }
+        }
+
+        public Alvo PaginaOrigem
+        {
+            get { return paginaOrigem; }
+            //set { paginaOrigem = value; }
         }
 
         /*
@@ -40,7 +55,12 @@ namespace bsn.core
         {
         }
 
-        public Anuncio(string bairro, int numberOfRooms, decimal area,
+        public Anuncio(Alvo paginaOrigem)
+        {
+            this.paginaOrigem = paginaOrigem;
+        }
+
+        public Anuncio(Alvo paginaOrigem, string bairro, int numberOfRooms, decimal area,
                 decimal price, string contact, string phoneNumber)
         {
             this.bairro = bairro;
@@ -52,6 +72,18 @@ namespace bsn.core
         }
 
         #region Propriedades
+
+        public TipoTransacao TipoTransacao
+        {
+            get { return tipoTransacao; }
+            set { tipoTransacao = value; }
+        }
+
+        public decimal Area
+        {
+            get { return area; }
+            set { area = value; }
+        }
 
         public string Bairro 
         {
@@ -65,24 +97,16 @@ namespace bsn.core
             }
         }
 
-        public int getNumberOfRooms()
+        public int NumeroQuartos
         {
-            return numeroQuartos;
-        }
-
-        public void setNumberOfRooms(int numberOfRooms)
-        {
-            this.numeroQuartos = numberOfRooms;
-        }
-
-        public decimal getArea()
-        {
-            return area;
-        }
-
-        public void setArea(decimal area)
-        {
-            this.area = area;
+            get
+            {
+                return numeroQuartos;
+            }
+            set
+            {
+                numeroQuartos = value; 
+            }
         }
 
         public decimal Preco 
@@ -97,26 +121,6 @@ namespace bsn.core
             }
         }
 
-        public string getContact()
-        {
-            return contact;
-        }
-
-        public void setContact(string contact)
-        {
-            this.contact = contact;
-        }
-
-        public string getPhoneNumber()
-        {
-            return phoneNumber;
-        }
-
-        public void setPhoneNumber(string phoneNumber)
-        {
-            this.phoneNumber = phoneNumber;
-        }
-
         public string getLinkAd()
         {
             // TODO: devemos guardar o link ou apenas o codigo e montar o link sob
@@ -124,17 +128,43 @@ namespace bsn.core
             return "www.infonet.com.br?codigo=99999";
         }
 
+        public TipoImovel TipoImovel
+        {
+            get { return tipoImovel; }
+            set { tipoImovel = value; }
+        }
+
         #endregion
 
         public override string ToString()
         {
-            return string.Format("<Anuncio  Bairro = '{0}' Preço = '{1}'/>", this.Bairro, this.Preco);
+            return string.Format("<Anuncio  Bairro = '{0}' Preço = '{1}'/>", 
+                this.Bairro, this.Preco);
         }
 
         public static int ObterMaxCodigoAnuncio(string site)
         {
-            return (from a in RepositorioFactory.Repositorio<Anuncio>(EnumColecao.anuncios)
-                    select a).Max<Anuncio>(a => a.getNumberOfRooms());
+            return (from a in Rep.Anuncios().AsQueryable()
+                    select a).Max<Anuncio>(a => a.NumeroQuartos);
         }
+
+        public static Anuncio Parse(string anuncioCSV)
+        {
+            Anuncio anuncio = new Anuncio();
+
+            return anuncio;
+        }
+    }
+
+    public enum TipoImovel
+    {
+        Casa,
+        Apartamento
+    }
+
+    public enum TipoTransacao
+    {
+        Venda,
+        Aluguel
     }
 }

@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using bsn.dal;
+using MongoDB.Driver;
+
+using bsn.core.analise;
 
 namespace bsn.core
 {
-    public class RepositorioFactory
+    public static class Rep
     {
 
-
-        public static IQueryable<Site> RepositorioSite()
+        public static MongoCollection<Site> Sites()
         {
-                var repositorioSite = new System.Collections.Generic.List<Site>();
-                return new RepositorioMock<Site>(repositorioSite).Repositorio();
+                return new RepositorioMongoDB().Repositorio<Site>("sites");
         }
 
-        public static IQueryable<Anuncio> RepositorioAnuncio()
+        public static MongoCollection<Anuncio> Anuncios()
         {
-                var repositorioSite = new System.Collections.Generic.List<Anuncio>();
-                return new RepositorioMock<Anuncio>(repositorioSite).Repositorio();
+                return new RepositorioMongoDB().Repositorio<Anuncio>("anuncios");
         }
-    }
-
-    public enum EnumColecao
-    {
-        anuncios,
-        sites
     }
 }

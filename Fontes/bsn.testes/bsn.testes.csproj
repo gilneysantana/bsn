@@ -52,17 +52,17 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bsn.testes.dados\SitesTest.cs" />
+    <Compile Include="AlvoTest.cs" />
+    <Compile Include="BsnTest.cs" />
     <Compile Include="bsn.testes.dal\DalTest.cs" />
-    <Compile Include="EngineTest.cs" />
-    <Compile Include="PaginaTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BuscadorTest.cs" />
-    <Compile Include="AnuncioTest.cs" />
-    <Compile Include="RecuperadorPaginaTest.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="SitePaginaTest.cs" />
     <Compile Include="SiteTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bsn.testes.dados\" />
+    <Folder Include="Test References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bsn.dal\bsn.dal.csproj">
@@ -75,10 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Shadow Include="Test References\core.accessor" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="dados\" />
+    <Content Include="dados\urls.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

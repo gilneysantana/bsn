@@ -5,6 +5,8 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using bsn.core;
+using bsn.core.busca;
+
 using MongoDB.Bson;
 
 namespace bsn.testes
@@ -30,25 +32,10 @@ namespace bsn.testes
         [TestMethod]
         public void ExpiredAnnouncementIsNotValidTest()
         {
-            Pagina page = Pagina.CarregarDoArquivo("infonet.com.br-expirado-id=150000.htm");
+            Alvo alvo = new Alvo(infonet, 150000);
+            alvo.CarregarDoArquivo( "infonet.com.br-expirado-id=150000.htm");
 
-            Assert.IsFalse(infonet.isValidPage(page));
-        }
-
-        [TestMethod]
-        public void ActiveAnnoucementIsValidTest()
-        {
-            string paginaValidaInfonet = infonet.getAnnouncementURL(INFONET_ACTIVE_ANNOUCEMENT);
-            Pagina page = new RecuperadorPagina().retrieve(paginaValidaInfonet);
-            Assert.IsTrue(infonet.isValidPage(page));
-        }
-
-        [TestMethod]
-        public void ActiveAnnoucementIsAnnoucementTest()
-        {
-            string paginaValidaInfonet = infonet.getAnnouncementURL(INFONET_ACTIVE_ANNOUCEMENT);
-            Pagina page = new RecuperadorPagina().retrieve(paginaValidaInfonet);
-            Assert.IsTrue(infonet.isAnnouncement(page));
+            Assert.IsFalse(infonet.isValidPage(alvo));
         }
 
         [TestMethod]

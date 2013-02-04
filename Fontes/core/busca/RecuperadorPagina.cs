@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Net;
 
-namespace bsn.core
+namespace bsn.core.busca
 {
     public class RecuperadorPagina
     {
@@ -18,7 +18,7 @@ namespace bsn.core
      * @throws IOException
      *             If an I/O error occurs
      */
-        public virtual Pagina retrieve(string url)
+        public virtual Alvo retrieve(string url)
         {
             WebClient MyWebClient = new WebClient();
 
@@ -29,8 +29,8 @@ namespace bsn.core
 
                 UTF8Encoding oUTF8 = new UTF8Encoding();
                 string pagina = oUTF8.GetString(PageHTMLBytes);
-                Pagina retorno = new Pagina(pagina);
-                retorno.Link = url;
+                Alvo retorno = new Alvo(pagina);
+                retorno.LinkVisitado = url;
                 return retorno;
             }
 

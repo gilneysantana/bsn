@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Linq;
 
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
 
 using bsn.dal;
+using bsn.core.analise;
+using bsn.core.utils;
 
 
 namespace bsn.core
@@ -21,12 +25,12 @@ namespace bsn.core
      */
     public class Site
     {
-
         /**
          * Place holder used in the url template.
          */
         public static string PLACE_HOLDER = "${PLACE_HOLDER}";
 
+        #region Variáveis privadas
         private ObjectId id;
         private string nome;
         private string templateURL;
@@ -36,6 +40,10 @@ namespace bsn.core
         private string pageNotFoundSignature;
         private string regexBairro;
         private string regexPreco;
+        private string regexArea;
+        private string regexTipoImovel;
+        private string regexTipoTransacao;
+        #endregion
 
         public string Nome
         {
@@ -61,9 +69,16 @@ namespace bsn.core
             set { regexBairro = value; }
         }
 
-        public void setTemplateUrl(string templateURL)
+        public string RegexTipoImovel
         {
-            this.templateURL = templateURL;
+            get { return regexTipoImovel; }
+            set { regexTipoImovel = value; }
+        }
+
+        public string RegexTipoTransacao
+        {
+            get { return regexTipoTransacao; }
+            set { regexTipoTransacao = value; }
         }
 
         public string TemplateUrl
@@ -159,11 +174,11 @@ namespace bsn.core
          * @param page
          * @return
          */
-        public bool isValidPage(Pagina page)
+        public bool isValidPage(Alvo page)
         {
             foreach (string text in getTextsInIgnoredPages())
             {
-                if (page.GetContent.Contains(text))
+                if (page.RetornoRequisicao.Contains(text))
                 {
                     return false;
                 }
@@ -171,9 +186,9 @@ namespace bsn.core
             return true;
         }
 
-        public bool isPageNotFound(Pagina page)
+        public bool isPageNotFound(Alvo page)
         {
-            return page.GetContent.Contains(PageNotFoundSignature);
+            return page.RetornoRequisicao.Contains(PageNotFoundSignature);
         }
 
         /**
@@ -182,42 +197,199 @@ namespace bsn.core
          * @param page
          * @return
          */
-        public bool isAnnouncement(Pagina page)
+        public bool isAnnouncement(Alvo page)
         {
             if (!isValidPage(page))
             {
                 return false;
             }
-            return page.GetContent.Contains(this.AnnoucementeSignature);
-        }
-     
-        public static Site GetSitePorNome(string nomeSite)
-        {
-            var collection = new bsn.dal.RepositorioMongoDB().obterTodosRegistros<Site>("sites");
-            var query = Query.EQ("Nome", nomeSite);
-            return collection.FindOne(query);
+            return page.RetornoRequisicao.Contains(this.AnnoucementeSignature);
         }
 
-        private string ExtrairCampo(string strRegex, Pagina pagina)
+        private string ExtrairCampo(string strRegex, Alvo pagina)
         {
-            Regex regex = new Regex(strRegex, RegexOptions.IgnoreCase);
-            Match retorno = regex.Match(pagina.GetContent);
-
-            if (retorno.Groups.Count != 2)
-                return null;
-            else
-                return retorno.Groups[1].Value;
+            return Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
         }
 
-        public Anuncio ExtrairAnuncio(Pagina pagina)
+        //private bool ExisteRegex(string strRegex, Alvo pagina)
+        //{
+        //    Regex regex = new Regex(strRegex, RegexOptions.IgnoreCase);
+        //    return regex.IsMatch(pagina.RetornoRequisicao);
+        //}
+
+        private TipoImovel ObterTipoImovel(Alvo alvo)
         {
-            var novoAnuncio = new Anuncio();
-            novoAnuncio.Link = pagina.Link;
-            novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, pagina);
-            novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, pagina));
-            return novoAnuncio;
+            string tipoImovel = ExtrairCampo(RegexTipoImovel, alvo);
+
+            try
+            {
+                switch (tipoImovel.ToUpper())
+                {
+                    case "APARTAMENTOS":
+                    case "APARTAMENTO":
+                        return TipoImovel.Apartamento;
+                    case "CASAS":
+                    case "CASA":
+                        return TipoImovel.Casa;
+                    default:
+                        throw new Exception(string.Format("Não foi possivel detectar"
+                            + " o TipoImovel para a Pagina {0}. A extração do campo retorno '{1}'.",
+                            alvo.SiteOrigem, tipoImovel));
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Exceção ocorreu ao tentar buscar a regex '{0}' no Alvo({1},{2})",
+                    RegexTipoImovel, alvo.SiteOrigem, alvo.Id), ex);
+            }
+        }
+
+        private TipoTransacao ObterTipoTransacao(Alvo pagina)
+        {
+            string tipoTransacao = ExtrairCampo(RegexTipoTransacao, pagina);
+            switch (tipoTransacao.ToUpper())
+            {
+                case "ALUGAR":
+                case "ALUGUEL":
+                    return TipoTransacao.Aluguel;
+                case "VENDER":
+                case "VENDA":
+                    return TipoTransacao.Venda;
+                default:
+                    throw new Exception(string.Format("Não foi possível detectar o TipoTransacao para a Pagina" 
+                        + " {0}. A extração do campo retornou '{1}'.", 
+                        pagina.SiteOrigem, tipoTransacao));
+            }
+        }
+
+        public Anuncio ExtrairAnuncio(Alvo pagina)
+        {
+            try
+            {
+                var novoAnuncio = new Anuncio(pagina);
+                novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, pagina);
+                novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, pagina));
+                novoAnuncio.NumeroQuartos = Convert.ToInt32(this.ExtrairCampo(this.RegexNumeroQuartos, pagina));
+                novoAnuncio.Area = Convert.ToDecimal(ExtrairCampo(RegexArea, pagina));
+                novoAnuncio.TipoImovel = ObterTipoImovel(pagina);
+                novoAnuncio.TipoTransacao = ObterTipoTransacao(pagina);
+                return novoAnuncio;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Erro ao tentar extrair Anuncio da página {0}",
+                    pagina.SiteOrigem.Nome), ex);
+            }
         }
 
         public int LastValidPageRequest { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}", this.Nome);
+        }
+
+        public string RegexNumeroQuartos { get; set; }
+
+        #region Repositorio
+        private static IQueryable<Site> Repositorio()
+        {
+            var sites = new List<Site>();
+
+            Site novoSite = new Site();
+            novoSite.Nome = "Infonet";
+            novoSite.AnnoucementeSignature = "Bairro:";
+            novoSite.ExpiredAnnouncementSignature = "ncio expirado!";
+            novoSite.PageNotFoundSignature = "o foi encontrada";
+            novoSite.RegexBairro = "<span.*>Bairro:.*</span><span.*>(.*)<br>";
+            novoSite.RegexNumeroQuartos = "<span.*>N&uacute;mero de quartos:.*</span><span.*>(.*)<br>";
+            novoSite.RegexPreco = "<span.*>Pre&ccedil;o:.*</span><span.*>(.*)<br>";
+            novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)<br>";
+            novoSite.RegexTipoImovel = "<span.*class=\"navegacao\">(.*) para (?:vender|alugar)</span>";
+            novoSite.RegexTipoTransacao = "<span.*>(?:Apartamentos|Casas) para (.*?)<br>";
+            novoSite.RemovedAnnouncementSignature = "ncio removido!";
+            novoSite.TemplateUrl = string.Format("http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}", 
+                Site.PLACE_HOLDER);
+            sites.Add(novoSite);
+
+            novoSite = new Site();
+            novoSite.Nome = "Felizola";
+            novoSite.AnnoucementeSignature = "Bairro:";
+            novoSite.ExpiredAnnouncementSignature = "ncio expirado!";
+            novoSite.PageNotFoundSignature = "o foi encontrada";
+            novoSite.RegexBairro = "<span .*?>Bairro</span>: (.*?)<br>";
+            novoSite.RegexNumeroQuartos = "<span .*?>Nº de Quartos:</span> (.*?)<br />";
+            novoSite.RegexPreco = "<span .*?>Valor:</span> (?:R\\$)*(.*?),00<br />";
+            novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>";
+            novoSite.RegexTipoImovel = "<span .*?>Imóvel:</span> (.*?)<br />";
+            novoSite.RegexTipoTransacao = "<span .*?>Tipo de Negócio</span>: (.*?)<br>";
+            novoSite.RemovedAnnouncementSignature = "ncio removido!";
+            novoSite.TemplateUrl = string.Format("http://nuncioPortal.jsp?CdAnuncio={0}", Site.PLACE_HOLDER);
+            sites.Add(novoSite);
+
+            novoSite = new Site();
+            novoSite.Nome = "Zelar";
+            novoSite.AnnoucementeSignature = "Bairro:";
+            novoSite.ExpiredAnnouncementSignature = "";
+            novoSite.PageNotFoundSignature = "";
+            novoSite.RegexBairro = "<b>Bairro: </b>(.*)</td>";
+            novoSite.RegexNumeroQuartos = "<td>([\\d]*) - Quarto</td>";
+            novoSite.RegexPreco = "Valor R\\$ <.*>(.*)</td>";
+            novoSite.RegexArea = "";
+            novoSite.RegexTipoImovel = "<b>Tipo: </b>(.*)</td>";
+            novoSite.RegexTipoTransacao = "<b>Pretensão: </b>(.*)</td>";
+            novoSite.RemovedAnnouncementSignature = "";
+            novoSite.TemplateUrl = string.Format("http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=",
+                Site.PLACE_HOLDER);
+            sites.Add(novoSite);
+
+
+            return sites.AsQueryable<Site>();
+        }
+
+        public static Site GetSitePorNome(string site)
+        {
+            try
+            {
+                return (from a in Site.Repositorio()
+                        where a.Nome == site
+                        select a).First();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format(
+                    "Erro ao tentar recuperar Site de nome '{0}'", site), ex);
+            }
+        }
+
+        #endregion 
+    
+        public string RegexArea
+        {
+            get { return regexArea; }
+
+            set { regexArea = value; }
+        }
+
+        public string GetUrlMontada(int id)
+        {
+            return this.TemplateUrl.Replace(Site.PLACE_HOLDER, id.ToString());
+        }
+
     }
 }
+
+
+            //novoSite.AnnoucementeSignature = "Bairro:";
+            //novoSite.ExpiredAnnouncementSignature = "ncio expirado!";
+            //novoSite.Nome = "Infonet";
+            //novoSite.PageNotFoundSignature = "o foi encontrada";
+            //novoSite.RegexBairro = "<span.*>Bairro:.*</span><span.*>(.*)</span>";
+            //novoSite.RegexNumeroQuartos = "<span.*>N&uacute;mero de quartos:.*</span><span.*>(.*)</span>";
+            //novoSite.RegexPreco = "<span.*>Pre&ccedil;o:.*</span><span.*>(.*)</span>";
+            //novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>";
+            //novoSite.RegexTipoImovel = "<span.*>(.*) para (?:vender|alugar)</span>";
+            //novoSite.RegexTipoTransacao = "<span.*>(?:Apartamentos|Casas) para (.*?)</span>";
+            //novoSite.RemovedAnnouncementSignature = "ncio removido!";
+            //novoSite.TemplateUrl = string.Format("http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}", 
+            //    Site.PLACE_HOLDER);

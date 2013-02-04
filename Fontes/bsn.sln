@@ -9,12 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		bsn.vsmdi = bsn.vsmdi
 		Local.testsettings = Local.testsettings
+		Script1.fsx = Script1.fsx
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsn.dal", "bsn.dal\bsn.dal.csproj", "{189BCE40-F661-4788-B17B-CCEC8DE4EEF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsn.daemon", "bsn.daemon\bsn.daemon.csproj", "{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bsn.console", "bsn.console\bsn.console.csproj", "{38E7A104-2D28-455E-97A5-38573AC8638A}"
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -59,16 +60,16 @@ Global
 		{189BCE40-F661-4788-B17B-CCEC8DE4EEF1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{189BCE40-F661-4788-B17B-CCEC8DE4EEF1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{189BCE40-F661-4788-B17B-CCEC8DE4EEF1}.Release|x86.ActiveCfg = Release|Any CPU
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Debug|x86.ActiveCfg = Debug|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Debug|x86.Build.0 = Debug|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Release|Any CPU.ActiveCfg = Release|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Release|Mixed Platforms.Build.0 = Release|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Release|x86.ActiveCfg = Release|x86
-		{FA54BB33-928F-4EF3-9A18-10CDDC5F768A}.Release|x86.Build.0 = Release|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Debug|x86.ActiveCfg = Debug|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Debug|x86.Build.0 = Debug|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Release|Any CPU.ActiveCfg = Release|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Release|Mixed Platforms.Build.0 = Release|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Release|x86.ActiveCfg = Release|x86
+		{38E7A104-2D28-455E-97A5-38573AC8638A}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

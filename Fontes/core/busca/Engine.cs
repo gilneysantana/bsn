@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace bsn.core
+using bsn.core.analise;
+
+namespace bsn.core.busca
 {
     public class Engine
     {
@@ -20,15 +22,13 @@ namespace bsn.core
 
                 for (int i = 0; i < tamanhoRajada; i++)
                 {
-                    var anuncio = buscador.ProximoAnuncio();
+                    var pagina = buscador.ProximaPagina();
 
-                    if (anuncio != null)
+                    if (pagina != null)
                     {
-                        anunciosCollection.Insert(anuncio);
+                        Url.urls.Add(pagina);
                     }
                 }
-
-                sitesCollection.Save(site);
             }
 
             //para cada anuncio com mais de 5 dias

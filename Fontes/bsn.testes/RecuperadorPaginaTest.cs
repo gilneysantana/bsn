@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using bsn.core;
+using bsn.core.busca;
 
 namespace bsn.testes
 {
@@ -23,9 +24,9 @@ namespace bsn.testes
         [TestMethod]
         public void testRetrievePage()
         {
-            Pagina page = new RecuperadorPagina().retrieve("http://www.pudim.com.br/");
+            Url page = new RecuperadorPagina().retrieve("http://www.pudim.com.br/");
             Assert.IsNotNull(page);
-            Assert.IsTrue(page.GetContent.Contains("mailto:pudim@pudim.com.br"));
+            Assert.IsTrue(page.Content.Contains("mailto:pudim@pudim.com.br"));
         }
 
     }

@@ -23,11 +23,11 @@ namespace bsn.dal
         public MongoCollection<T> obterTodosRegistros<T>(string colecao)
         {
             return this.GetDatabase().GetCollection<T>(colecao);
-        }
+        }     
 
-        public IQueryable<T> Repositorio<T>(string colecao)
+        public MongoCollection<T> Repositorio<T>(string colecao)
         {
-            return this.GetDatabase().GetCollection<T>(colecao).AsQueryable<T>();
+            return this.GetDatabase().GetCollection<T>(colecao);
         }
 
     }

@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using bsn.core;
+using bsn.core.analise;
 using System;
 
 namespace bsn.testes
@@ -9,19 +9,19 @@ namespace bsn.testes
     public class AnuncioTest
     {
 
-        private static Anuncio realEstate;
+        //private static Anuncio realEstate;
 
-        [TestInitialize]
-        public void setUp()
-        {
-            realEstate = new Anuncio();
-        }
+        //[TestInitialize]
+        //public void setUp()
+        //{
+        //    realEstate = new Anuncio();
+        //}
 
-        [TestCleanup]
-        public void tearDown()
-        {
-            realEstate = null;
-        }
+        //[TestCleanup]
+        //public void tearDown()
+        //{
+        //    realEstate = null;
+        //}
 
     }
 }
