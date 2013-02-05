@@ -267,7 +267,7 @@ namespace bsn.core
             try
             {
                 var novoAnuncio = new Anuncio(pagina);
-                novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, pagina);
+                novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, pagina).Trim();
                 novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, pagina));
                 novoAnuncio.NumeroQuartos = Convert.ToInt32(this.ExtrairCampo(this.RegexNumeroQuartos, pagina));
                 novoAnuncio.Area = Convert.ToDecimal(ExtrairCampo(RegexArea, pagina));
@@ -301,12 +301,12 @@ namespace bsn.core
             novoSite.AnnoucementeSignature = "Bairro:";
             novoSite.ExpiredAnnouncementSignature = "ncio expirado!";
             novoSite.PageNotFoundSignature = "o foi encontrada";
-            novoSite.RegexBairro = "<span.*>Bairro:.*</span><span.*>(.*)<br>";
-            novoSite.RegexNumeroQuartos = "<span.*>N&uacute;mero de quartos:.*</span><span.*>(.*)<br>";
-            novoSite.RegexPreco = "<span.*>Pre&ccedil;o:.*</span><span.*>(.*)<br>";
+            novoSite.RegexBairro = "<span[^>]*>Bairro:\\s*</span>([\\d\\w\\s]*)<br/>";
+            novoSite.RegexPreco = "<span[^>]*>Pre&ccedil;o:\\s*</span>(\\S*)\\s*<br/>";
+            novoSite.RegexNumeroQuartos = "<span[^>]*>N&uacute;mero de quartos:\\s*</span>(\\S*)\\s*<br/>";
             novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)<br>";
-            novoSite.RegexTipoImovel = "<span.*class=\"navegacao\">(.*) para (?:vender|alugar)</span>";
-            novoSite.RegexTipoTransacao = "<span.*>(?:Apartamentos|Casas) para (.*?)<br>";
+            novoSite.RegexTipoImovel = "<a[^>]*>\\s*(\\w*) para (?:vender|alugar)</a>";
+            novoSite.RegexTipoTransacao = "<a[^>]*>(?:Apartamentos|Casas) para (\\w*)</a>";
             novoSite.RemovedAnnouncementSignature = "ncio removido!";
             novoSite.TemplateUrl = string.Format("http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}", 
                 Site.PLACE_HOLDER);
@@ -324,7 +324,8 @@ namespace bsn.core
             novoSite.RegexTipoImovel = "<span .*?>Imóvel:</span> (.*?)<br />";
             novoSite.RegexTipoTransacao = "<span .*?>Tipo de Negócio</span>: (.*?)<br>";
             novoSite.RemovedAnnouncementSignature = "ncio removido!";
-            novoSite.TemplateUrl = string.Format("http://nuncioPortal.jsp?CdAnuncio={0}", Site.PLACE_HOLDER);
+            novoSite.TemplateUrl = string.Format("http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}", 
+                Site.PLACE_HOLDER);
             sites.Add(novoSite);
 
             novoSite = new Site();

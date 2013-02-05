@@ -23,7 +23,15 @@ namespace bsn.core.busca
                 throw new Exception("Não é permitido atualizar uma Url em status 'x'");
 
             alvo.UltimaVisita = DateTime.Now;
-            alvo.RetornoRequisicao = MyWebClient.DownloadString(alvo.GetLink());
+            try
+            {
+                alvo.RetornoRequisicao = MyWebClient.DownloadString(alvo.GetLink());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Não foi possível recuperar o conteúdo da URL '{0}'.",
+                    alvo.GetLink()), ex);
+            }
             alvo.DuracaoVisita = DateTime.Now - alvo.UltimaVisita;
             alvo.LinkVisitado = alvo.GetLink();
             alvo.HistoricoStatus += "r";

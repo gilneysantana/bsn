@@ -86,13 +86,14 @@ namespace bsn.console
             Console.ReadLine();
             Console.ReadLine();
 
+            Console.WriteLine("#TYPE bsn.core.Alvo");
             Console.WriteLine(Alvo.CabecalhoCSV());
 
             string s;
             while ((s = Console.ReadLine()) != null)
             {
                 var alvo = Alvo.Parse(s);
-                Console.WriteLine(bsn.GetAnuncioAlvo(alvo));
+                Console.WriteLine(bsn.GetAnuncioAlvo(alvo).ToCSV());
             }
         }
 
