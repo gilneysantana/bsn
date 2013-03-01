@@ -5,7 +5,7 @@ using System.Text;
 
 namespace bsn.core.analise
 {
-    class Analisador
+    public class Analisador
     {
         public Alvo Analisar(Alvo alvo)
         {
@@ -20,7 +20,7 @@ namespace bsn.core.analise
             catch (Exception ex)
             {
                 alvo.Status += 'e';
-
+                alvo.UltimaExcecao = ex.Message;
             }
 
             return alvo;

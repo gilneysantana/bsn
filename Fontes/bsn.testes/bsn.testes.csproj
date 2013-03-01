@@ -54,7 +54,7 @@
     <Compile Include="BsnTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BuscadorTest.cs" />
-    <Compile Include="SitePaginaTest.cs" />
+    <Compile Include="AnalisadorTest.cs" />
     <Compile Include="SiteTest.cs" />
     <Compile Include="SqlSiteTest.cs" />
   </ItemGroup>

@@ -290,16 +290,6 @@ namespace bsn.core
             var sites = new List<Site>();
 
             Site novoSite = new Site();
-            novoSite.Nome = "Infonet";
-            novoSite.RegexBairro = "<span[^>]*>Bairro:\\s*</span>([\\d\\w\\s]*)<br/>";
-            novoSite.RegexPreco = "<span[^>]*>Pre&ccedil;o:\\s*</span>(\\S*)\\s*<br/>";
-            novoSite.RegexNumeroQuartos = "<span[^>]*>N&uacute;mero de quartos:\\s*</span>(\\S*)\\s*<br/>";
-            novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)<br>";
-            novoSite.RegexTipoImovel = "<a[^>]*>\\s*(\\w*) para (?:vender|alugar)</a>";
-            novoSite.RegexTipoTransacao = "<a[^>]*>(?:Apartamentos|Casas) para (\\w*)</a>";
-            novoSite.TemplateUrl = string.Format("http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}", 
-                Site.PLACE_HOLDER);
-            sites.Add(novoSite);
 
             novoSite = new Site();
             novoSite.Nome = "Felizola";
@@ -336,7 +326,14 @@ namespace bsn.core
             string sql = string.Format(@"
                 select * from site where nome = '{0}'", nomeSite);
 
-            return Site.Parse(sqliteDB.GetDataTable(sql).Rows[0]);
+            var rows = sqliteDB.GetDataTable(sql).Rows;
+
+            if (rows.Count != 1)
+                throw new ApplicationException(string.Format(
+                    "A consulta ao Site deveria retornar exatamente 1 registro. Retornou {0}.",
+                    rows.Count));
+
+            return Site.Parse(rows[0]);
         }
 
         #endregion 
