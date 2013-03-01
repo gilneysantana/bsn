@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using bsn.core;
 using bsn.core.busca;
+using bsn.dal.sqlite;
 
 namespace bsn.testes
 {
@@ -17,15 +18,27 @@ namespace bsn.testes
         /// Este teste depende de conexão com a internet
         /// </summary>
         [TestMethod]
-        public void AtualizarUrlTest()
+        public void GetAlvoAtualizadoTest_StatusIgualP()
         {
-            var buscador = new Buscador();
-            Alvo url = new Alvo(Site.GetSitePorNome("Infonet"), 1);
-            var urlResultado = buscador.GetAlvoAtualizado(url);
 
-            Assert.AreEqual('p', urlResultado.Status);
-            Assert.IsTrue(urlResultado.RetornoRequisicao.Contains("www.infonet.com.br"));
+            Alvo alvo = new Alvo("Infonet", 1);
+
+            var buscador = new Buscador();
+            var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
+
+            Assert.AreEqual("r", alvoAtualizado.Status);
         }
 
+        [TestMethod]
+        public void GetAlvoAtualizadoTest_RetornoRequisicaoConteudoCorreto()
+        {
+            var buscador = new Buscador(); 
+            var alvo = new Alvo("Infonet", 242506);
+
+            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+
+            Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
+                "sendo 3 suites"));
+        }
     }
 }

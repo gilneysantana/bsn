@@ -81,12 +81,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\core\bsn.core.csproj">
-      <Project>{2DD5DAE7-ADE7-4C60-AF20-724C5A05372E}</Project>
-      <Name>bsn.core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
@@ -109,8 +103,20 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="bsn.console_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\bsn.console.sqlite\bsn.dal.sqlite.csproj">
+      <Project>{CBE94B45-F563-4994-AD39-6024D59DAA57}</Project>
+      <Name>bsn.dal.sqlite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bsn.core\bsn.core.csproj">
+      <Project>{2DD5DAE7-ADE7-4C60-AF20-724C5A05372E}</Project>
+      <Name>bsn.core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
