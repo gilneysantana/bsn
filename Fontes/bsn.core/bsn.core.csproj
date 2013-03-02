@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="analise\Analisador.cs" />
     <Compile Include="Alvo.cs" />
-    <Compile Include="Bsn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="analise\Anuncio.cs" />
     <Compile Include="busca\Buscador.cs" />

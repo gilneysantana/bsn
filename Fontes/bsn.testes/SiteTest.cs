@@ -15,14 +15,14 @@ namespace bsn.testes
     public class SiteTest
     {
 
-        private static string infonet;
+        //private static string infonet;
 
         //private static int INFONET_ACTIVE_ANNOUCEMENT = 163648;
 
         [TestInitialize]
         public void setUp()
         {
-            infonet = "Infonet";
+            //infonet = "Infonet";
         }
 
         public static void tearDown()

@@ -143,35 +143,6 @@ namespace bsn.core
 
         #region Persistencia/Stream
 
-        public void CarregarDoArquivo(string nomeArquivo)
-        {
-            this.retornoRequisicao = ExtractContentFromFile(nomeArquivo);
-        }
-
-        private static string ExtractContentFromFile(string fileName)
-        {
-            string caminhoCompleto = @"C:\projetos\bsn\Fontes\bsn.testes\dados\" + fileName;
-
-            if (!File.Exists(caminhoCompleto))
-                throw new ApplicationException(string.Format("O arquivo '{0}' "
-                    + "não existe.", caminhoCompleto));
-
-            string retorno = string.Empty;
-
-            if (fileName.ToUpper().Contains("FELIZOLA") || 
-                fileName.ToUpper().Contains("ZELAR"))
-            {
-                retorno = File.ReadAllText(caminhoCompleto, 
-                    Encoding.GetEncoding("iso-8859-1"));
-            }
-            else
-            {
-                retorno = File.ReadAllText(caminhoCompleto);
-            }
-
-            return retorno;
-        }
-
         public static string CabecalhoCSV()
         {
             return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""Anuncio"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado""";

@@ -56,13 +56,13 @@ namespace bsn.testes
             #region Felizola
             site = "Felizola";
 
-            alvo = Alvo.SqliteFind(site, 860);
-            Assert.IsNotNull(alvo);
-            anuncioInfonetEsperado = new Anuncio(null, "Mosqueiro", 3, 0, 180000);
-            anuncioInfonetEsperado.TipoImovel = TipoImovel.Casa;
-            anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
-            tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
-            tuplas.Add(tupla);
+            //alvo = Alvo.SqliteFind(site, 860);
+            //Assert.IsNotNull(alvo);
+            //anuncioInfonetEsperado = new Anuncio(null, "Mosqueiro", 3, 0, 180000);
+            //anuncioInfonetEsperado.TipoImovel = TipoImovel.Casa;
+            //anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
+            //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            //tuplas.Add(tupla);
 
             //// Apartamento, Venda
             //alvo = new Alvo(site, 1759, SQLiteDatabase.GetDB_Testes());

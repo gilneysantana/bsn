@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
+using bsn.core;
 using bsn.core.busca;
 using bsn.core.analise;
 
-namespace bsn.core
+namespace bsn.console
 {
     public class Bsn
     {
