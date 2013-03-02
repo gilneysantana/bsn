@@ -20,26 +20,17 @@ namespace bsn.testes
         public void setUp()
         {
             var site = "Infonet";
-            int id = -1;    
             Alvo alvo = null;
             Anuncio anuncioInfonetEsperado = null;
             var tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
 
-            id = 248534; 
-            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
-            tuplas.Add(tupla);
+            var ids = new int[]{248534, 250210, 250055, 249890};
 
-            id = 250210;
-            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
-            tuplas.Add(tupla);
-
-            id = 250055;
-            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
-            tuplas.Add(tupla);
-
-            id = 249890;
-            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
-            tuplas.Add(tupla);
+            foreach (int id in ids)
+            {
+                tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
+                tuplas.Add(tupla);
+            }
 
             #region Felizola
             site = "Felizola";
