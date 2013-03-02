@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlvoTest.cs" />
+    <Compile Include="AnuncioTest.cs" />
     <Compile Include="BsnTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BuscadorTest.cs" />

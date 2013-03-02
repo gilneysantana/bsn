@@ -14,7 +14,7 @@ namespace bsn.core.analise
     [Serializable]
     public class Anuncio
     {
-        private Alvo alvo;
+        private Alvo Alvo {get; set;}
         private string bairro;
         private int numeroQuartos;
         private decimal area;
@@ -23,18 +23,13 @@ namespace bsn.core.analise
 
         private decimal preco;
 
-        public Alvo PaginaOrigem
-        {
-            get { return alvo; }
-        }
-
         public Anuncio()
         {
         }
 
         public Anuncio(Alvo paginaOrigem)
         {
-            this.alvo = paginaOrigem;
+            this.Alvo = paginaOrigem;
         }
 
         public Anuncio(Alvo paginaOrigem, string bairro, int numberOfRooms, decimal area,
@@ -151,11 +146,14 @@ namespace bsn.core.analise
         public static Anuncio Parse(System.Data.DataRow anuncioRow)
         {
             var retorno = new Anuncio();
-            //retorno.Id = Convert.ToInt32(anuncioRow["id"]);
-            //retorno.RetornoRequisicao = anuncioRow["retornoRequisicao"].ToString();
-            //retorno.LinkVisitado = anuncioRow["linkVisitado"].ToString();
-            //retorno.HistoricoStatus = anuncioRow["historicoStatus"].ToString();
-            //retorno.SiteOrigem = Site.GetSitePorNome(anuncioRow["siteOrigem"].ToString());
+            var siteOrigem = Site.GetSitePorNome(anuncioRow["siteOrigem"].ToString());
+            var id = Convert.ToInt32(anuncioRow["id"]);
+
+            retorno.Alvo = new Alvo(siteOrigem, id);
+            retorno.Bairro = anuncioRow["bairro"].ToString();
+            retorno.Area = Convert.ToDecimal(anuncioRow["area"].ToString());
+            retorno.NumeroQuartos = Convert.ToInt32(anuncioRow["numeroQuartos"].ToString());
+            retorno.Preco = Convert.ToDecimal(anuncioRow["preco"].ToString());
             return retorno;
         }
 
@@ -165,29 +163,29 @@ namespace bsn.core.analise
 
             var db = utils.Utils.DB();
             var campos = new Dictionary<string, string>();
-            campos.Add("siteOrigem", this.alvo.SiteOrigem.Nome);
-            campos.Add("id", this.alvo.Id.ToString());
+            campos.Add("siteOrigem", this.Alvo.SiteOrigem.Nome);
+            campos.Add("id", this.Alvo.Id.ToString());
             campos.Add("bairro", this.Bairro);
             campos.Add("preco", this.Preco.ToString());
 
             if (alvoExistente == null)
             {
-                db.Insert("alvo", campos);
+                db.Insert("anuncio", campos);
             }
             else
             {
                 string where = string.Format("siteOrigem = '{0}' and id = '{1}'",
-                    this.alvo.SiteOrigem.Nome, this.alvo.Id);
-                db.Update("alvo", campos, where);
+                    this.Alvo.SiteOrigem.Nome, this.Alvo.Id);
+                db.Update("anuncio", campos, where);
             }
         }
 
-        public static Alvo SqliteFind(string site, int id)
+        public static Anuncio SqliteFind(string site, int id)
         {
             var db = utils.Utils.DB();
             string sql = string.Format(
                 @"select * 
-                  from alvo 
+                  from anuncio 
                   where siteOrigem = '{0}' and id = {1}", site, id);
 
             var dt = db.GetDataTable(sql);
@@ -198,7 +196,7 @@ namespace bsn.core.analise
             if (dt.Rows.Count > 1)
                 throw new Exception("Base inconsistente");
 
-            return Alvo.Parse(dt.Rows[0]);
+            return Anuncio.Parse(dt.Rows[0]);
         }
 
         #endregion

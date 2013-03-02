@@ -23,5 +23,17 @@ namespace bsn.testes
         //    realEstate = null;
         //}
 
+        [TestMethod]
+        public void SqliteFind()
+        {
+            var anuncio = Anuncio.SqliteFind("Infonet", 248534);
+
+            Assert.AreEqual(0, anuncio.NumeroQuartos);
+            Assert.AreEqual(232, anuncio.Area);
+            Assert.AreEqual(350000, anuncio.Preco);
+            Assert.AreEqual("Centro", anuncio.Bairro);
+        }
+
+
     }
 }
