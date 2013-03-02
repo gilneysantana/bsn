@@ -20,37 +20,25 @@ namespace bsn.testes
         public void setUp()
         {
             var site = "Infonet";
+            int id = -1;    
             Alvo alvo = null;
             Anuncio anuncioInfonetEsperado = null;
             var tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
 
-            alvo = Alvo.SqliteFind(site, 248534);
-            anuncioInfonetEsperado = new Anuncio(null, "Centro", 0, 232, 350000.00m);
-            anuncioInfonetEsperado.TipoImovel = TipoImovel.Casa;
-            anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
-            tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            id = 248534; 
+            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
             tuplas.Add(tupla);
 
-            alvo = Alvo.SqliteFind(site, 250210);
-            anuncioInfonetEsperado = new Anuncio(null, "orlando dantas", 3, 63, 120000m);
-            anuncioInfonetEsperado.TipoImovel = TipoImovel.Apartamento;
-            anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
-            tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            id = 250210;
+            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
             tuplas.Add(tupla);
 
-            alvo = Alvo.SqliteFind(site, 250055);
-            anuncioInfonetEsperado = new Anuncio(null, "Atalaia", 3, 0, 1200m);
-            anuncioInfonetEsperado.TipoImovel = TipoImovel.Casa;
-            anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Aluguel;
-            tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            id = 250055;
+            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
             tuplas.Add(tupla);
 
-            alvo = Alvo.SqliteFind(site, 249890);
-            Assert.IsNotNull(alvo);
-            anuncioInfonetEsperado = new Anuncio(null, "Farolândia", 3, 98, 1500m);
-            anuncioInfonetEsperado.TipoImovel = TipoImovel.Apartamento;
-            anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Aluguel;
-            tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            id = 249890;
+            tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
             tuplas.Add(tupla);
 
             #region Felizola

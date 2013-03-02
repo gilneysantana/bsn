@@ -32,6 +32,8 @@ namespace bsn.testes
             Assert.AreEqual(232, anuncio.Area);
             Assert.AreEqual(350000, anuncio.Preco);
             Assert.AreEqual("Centro", anuncio.Bairro);
+            Assert.AreEqual(TipoImovel.Casa, anuncio.TipoImovel);
+            Assert.AreEqual(TipoTransacao.Venda, anuncio.TipoTransacao);
         }
 
 

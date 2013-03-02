@@ -18,8 +18,8 @@ namespace bsn.core.analise
         private string bairro;
         private int numeroQuartos;
         private decimal area;
-        private TipoImovel tipoImovel;
-        private TipoTransacao tipoTransacao;
+        private TipoImovel tipoImovel = TipoImovel.NaoInformado;
+        private TipoTransacao tipoTransacao = TipoTransacao.NaoInformado;
 
         private decimal preco;
 
@@ -145,16 +145,22 @@ namespace bsn.core.analise
 
         public static Anuncio Parse(System.Data.DataRow anuncioRow)
         {
-            var retorno = new Anuncio();
+            var ret = new Anuncio();
             var siteOrigem = Site.GetSitePorNome(anuncioRow["siteOrigem"].ToString());
             var id = Convert.ToInt32(anuncioRow["id"]);
 
-            retorno.Alvo = new Alvo(siteOrigem, id);
-            retorno.Bairro = anuncioRow["bairro"].ToString();
-            retorno.Area = Convert.ToDecimal(anuncioRow["area"].ToString());
-            retorno.NumeroQuartos = Convert.ToInt32(anuncioRow["numeroQuartos"].ToString());
-            retorno.Preco = Convert.ToDecimal(anuncioRow["preco"].ToString());
-            return retorno;
+            ret.Alvo = new Alvo(siteOrigem, id);
+            ret.Bairro = anuncioRow["bairro"].ToString();
+            ret.Area = Convert.ToDecimal(anuncioRow["area"].ToString());
+            ret.NumeroQuartos = Convert.ToInt32(anuncioRow["numeroQuartos"].ToString());
+            ret.Preco = Convert.ToDecimal(anuncioRow["preco"].ToString());
+
+            string ti = anuncioRow["tipoImovel"].ToString();
+            ret.TipoImovel = (ti == "a") ? TipoImovel.Apartamento : TipoImovel.Casa;
+            string tt = anuncioRow["tipoTransacao"].ToString();
+            ret.TipoTransacao = (tt == "a") ? TipoTransacao.Aluguel : TipoTransacao.Venda;
+
+            return ret;
         }
 
         public void SqliteSalvar()
@@ -211,12 +217,14 @@ namespace bsn.core.analise
 
     public enum TipoImovel
     {
+        NaoInformado,
         Casa,
         Apartamento
     }
 
     public enum TipoTransacao
     {
+        NaoInformado,
         Venda,
         Aluguel
     }
