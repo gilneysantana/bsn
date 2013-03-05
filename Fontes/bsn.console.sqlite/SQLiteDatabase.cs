@@ -18,10 +18,10 @@ namespace bsn.dal.sqlite
             set { dbConnection = value; }
         }
 
-        public static SQLiteDatabase GetDB_Testes()
-        {
-            return new SQLiteDatabase(@"C:\projetos\bsn\Fontes\bsn.data\sqlite\cashew_tdd.sqlite");
-        }
+        //public static SQLiteDatabase GetDB_Testes()
+        //{
+        //    return new SQLiteDatabase(@"C:\projetos\bsn\Fontes\bsn.data\sqlite\cashew_tdd.sqlite");
+        //}
 
         /// <summary>
         ///     Default Constructor for SQLiteDatabase Class.

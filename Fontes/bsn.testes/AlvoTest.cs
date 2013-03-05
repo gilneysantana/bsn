@@ -13,13 +13,13 @@ namespace bsn.testes
     [TestClass]
     public class AlvoTest
     {
-        private SQLiteDatabase sqlite = null;
+        //private SQLiteDatabase sqlite = null;
         private Site siteInfonet = null;
 
         [TestInitialize]
         public void TestInicitalize()
         {
-            this.sqlite = SQLiteDatabase.GetDB_Testes();
+            //this.sqlite = SQLiteDatabase.GetDB_Testes();
             this.siteInfonet = Site.GetSitePorNome("Infonet"); 
         }
 
