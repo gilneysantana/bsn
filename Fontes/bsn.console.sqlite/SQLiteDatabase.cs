@@ -52,7 +52,8 @@ namespace bsn.dal.sqlite
             }
             catch (Exception e)
             {
-                throw e; 
+                throw new Exception(string.Format("Erro ao tentar acessar a base '{0}'",
+                    dbConnection), e); 
             }
             return dt;
         }
