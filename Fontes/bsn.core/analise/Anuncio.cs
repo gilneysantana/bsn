@@ -173,6 +173,7 @@ namespace bsn.core.analise
             campos.Add("id", this.Alvo.Id.ToString());
             campos.Add("bairro", this.Bairro);
             campos.Add("preco", this.Preco.ToString());
+            campos.Add("area", this.Area.ToString());
 
             if (alvoExistente == null)
             {

@@ -26,6 +26,9 @@ namespace bsn.core.busca
             try
             {
                 alvo.RetornoRequisicao = MyWebClient.DownloadString(alvo.GetLink());
+
+                if (alvo.SiteOrigem.Nome == "Felizola")
+                    alvo.RetornoRequisicao = ToUtf8(alvo.RetornoRequisicao);
             }
             catch (Exception ex)
             {
@@ -41,9 +44,21 @@ namespace bsn.core.busca
                 .Replace("\r\n", "").Replace("\n", "").Replace("\r", "")
                 .Replace("\"","").Replace("'","").Replace("&acirc;","â");
 
-            
-
             return alvo;
+        }
+
+        private string ToUtf8(string s_unicode)
+        {
+            System.Text.Encoding iso_8859_1 = System.Text.Encoding.GetEncoding("iso-8859-1");
+            System.Text.Encoding utf_8 = System.Text.Encoding.UTF8;
+
+            // Convert to ISO-8859-1 bytes.
+            byte[] isoBytes = iso_8859_1.GetBytes(s_unicode);
+
+            // Convert to UTF-8.
+            byte[] utf8Bytes = System.Text.Encoding.Convert(iso_8859_1, utf_8, isoBytes);
+
+            return Convert.ToString(utf8Bytes);
         }
     }
 }

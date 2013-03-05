@@ -24,9 +24,7 @@ namespace bsn.testes
             Anuncio anuncioInfonetEsperado = null;
             var tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
 
-            var ids = new int[]{248534, 250210, 250055, 249890};
-
-            foreach (int id in ids)
+            foreach (int id in new int[]{248534, 250210, 250055, 249890})
             {
                 tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
                 tuplas.Add(tupla);
@@ -34,6 +32,13 @@ namespace bsn.testes
 
             #region Felizola
             site = "Felizola";
+
+            foreach (int id in new int[]{908})
+            {
+                tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
+                tuplas.Add(tupla);
+            }
+
 
             //alvo = Alvo.SqliteFind(site, 860);
             //Assert.IsNotNull(alvo);
@@ -87,6 +92,7 @@ namespace bsn.testes
             {
                 var alvoAnalisado = analisador.Analisar(t.Item1);
                 var anuncioExtraido = alvoAnalisado.Anuncio;
+                Assert.IsNotNull(anuncioExtraido, string.Format("Alvo: {0}", alvoAnalisado.ToString()));
 
                 try
                 {

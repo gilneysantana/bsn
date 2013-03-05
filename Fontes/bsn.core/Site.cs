@@ -263,9 +263,12 @@ namespace bsn.core
                 novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, alvo).Trim();
                 novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, alvo));
                 novoAnuncio.NumeroQuartos = Convert.ToInt32(this.ExtrairCampo(this.RegexNumeroQuartos, alvo));
-                novoAnuncio.Area = Convert.ToDecimal(ExtrairCampo(RegexArea, alvo));
                 novoAnuncio.TipoImovel = ObterTipoImovel(alvo);
                 novoAnuncio.TipoTransacao = ObterTipoTransacao(alvo);
+                string area = ExtrairCampo(RegexArea, alvo);
+                if (area != null)
+                    novoAnuncio.Area = Convert.ToDecimal(area);
+
                 return novoAnuncio;
             }
             catch (Exception ex)
