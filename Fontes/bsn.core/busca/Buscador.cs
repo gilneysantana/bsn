@@ -58,7 +58,7 @@ namespace bsn.core.busca
             // Convert to UTF-8.
             byte[] utf8Bytes = System.Text.Encoding.Convert(iso_8859_1, utf_8, isoBytes);
 
-            return Convert.ToString(utf8Bytes);
+            return Convert.ToBase64String(utf8Bytes);
         }
     }
 }

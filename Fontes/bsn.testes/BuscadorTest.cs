@@ -40,5 +40,17 @@ namespace bsn.testes
             Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
                 "sendo 3 suites"));
         }
+
+        [TestMethod]
+        public void GetAlvoAtualizadoTest_RetornoRequisicaoFelizola908()
+        {
+            var buscador = new Buscador(); 
+            var alvo = new Alvo("Felizola", 908);
+
+            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+
+            Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
+                "3 SALAS, 2 VARANDAS,"));
+        }
     }
 }
