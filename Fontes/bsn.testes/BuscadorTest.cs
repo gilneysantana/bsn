@@ -49,8 +49,10 @@ namespace bsn.testes
 
             var alvoAtual = buscador.GetAlvoAtualizado(alvo);
 
+            //Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
+            //    "3 SALAS, 2 VARANDAS,"));
             Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
-                "3 SALAS, 2 VARANDAS,"));
+                "Imóvel"));
         }
     }
 }

@@ -368,5 +368,17 @@ namespace bsn.core
 
             return retorno;
         }
+
+        public static string CabecalhoCSV()
+        {
+            return @"""Nome"", ""RegexPreco"", ""RegexBairro"", ""RegexTipoImovel"", ""RegexTipoTransacao""";
+        }
+
+        public string ToCSV()
+        {
+            return string.Format(@"""{0}"",""{1}"",""{2}"",""{3}"",""{4}""", 
+                this.Nome, this.RegexPreco, this.RegexBairro, 
+                this.RegexTipoImovel, this.RegexTipoTransacao); 
+        }
     }
 }

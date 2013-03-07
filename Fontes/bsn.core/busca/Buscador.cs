@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Collections.Generic;
+using System.Text;
 
 namespace bsn.core.busca
 {
@@ -38,7 +39,6 @@ namespace bsn.core.busca
             alvo.DuracaoVisita = DateTime.Now - alvo.UltimaVisita;
             alvo.LinkVisitado = alvo.GetLink();
             alvo.Status = "r";
-            alvo.UltimaVisita = DateTime.Now;
 
             alvo.RetornoRequisicao = alvo.RetornoRequisicao
                 .Replace("\r\n", "").Replace("\n", "").Replace("\r", "")
@@ -47,18 +47,15 @@ namespace bsn.core.busca
             return alvo;
         }
 
-        private string ToUtf8(string s_unicode)
+        private string ToUtf8(string strIso)
         {
-            System.Text.Encoding iso_8859_1 = System.Text.Encoding.GetEncoding("iso-8859-1");
-            System.Text.Encoding utf_8 = System.Text.Encoding.UTF8;
+            var iso = Encoding.GetEncoding("iso-8859-1");
+            var utf = Encoding.UTF8;
 
-            // Convert to ISO-8859-1 bytes.
-            byte[] isoBytes = iso_8859_1.GetBytes(s_unicode);
+            byte[] isoBytes = iso.GetBytes(strIso);
+            byte[] utf8Bytes = Encoding.Convert(iso, utf, isoBytes);
 
-            // Convert to UTF-8.
-            byte[] utf8Bytes = System.Text.Encoding.Convert(iso_8859_1, utf_8, isoBytes);
-
-            return Convert.ToBase64String(utf8Bytes);
+            return utf.GetString(utf8Bytes);  
         }
     }
 }

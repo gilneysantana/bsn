@@ -7,6 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using bsn.core;
 using bsn.core.analise;
+using bsn.core.busca;
 using bsn.dal.sqlite;
 
 namespace bsn.testes
@@ -38,15 +39,6 @@ namespace bsn.testes
                 tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
                 tuplas.Add(tupla);
             }
-
-
-            //alvo = Alvo.SqliteFind(site, 860);
-            //Assert.IsNotNull(alvo);
-            //anuncioInfonetEsperado = new Anuncio(null, "Mosqueiro", 3, 0, 180000);
-            //anuncioInfonetEsperado.TipoImovel = TipoImovel.Casa;
-            //anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
-            //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
-            //tuplas.Add(tupla);
 
             //// Apartamento, Venda
             //alvo = new Alvo(site, 1759, SQLiteDatabase.GetDB_Testes());
@@ -92,7 +84,8 @@ namespace bsn.testes
             {
                 var alvoAnalisado = analisador.Analisar(t.Item1);
                 var anuncioExtraido = alvoAnalisado.Anuncio;
-                Assert.IsNotNull(anuncioExtraido, string.Format("Alvo: {0}", alvoAnalisado.ToString()));
+                Assert.IsNotNull(anuncioExtraido, string.Format("Alvo: {0}. Última exceção: {1}", 
+                    alvoAnalisado.ToString(), alvoAnalisado.UltimaExcecao));
 
                 try
                 {
@@ -108,6 +101,19 @@ namespace bsn.testes
                     throw new Exception(t.ToString(), ex);
                 }
             }
+        }
+
+        [TestMethod]
+        public void TestarAlvoFelizola908DiretoDaInternet()
+        {
+            var buscador = new Buscador();
+            var analisador = new Analisador();
+            var alvo = new Alvo("Felizola", 908);
+
+            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+            var alvoAnalisado = analisador.Analisar(alvoAtual);
+
+            Assert.IsNotNull(alvoAnalisado.Anuncio);
         }
     }
 }

@@ -36,6 +36,7 @@ namespace bsn.core.utils
             foreach (Group g in retorno.Groups)
             {
                 Console.WriteLine(string.Format("Group.Value: '{0}'", g.Value));
+                Console.WriteLine();
             }
         }
 
@@ -45,6 +46,18 @@ namespace bsn.core.utils
 
             return new SQLiteDatabase(strCon);
         }
-            
+
+        public static string ObterExcecoes(Exception ex)
+        {
+            var msg = new StringBuilder();
+
+            while (ex != null)
+            {
+                msg.Append(ex.Message + " --> ");
+                ex = ex.InnerException;
+            }
+
+            return msg.ToString();
+        }
     }
 }

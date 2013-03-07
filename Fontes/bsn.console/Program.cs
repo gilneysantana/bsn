@@ -58,6 +58,11 @@ AJUDA
         bsn alvo Infonet 1 10 - Gera Alvos de 1 a 10
         bsn alvo Infonet 10   - É o mesmo que 'alvo Infonet 10 10', gera apenas 1 alvo
 
+    bsn analisar
+
+    bsn regex
+        algumaString | .\bsn regex ""ExpressaoRegular""
+
     bsn sqlite
         pipe_de_alvos | .\bsn sqlite - Persiste alvos 
         .\bsn Infonet 254932 - Busca o alvo informado e joga na saida do pipe
@@ -129,7 +134,6 @@ AJUDA
 
         static void sqlite(string[] args)
         {
-
             if (args.Length == 1)
             {
                 string tipo = Console.ReadLine();
@@ -150,19 +154,41 @@ AJUDA
             }
             else
             {
-                string nomeSite = args[1];
-                string id = args[2];
+                string tabela = args[1];
+                string nomeSite = args[2];
 
-                var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
-
-                if (alvo != null)
+                if (tabela == "alvo")
                 {
-                    Console.WriteLine("#TYPE bsn.core.Alvo");
-                    Console.WriteLine(Alvo.CabecalhoCSV());
-                    Console.WriteLine(alvo.ToCSV());
+                    string id = args[3];
+                    var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
+
+                    if (alvo != null)
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Alvo");
+                        Console.WriteLine(Alvo.CabecalhoCSV());
+                        Console.WriteLine(alvo.ToCSV());
+                    }
+                    else
+                        Console.WriteLine("Nenhum registro encontrado");
+                }
+                else if (tabela == "site")
+                {
+                    var site = Site.GetSitePorNome(nomeSite);
+
+                    if (site != null)
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Site");
+                        Console.WriteLine(Site.CabecalhoCSV());
+                        Console.WriteLine(site.ToCSV());
+                    }
+                    else
+                        Console.WriteLine("Site '{0}' não foi encontrado na tabela '{1}'",
+                            nomeSite, tabela);
                 }
                 else
-                    Console.WriteLine("Nenhum registro encontrado");
+                {
+                    Console.WriteLine("Tabela {0} não é reconhecida", tabela);
+                }
             }
 
         }

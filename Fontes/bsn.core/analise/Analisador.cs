@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using bsn.core.utils;
+
 namespace bsn.core.analise
 {
     public class Analisador
@@ -20,7 +22,7 @@ namespace bsn.core.analise
             catch (Exception ex)
             {
                 alvo.Status += 'e';
-                alvo.UltimaExcecao = ex.Message;
+                alvo.UltimaExcecao = Utils.ObterExcecoes(ex);
             }
 
             return alvo;
