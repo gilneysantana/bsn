@@ -38,8 +38,17 @@ namespace bsn.console
                     case "sqlite":
                         sqlite(args);
                         break;
-                    default:
+                    case "teste":
+                        Console.WriteLine(">áéíóú<");
+                        break;
+                    case "teste2":
+                        Console.WriteLine(Console.ReadLine());
+                        break;
+                    case "help":
                         printHelp();
+                        break;
+                    default:
+                        Console.WriteLine("Comando desconhecido: '{0}'", args[0]);
                         break;
                 }
             }
@@ -98,6 +107,7 @@ AJUDA
 
         static void buscar(string[] args)
         {
+            var bsn = new Bsn();
             // Ignoro as duas primeiras linhas (cabeçalho)
             Console.ReadLine();
             Console.ReadLine();
@@ -105,7 +115,6 @@ AJUDA
             Console.WriteLine("#TYPE bsn.core.Alvo");
             Console.WriteLine(Alvo.CabecalhoCSV());
 
-            var bsn = new Bsn();
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
@@ -124,10 +133,10 @@ AJUDA
             Console.WriteLine("#TYPE bsn.core.Alvo");
             Console.WriteLine(Alvo.CabecalhoCSV());
 
-            string alvoCsv;
-            while ((alvoCsv = Console.ReadLine()) != null)
+            string csvAlvo;
+            while ((csvAlvo = Console.ReadLine()) != null)
             {
-                var alvo = Alvo.Parse(alvoCsv);
+                var alvo = Alvo.Parse(csvAlvo);
                 Console.WriteLine(bsn.GetAnuncioAlvo(alvo).ToCSV());
             }
         }

@@ -52,7 +52,7 @@ namespace bsn.testes
             //Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
             //    "3 SALAS, 2 VARANDAS,"));
             Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
-                "Imóvel"));
+                "Imovel"));
         }
     }
 }

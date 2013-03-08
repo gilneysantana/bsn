@@ -20,21 +20,17 @@ namespace bsn.testes
         [TestInitialize]
         public void setUp()
         {
-            var site = "Infonet";
-            Alvo alvo = null;
-            Anuncio anuncioInfonetEsperado = null;
-            var tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
+            Tuple<Alvo, Anuncio> tupla;
 
+            var site = "Infonet";
             foreach (int id in new int[]{248534, 250210, 250055, 249890})
             {
                 tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
                 tuplas.Add(tupla);
             }
 
-            #region Felizola
             site = "Felizola";
-
-            foreach (int id in new int[]{908})
+            foreach (int id in new int[]{908,1542})
             {
                 tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
                 tuplas.Add(tupla);
@@ -72,11 +68,10 @@ namespace bsn.testes
             //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
             //tuplas.Add(tupla);
 
-            #endregion
         }
 
         [TestMethod]
-        public void TestarTuplas()
+        public void Laco_Banco_Analisador()
         {
             var analisador = new Analisador();
 

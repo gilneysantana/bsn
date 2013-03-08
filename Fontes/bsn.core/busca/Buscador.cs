@@ -3,6 +3,8 @@ using System.Net;
 using System.Collections.Generic;
 using System.Text;
 
+using bsn.core.utils;
+
 namespace bsn.core.busca
 {
     /**
@@ -29,7 +31,7 @@ namespace bsn.core.busca
                 alvo.RetornoRequisicao = MyWebClient.DownloadString(alvo.GetLink());
 
                 if (alvo.SiteOrigem.Nome == "Felizola")
-                    alvo.RetornoRequisicao = ToUtf8(alvo.RetornoRequisicao);
+                    alvo.RetornoRequisicao = Utils.ToUtf8(alvo.RetornoRequisicao);
             }
             catch (Exception ex)
             {
@@ -42,20 +44,13 @@ namespace bsn.core.busca
 
             alvo.RetornoRequisicao = alvo.RetornoRequisicao
                 .Replace("\r\n", "").Replace("\n", "").Replace("\r", "")
-                .Replace("\"","").Replace("'","").Replace("&acirc;","â");
+                .Replace("\"","").Replace("'","").Replace("&acirc;","â")
+                .Replace("ó", "o").Replace("á","a").Replace("é","e")
+                .Replace("í","i").Replace("ú","u").Replace("ã","a")
+                .Replace("â","a");
 
             return alvo;
         }
 
-        private string ToUtf8(string strIso)
-        {
-            var iso = Encoding.GetEncoding("iso-8859-1");
-            var utf = Encoding.UTF8;
-
-            byte[] isoBytes = iso.GetBytes(strIso);
-            byte[] utf8Bytes = Encoding.Convert(iso, utf, isoBytes);
-
-            return utf.GetString(utf8Bytes);  
-        }
     }
 }

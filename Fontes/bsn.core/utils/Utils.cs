@@ -59,5 +59,16 @@ namespace bsn.core.utils
 
             return msg.ToString();
         }
+
+        public static string ToUtf8(string strIso)
+        {
+            var iso = Encoding.GetEncoding("iso-8859-1");
+            var utf = Encoding.UTF8;
+
+            byte[] isoBytes = iso.GetBytes(strIso);
+            byte[] utf8Bytes = Encoding.Convert(iso, utf, isoBytes);
+
+            return utf.GetString(utf8Bytes);  
+        }
     }
 }
