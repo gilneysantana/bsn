@@ -17,6 +17,16 @@ namespace bsn.core.busca
     {
         private WebClient MyWebClient = new WebClient();
 
+        public string UrlProxy
+        {
+            set
+            {
+                var proxy = new WebProxy(value);
+                proxy.UseDefaultCredentials = true;
+                this.MyWebClient.Proxy = proxy;
+            }
+        }
+
         /// <summary>
         /// Atualiza uma Url contra seu Site de origem
         /// </summary>
@@ -29,15 +39,15 @@ namespace bsn.core.busca
             try
             {
                 alvo.RetornoRequisicao = MyWebClient.DownloadString(alvo.GetLink());
-
-                if (alvo.SiteOrigem.Nome == "Felizola")
-                    alvo.RetornoRequisicao = Utils.ToUtf8(alvo.RetornoRequisicao);
             }
             catch (Exception ex)
             {
                 throw new Exception(string.Format("Não foi possível recuperar o conteúdo da URL '{0}'.",
                     alvo.GetLink()), ex);
             }
+
+            if (alvo.SiteOrigem.Nome == "Felizola")
+                alvo.RetornoRequisicao = Utils.ToUtf8(alvo.RetornoRequisicao);
             alvo.DuracaoVisita = DateTime.Now - alvo.UltimaVisita;
             alvo.LinkVisitado = alvo.GetLink();
             alvo.Status = "r";

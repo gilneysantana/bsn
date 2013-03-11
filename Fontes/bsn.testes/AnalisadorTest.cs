@@ -98,32 +98,32 @@ namespace bsn.testes
             }
         }
 
-        [TestMethod]
-        public void TestarAlvoFelizola908_Buscador_Analisador()
-        {
-            var buscador = new Buscador();
-            var analisador = new Analisador();
-            var alvo = new Alvo("Felizola", 908);
+        //[TestMethod]
+        //public void TestarAlvoFelizola908_Buscador_Analisador()
+        //{
+        //    var buscador = new Buscador();
+        //    var analisador = new Analisador();
+        //    var alvo = new Alvo("Felizola", 908);
 
-            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
-            var alvoAnalisado = analisador.Analisar(alvoAtual);
+        //    var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+        //    var alvoAnalisado = analisador.Analisar(alvoAtual);
 
-            Assert.IsNotNull(alvoAnalisado.Anuncio);
-        }
+        //    Assert.IsNotNull(alvoAnalisado.Anuncio);
+        //}
 
-        [TestMethod]
-        public void TestarAlvoFelizola908_Buscador_Banco_Analisador()
-        {
-            var buscador = new Buscador();
-            var analisador = new Analisador();
-            var alvo = new Alvo("Felizola", 908);
+        //[TestMethod]
+        //public void TestarAlvoFelizola908_Buscador_Banco_Analisador()
+        //{
+        //    var buscador = new Buscador();
+        //    var analisador = new Analisador();
+        //    var alvo = new Alvo("Felizola", 908);
 
-            var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
-            alvoAtualizado.SqliteSalvar();
-            var alvoVindoSqlite = Alvo.SqliteFind("Felizola", 908);
-            var alvoAnalisado = analisador.Analisar(alvoVindoSqlite);
+        //    var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
+        //    alvoAtualizado.SqliteSalvar();
+        //    var alvoVindoSqlite = Alvo.SqliteFind("Felizola", 908);
+        //    var alvoAnalisado = analisador.Analisar(alvoVindoSqlite);
 
-            Assert.IsNotNull(alvoAnalisado.Anuncio);
-        }
+        //    Assert.IsNotNull(alvoAnalisado.Anuncio);
+        //}
     }
 }

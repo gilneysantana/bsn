@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net;
 
 using bsn.core;
 using bsn.core.busca;
@@ -12,7 +13,7 @@ namespace bsn.console
     public class Bsn
     {
         private Analisador analisador = new Analisador();
-        private Buscador buscador = new Buscador();
+        public string UrlProxy { get; set; }
 
         /// <summary>
         /// Pede que o buscador se conecte ao Site de Origem e retorna uma
@@ -22,8 +23,16 @@ namespace bsn.console
         /// <returns></returns>
         public Alvo GetAlvoAtualizado(Alvo alvo)
         {
+            Buscador buscador = new Buscador();
+
+            if (!string.IsNullOrEmpty(UrlProxy))
+            {
+                buscador.UrlProxy = UrlProxy;
+            }
+
             return buscador.GetAlvoAtualizado(alvo);
         }
+
 
         /// <summary>
         /// Retorna o Alvo passado com o Anuncio extraido

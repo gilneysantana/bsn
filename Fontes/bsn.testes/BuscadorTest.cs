@@ -13,6 +13,15 @@ namespace bsn.testes
     [TestClass]
     public class BuscadorTest
     {
+        Buscador buscador;
+
+        [TestInitialize]
+        public void CriarBuscador()
+        {
+            buscador = new Buscador();
+            //Comentar a linha abaixo qd não houver Proxy
+            buscador.UrlProxy = "http://inet-se.petrobras.com.br";
+        }
 
         /// <summary>
         /// Este teste depende de conexão com a internet
@@ -20,10 +29,8 @@ namespace bsn.testes
         [TestMethod]
         public void GetAlvoAtualizadoTest_StatusIgualP()
         {
-
             Alvo alvo = new Alvo("Infonet", 1);
 
-            var buscador = new Buscador();
             var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
 
             Assert.AreEqual("r", alvoAtualizado.Status);
@@ -32,7 +39,6 @@ namespace bsn.testes
         [TestMethod]
         public void GetAlvoAtualizadoTest_RetornoRequisicaoConteudoCorreto()
         {
-            var buscador = new Buscador(); 
             var alvo = new Alvo("Infonet", 242506);
 
             var alvoAtual = buscador.GetAlvoAtualizado(alvo);
@@ -44,7 +50,6 @@ namespace bsn.testes
         [TestMethod]
         public void GetAlvoAtualizadoTest_RetornoRequisicaoFelizola908()
         {
-            var buscador = new Buscador(); 
             var alvo = new Alvo("Felizola", 908);
 
             var alvoAtual = buscador.GetAlvoAtualizado(alvo);
