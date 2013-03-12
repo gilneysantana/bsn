@@ -11,6 +11,9 @@ namespace bsn.core.analise
     {
         public Alvo Analisar(Alvo alvo)
         {
+            if (alvo == null)
+                throw new ApplicationException("O alvo passado como parâmetro não pode ser nulo");
+
             if (alvo.Status != "r")
                 throw new Exception("Não é permitido analisar um alvo que não esteja no status de 'Refreshed'");
 

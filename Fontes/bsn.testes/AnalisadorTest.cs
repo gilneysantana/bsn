@@ -32,7 +32,18 @@ namespace bsn.testes
             site = "Felizola";
             foreach (int id in new int[]{908,1542,1112,1668})
             {
-                tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
+                var alvo = Alvo.SqliteFind(site, id);
+                var anuncio = Anuncio.SqliteFind(site, id);
+                
+                if (alvo == null)
+                    throw new ApplicationException(
+                        string.Format("Não existe Alvo ('{0}',{1}) na base de dados", site, id));
+
+                if (anuncio == null)
+                    throw new ApplicationException(
+                        string.Format("Não existe Anuncio '{0}' na base dados", alvo.GetLink()));
+
+                tupla = Tuple.Create(alvo, anuncio);
                 tuplas.Add(tupla);
             }
 
