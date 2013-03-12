@@ -67,6 +67,10 @@ AJUDA
         bsn alvo Infonet 1 10 - Gera Alvos de 1 a 10
         bsn alvo Infonet 10   - É o mesmo que 'alvo Infonet 10 10', gera apenas 1 alvo
 
+    bsn buscar
+        pipe_de_alvos |.\bsn buscar
+        pipe_de_alvos |.\bsn buscar -p      - Utiliza proxy default
+
     bsn analisar
 
     bsn regex
@@ -108,6 +112,10 @@ AJUDA
         static void buscar(string[] args)
         {
             var bsn = new Bsn();
+
+            if ("-p".Equals(args[1]))
+                bsn.UrlProxy = "http://inet-se.petrobras.com.br";
+
             // Ignoro as duas primeiras linhas (cabeçalho)
             Console.ReadLine();
             Console.ReadLine();

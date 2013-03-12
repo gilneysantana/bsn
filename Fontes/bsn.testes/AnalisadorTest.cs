@@ -47,6 +47,23 @@ namespace bsn.testes
                 tuplas.Add(tupla);
             }
 
+            site = "Zelar";
+            foreach (int id in new int[] {27957} )
+            {
+                var alvo = Alvo.SqliteFind(site, id);
+                var anuncio = Anuncio.SqliteFind(site, id);
+                
+                if (alvo == null)
+                    throw new ApplicationException(
+                        string.Format("Não existe Alvo ('{0}',{1}) na base de dados", site, id));
+
+                if (anuncio == null)
+                    throw new ApplicationException(
+                        string.Format("Não existe Anuncio '{0}' na base dados", alvo.GetLink()));
+
+                tupla = Tuple.Create(alvo, anuncio);
+                tuplas.Add(tupla);
+            }
             //#endregion 
 
             //#region Zelar

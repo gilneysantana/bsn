@@ -240,6 +240,12 @@ namespace bsn.core
         private TipoTransacao ObterTipoTransacao(Alvo pagina)
         {
             string tipoTransacao = ExtrairCampo(RegexTipoTransacao, pagina);
+
+            if (tipoTransacao == null)
+                throw new ApplicationException(
+                    string.Format("Extração da Regex '{0}' retornou nulo",
+                    RegexTipoTransacao));
+
             switch (tipoTransacao.ToUpper())
             {
                 case "ALUGAR":
@@ -287,40 +293,39 @@ namespace bsn.core
 
         public string RegexNumeroQuartos { get; set; }
 
-        #region Repositorio
-        private static IQueryable<Site> Repositorio()
-        {
-            var sites = new List<Site>();
+        //private static IQueryable<Site> Repositorio()
+        //{
+        //    var sites = new List<Site>();
 
-            Site novoSite = new Site();
+        //    Site novoSite = new Site();
 
-            novoSite = new Site();
-            novoSite.Nome = "Felizola";
-            novoSite.RegexBairro = "<span .*?>Bairro</span>: (.*?)<br>";
-            novoSite.RegexNumeroQuartos = "<span .*?>Nº de Quartos:</span> (.*?)<br />";
-            novoSite.RegexPreco = "<span .*?>Valor:</span> (?:R\\$)*(.*?),00<br />";
-            novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>";
-            novoSite.RegexTipoImovel = "<span .*?>Imóvel:</span> (.*?)<br />";
-            novoSite.RegexTipoTransacao = "<span .*?>Tipo de Negócio</span>: (.*?)<br>";
-            novoSite.TemplateUrl = string.Format("http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}", 
-                Site.PLACE_HOLDER);
-            sites.Add(novoSite);
+        //    //novoSite = new Site();
+        //    //novoSite.Nome = "Felizola";
+        //    //novoSite.RegexBairro = "<span .*?>Bairro</span>: (.*?)<br>";
+        //    //novoSite.RegexNumeroQuartos = "<span .*?>Nº de Quartos:</span> (.*?)<br />";
+        //    //novoSite.RegexPreco = "<span .*?>Valor:</span> (?:R\\$)*(.*?),00<br />";
+        //    //novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>";
+        //    //novoSite.RegexTipoImovel = "<span .*?>Imóvel:</span> (.*?)<br />";
+        //    //novoSite.RegexTipoTransacao = "<span .*?>Tipo de Negócio</span>: (.*?)<br>";
+        //    //novoSite.TemplateUrl = string.Format("http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}", 
+        //    //    Site.PLACE_HOLDER);
+        //    //sites.Add(novoSite);
 
-            novoSite = new Site();
-            novoSite.Nome = "Zelar";
-            novoSite.RegexBairro = "<b>Bairro: </b>(.*)</td>";
-            novoSite.RegexNumeroQuartos = "<td>([\\d]*) - Quarto</td>";
-            novoSite.RegexPreco = "Valor R\\$ <.*>(.*)</td>";
-            novoSite.RegexArea = "";
-            novoSite.RegexTipoImovel = "<b>Tipo: </b>(.*)</td>";
-            novoSite.RegexTipoTransacao = "<b>Pretensão: </b>(.*)</td>";
-            novoSite.TemplateUrl = string.Format("http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=",
-                Site.PLACE_HOLDER);
-            sites.Add(novoSite);
+        //    novoSite = new Site();
+        //    novoSite.Nome = "Zelar";
+        //    novoSite.RegexBairro = "<b>Bairro: </b>(.*)</td>";
+        //    novoSite.RegexNumeroQuartos = "<td>([\\d]*) - Quarto</td>";
+        //    novoSite.RegexPreco = "Valor R\\$ <.*>(.*)</td>";
+        //    novoSite.RegexArea = "";
+        //    novoSite.RegexTipoImovel = "<b>Tipo: </b>(.*)</td>";
+        //    novoSite.RegexTipoTransacao = "<b>Pretensão: </b>(.*)</td>";
+        //    novoSite.TemplateUrl = string.Format("http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=",
+        //        Site.PLACE_HOLDER);
+        //    sites.Add(novoSite);
 
 
-            return sites.AsQueryable<Site>();
-        }
+        //    return sites.AsQueryable<Site>();
+        //}
 
         public static Site GetSitePorNome(string nomeSite)
         {
@@ -338,8 +343,6 @@ namespace bsn.core
 
             return Site.Parse(rows[0]);
         }
-
-        #endregion 
     
         public string RegexArea
         {

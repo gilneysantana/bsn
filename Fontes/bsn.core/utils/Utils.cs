@@ -70,5 +70,16 @@ namespace bsn.core.utils
 
             return utf.GetString(utf8Bytes);  
         }
+
+        public static string ToUtf8FromWindows(string strIso)
+        {
+            var iso = Encoding.GetEncoding("Windows-1252");
+            var utf = Encoding.UTF8;
+
+            byte[] isoBytes = iso.GetBytes(strIso);
+            byte[] utf8Bytes = Encoding.Convert(iso, utf, isoBytes);
+
+            return utf.GetString(utf8Bytes);  
+        }
     }
 }
