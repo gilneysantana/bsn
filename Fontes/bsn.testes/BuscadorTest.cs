@@ -20,7 +20,7 @@ namespace bsn.testes
         {
             buscador = new Buscador();
             //Comentar a linha abaixo qd não houver Proxy
-            buscador.UrlProxy = "http://inet-se.petrobras.com.br";
+            //buscador.UrlProxy = "http://inet-se.petrobras.com.br";
         }
 
         /// <summary>

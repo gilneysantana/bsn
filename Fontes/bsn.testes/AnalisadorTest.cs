@@ -30,29 +30,11 @@ namespace bsn.testes
             }
 
             site = "Felizola";
-            foreach (int id in new int[]{908,1542})
+            foreach (int id in new int[]{908,1542,1112,1668})
             {
                 tupla = Tuple.Create(Alvo.SqliteFind(site, id), Anuncio.SqliteFind(site, id));
                 tuplas.Add(tupla);
             }
-
-            //// Apartamento, Venda
-            //alvo = new Alvo(site, 1759, SQLiteDatabase.GetDB_Testes());
-            //alvo.CarregarDoArquivo("felizolaimobiliaria.com.br-id=1759.htm");
-            //anuncioInfonetEsperado = new Anuncio(null, "Luzia", 3, 0, 285000);
-            //anuncioInfonetEsperado.TipoImovel = TipoImovel.Apartamento;
-            //anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Venda;
-            //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
-            //tuplas.Add(tupla);
-
-            //// Apartamento, Aluguel 
-            //alvo = new Alvo(site, 1769, SQLiteDatabase.GetDB_Testes());
-            //alvo.CarregarDoArquivo("felizolaimobiliaria.com.br-id=1769.htm");
-            //anuncioInfonetEsperado = new Anuncio(null, "AEROPORTO", 3, 0, 700);
-            //anuncioInfonetEsperado.TipoImovel = TipoImovel.Apartamento;
-            //anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Aluguel;
-            //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
-            //tuplas.Add(tupla);
 
             //#endregion 
 
