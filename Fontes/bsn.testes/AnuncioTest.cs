@@ -9,20 +9,6 @@ namespace bsn.testes
     public class AnuncioTest
     {
 
-        //private static Anuncio realEstate;
-
-        //[TestInitialize]
-        //public void setUp()
-        //{
-        //    realEstate = new Anuncio();
-        //}
-
-        //[TestCleanup]
-        //public void tearDown()
-        //{
-        //    realEstate = null;
-        //}
-
         [TestMethod]
         public void SqliteFind()
         {

@@ -64,20 +64,6 @@ namespace bsn.testes
                 tupla = Tuple.Create(alvo, anuncio);
                 tuplas.Add(tupla);
             }
-            //#endregion 
-
-            //#region Zelar
-            //site = "Zelar";
-
-            //// Apartamento, Aluguel 
-            //alvo = new Alvo(site, 28804, SQLiteDatabase.GetDB_Testes());
-            //alvo.CarregarDoArquivo("zelarimoveis.com.br-id=28804.htm");
-            //anuncioInfonetEsperado = new Anuncio(null, "Farolândia", 3, 0, 800);
-            //anuncioInfonetEsperado.TipoImovel = TipoImovel.Apartamento;
-            //anuncioInfonetEsperado.TipoTransacao = TipoTransacao.Aluguel;
-            //tupla = Tuple.Create(alvo, anuncioInfonetEsperado);
-            //tuplas.Add(tupla);
-
         }
 
         [TestMethod]
@@ -108,32 +94,5 @@ namespace bsn.testes
             }
         }
 
-        //[TestMethod]
-        //public void TestarAlvoFelizola908_Buscador_Analisador()
-        //{
-        //    var buscador = new Buscador();
-        //    var analisador = new Analisador();
-        //    var alvo = new Alvo("Felizola", 908);
-
-        //    var alvoAtual = buscador.GetAlvoAtualizado(alvo);
-        //    var alvoAnalisado = analisador.Analisar(alvoAtual);
-
-        //    Assert.IsNotNull(alvoAnalisado.Anuncio);
-        //}
-
-        //[TestMethod]
-        //public void TestarAlvoFelizola908_Buscador_Banco_Analisador()
-        //{
-        //    var buscador = new Buscador();
-        //    var analisador = new Analisador();
-        //    var alvo = new Alvo("Felizola", 908);
-
-        //    var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
-        //    alvoAtualizado.SqliteSalvar();
-        //    var alvoVindoSqlite = Alvo.SqliteFind("Felizola", 908);
-        //    var alvoAnalisado = analisador.Analisar(alvoVindoSqlite);
-
-        //    Assert.IsNotNull(alvoAnalisado.Anuncio);
-        //}
     }
 }

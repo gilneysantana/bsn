@@ -29,15 +29,6 @@ namespace bsn.testes
         {
         }
 
-        //[TestMethod]
-        //public void ExpiredAnnouncementIsNotValidTest()
-        //{
-        //    Alvo alvo = new Alvo(infonet, 150000);
-        //    alvo.CarregarDoArquivo( "infonet.com.br-expirado-id=150000.htm");
-
-        //    Assert.IsFalse(infonet.isValidPage(alvo));
-        //}
-
         [TestMethod]
         public void GetSiteInfonetMongoInfonet()
         {

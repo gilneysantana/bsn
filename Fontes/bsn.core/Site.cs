@@ -338,8 +338,8 @@ namespace bsn.core
 
             if (rows.Count != 1)
                 throw new ApplicationException(string.Format(
-                    "A consulta ao Site deveria retornar exatamente 1 registro. Retornou {0}.",
-                    rows.Count));
+                    "A consulta ao Site ('{1}') deveria retornar exatamente 1 registro. Retornou {0}.",
+                    rows.Count, nomeSite));
 
             return Site.Parse(rows[0]);
         }

@@ -19,7 +19,6 @@ namespace bsn.testes
         [TestInitialize]
         public void TestInicitalize()
         {
-            //this.sqlite = SQLiteDatabase.GetDB_Testes();
             this.siteInfonet = Site.GetSitePorNome("Infonet"); 
         }
 
@@ -43,24 +42,6 @@ namespace bsn.testes
             Assert.AreEqual(alvoOrigem.LinkVisitado, alvoDestino.LinkVisitado);
         }
 
-        [TestMethod]
-        public void SqliteFindTest()
-        {
-            var alvo = Alvo.SqliteFind("Infonet", 248534);
 
-            Assert.AreEqual(248534, alvo.Id);
-        }
-
-        [TestMethod]
-        public void SqliteSalvar_Update()
-        {
-            var alvo = new Alvo(this.siteInfonet, 1);
-            alvo.LinkVisitado = "http://teste";
-            alvo.Status = "n";
-            alvo.UltimaVisita = DateTime.Now;
-            alvo.RetornoRequisicao = "<html/>";
-
-            alvo.SqliteSalvar();
-        }
     }
 }

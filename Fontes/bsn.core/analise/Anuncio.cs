@@ -49,6 +49,38 @@ namespace bsn.core.analise
             set { tipoTransacao = value; }
         }
 
+        public string TipoTransacaoBD
+        {
+            get 
+            {
+                switch (this.TipoTransacao)
+                {
+                    case analise.TipoTransacao.Aluguel:
+                        return "a";
+                    case analise.TipoTransacao.Venda:
+                        return "v";
+                    default:
+                        throw new Exception("TipoTransacao não tem representação em DB");
+                }
+            }
+        }
+
+        public string TipoImovelBD
+        {
+            get 
+            {
+                switch (this.TipoImovel)
+                {
+                    case analise.TipoImovel.Apartamento:
+                        return "a";
+                    case analise.TipoImovel.Casa:
+                        return "c";
+                    default:
+                        throw new Exception("TipoImovel não tem representação em DB");
+                }
+            }
+        }
+
         public decimal Area
         {
             get { return area; }
@@ -165,7 +197,11 @@ namespace bsn.core.analise
 
         public void SqliteSalvar()
         {
-            var alvoExistente = new Anuncio(); // buscar do banco
+            if (this.Alvo == null)
+                throw new ApplicationException("Não foi possível persitir o Anuncio. A propriedade 'Alvo' é null");
+
+            var anuncio = Anuncio.SqliteFind(
+                this.Alvo.SiteOrigem.Nome, this.Alvo.Id);
 
             var db = utils.Utils.DB();
             var campos = new Dictionary<string, string>();
@@ -174,8 +210,11 @@ namespace bsn.core.analise
             campos.Add("bairro", this.Bairro);
             campos.Add("preco", this.Preco.ToString());
             campos.Add("area", this.Area.ToString());
+            campos.Add("numeroQuartos", this.NumeroQuartos.ToString());
+            campos.Add("tipoImovel", this.TipoImovelBD);
+            campos.Add("tipoTransacao", this.TipoTransacaoBD);
 
-            if (alvoExistente == null)
+            if (anuncio == null)
             {
                 db.Insert("anuncio", campos);
             }

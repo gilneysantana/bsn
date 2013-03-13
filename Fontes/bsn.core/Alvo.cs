@@ -45,7 +45,7 @@ namespace bsn.core
         } 
 
         #region Construtores
-        public Alvo()
+        private Alvo()
         {
         }
 
@@ -186,12 +186,12 @@ namespace bsn.core
 
         public static Alvo Parse(System.Data.DataRow alvoRow)
         {
-            Alvo retorno = new Alvo();
-            retorno.Id = Convert.ToInt32(alvoRow["id"]);
+            var siteOrigem = Site.GetSitePorNome(alvoRow["siteOrigem"].ToString());
+            var id = Convert.ToInt32(alvoRow["id"]);
+            Alvo retorno = new Alvo(siteOrigem, id);
             retorno.RetornoRequisicao = alvoRow["retornoRequisicao"].ToString();
             retorno.LinkVisitado = alvoRow["linkVisitado"].ToString();
             retorno.HistoricoStatus = alvoRow["historicoStatus"].ToString();
-            retorno.SiteOrigem = Site.GetSitePorNome(alvoRow["siteOrigem"].ToString());
             return retorno;
         }
 
@@ -217,6 +217,9 @@ namespace bsn.core
                     this.SiteOrigem.Nome, this.Id);
                 db.Update("alvo", campos, where);
             }
+
+            if (this.Anuncio != null)
+                this.Anuncio.SqliteSalvar();
         }
 
         public static Alvo SqliteFind(string site, int id)
