@@ -26,3 +26,4 @@ obj/
 Ankh.NoLoad
 *.trx
 TestResults/
+Deploy/
