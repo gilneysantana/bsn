@@ -32,7 +32,7 @@ namespace bsn.core
         /**
          * Place holder used in the url template.
          */
-        public static string PLACE_HOLDER = "${PLACE_HOLDER}";
+        //public static string PLACE_HOLDER = "${PLACE_HOLDER}";
         //todo: excluir linha acima
 
         #region Variáveis privadas
@@ -155,17 +155,17 @@ namespace bsn.core
             return textsInIgnoredPages;
         }
 
-        /**
-         * Returns the URL of a specific Announcement, which is the of Announcement
-         * applied to site's Template URL
-         * 
-         * @param announcementCode
-         * */
-        public string getAnnouncementURL(int announcementCode)
-        {
-            return this.TemplateUrl.Replace(Site.PLACE_HOLDER,
-                    announcementCode.ToString());
-        }
+        ///**
+        // * Returns the URL of a specific Announcement, which is the of Announcement
+        // * applied to site's Template URL
+        // * 
+        // * @param announcementCode
+        // * */
+        //public string getAnnouncementURL(int announcementCode)
+        //{
+        //    return this.TemplateUrl.Replace(Site.PLACE_HOLDER,
+        //            announcementCode.ToString());
+        //}
 
         /**
          * Return true when the Page doesn't match any Ignored signature
