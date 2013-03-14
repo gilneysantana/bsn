@@ -49,9 +49,6 @@ namespace bsn.core.busca
             if (alvo.SiteOrigem.Nome == "Felizola")
                 alvo.RetornoRequisicao = Utils.ToUtf8(alvo.RetornoRequisicao);
 
-            //if (alvo.SiteOrigem.Nome == "Zelar")
-            //    alvo.RetornoRequisicao = Utils.ToUtf8FromWindows(alvo.RetornoRequisicao);
-
             alvo.DuracaoVisita = DateTime.Now - alvo.UltimaVisita;
             alvo.LinkVisitado = alvo.GetLink();
             alvo.Status = "r";
@@ -61,7 +58,8 @@ namespace bsn.core.busca
                 .Replace("\"","").Replace("'","").Replace("&acirc;","â")
                 .Replace("ó", "o").Replace("á","a").Replace("é","e")
                 .Replace("í","i").Replace("ú","u").Replace("ã","a")
-                .Replace("â","a").Replace("&nbsp;", " ");
+                .Replace("â","a").Replace("&nbsp;", " ").Replace("^","")
+                .Replace(",","");
 
             return alvo;
         }

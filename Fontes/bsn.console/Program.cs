@@ -38,12 +38,6 @@ namespace bsn.console
                     case "sqlite":
                         sqlite(args);
                         break;
-                    case "teste":
-                        Console.WriteLine(">áéíóú<");
-                        break;
-                    case "teste2":
-                        Console.WriteLine(Console.ReadLine());
-                        break;
                     case "help":
                         printHelp();
                         break;
@@ -113,7 +107,7 @@ AJUDA
         {
             var bsn = new Bsn();
 
-            if ("-p".Equals(args[1]))
+            if (args.Length == 2 && "-p".Equals(args[1]))
                 bsn.UrlProxy = "http://inet-se.petrobras.com.br";
 
             // Ignoro as duas primeiras linhas (cabeçalho)
@@ -151,6 +145,9 @@ AJUDA
 
         static void sqlite(string[] args)
         {
+            Console.WriteLine(string.Format("Conectado ao '{0}'",
+                Utils.DB().DbConnection));
+
             if (args.Length == 1)
             {
                 string tipo = Console.ReadLine();
@@ -159,14 +156,15 @@ AJUDA
                 if (tipo != "#TYPE bsn.core.Alvo")
                     throw new Exception("Não é um Alvo");
 
-                Console.WriteLine(string.Format("Persistindo em '{0}'",
-                    Utils.DB().DbConnection));
+                Console.WriteLine("Persistindo Alvos...");
 
                 string alvoCsv;
                 while ((alvoCsv = Console.ReadLine()) != null)
                 {
                     var alvo = Alvo.Parse(alvoCsv);
                     alvo.SqliteSalvar();
+                    Console.WriteLine(string.Format("Alvo ('{0}', {1})",
+                        alvo.SiteOrigem.Nome, alvo.Id));
                 }
             }
             else

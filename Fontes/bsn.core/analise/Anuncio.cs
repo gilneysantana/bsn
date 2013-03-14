@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 
+using bsn.core.utils;
+
 namespace bsn.core.analise
 {
 
@@ -23,7 +25,7 @@ namespace bsn.core.analise
 
         private decimal preco;
 
-        public Anuncio()
+        private Anuncio()
         {
         }
 
@@ -150,38 +152,31 @@ namespace bsn.core.analise
             anuncioCSV = anuncioCSV.Replace("\",\"", "\"^\"");
             var campos = anuncioCSV.Split('^');
 
-            //string nomeSite = campos[0].Trim('"', ' ');
-            //int id = Convert.ToInt32(campos[1].Trim('"', ' '));
-            //string historico = campos[2].Trim('"', ' ');
-            //string duracao = campos[4].Trim('"', ' ');
-            //string ultimaVisita = campos[5].Trim('"', ' ');
-            //string retornoReq = campos[6].Trim('"', ' ');
-            //string linkVisitado = campos[7].Trim('"', ' ');
+            string preco = campos[0].Trim('"', ' ');
+            string area = campos[1].Trim('"', ' ');
+            string bairro = campos[2].Trim('"', ' ');
+            string alvoSite = campos[3].Trim('"', ' ');
+            int alvoId = Convert.ToInt32(campos[4].Trim('"', ' '));
 
-            var anuncio = new Anuncio(); 
-            //alvo.HistoricoStatus = historico;
-            //alvo.Anuncio = Anuncio.Parse(campos[3]);
-            //alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(duracao));
-            //alvo.UltimaVisita = DateTime.Parse(ultimaVisita);
-            //alvo.RetornoRequisicao = retornoReq;
-            //alvo.LinkVisitado = linkVisitado;
-
-            return anuncio;
+            var retorno = new Anuncio();
+            retorno.Preco = Convert.ToDecimal(preco);
+            retorno.Area = Convert.ToDecimal(area);
+            retorno.Bairro = bairro;
+            retorno.Alvo = new Alvo(new Site(alvoSite), alvoId);
+            return retorno;
         }
 
         public string ToCSV()
         {
-            return string.Format(@"""{0}"",""{1}"",""{2}""",
-                this.Preco, this.Area, this.Bairro);
+            return Utils.ToCSV(this.Preco, this.Area, this.Bairro, this.Alvo.SiteOrigem.Nome, this.Alvo.Id);
         }
 
         public static Anuncio Parse(System.Data.DataRow anuncioRow)
         {
-            var ret = new Anuncio();
             var siteOrigem = Site.GetSitePorNome(anuncioRow["siteOrigem"].ToString());
             var id = Convert.ToInt32(anuncioRow["id"]);
 
-            ret.Alvo = new Alvo(siteOrigem, id);
+            var ret = new Anuncio(new Alvo(siteOrigem, id));
             ret.Bairro = anuncioRow["bairro"].ToString();
             ret.Area = Convert.ToDecimal(anuncioRow["area"].ToString());
             ret.NumeroQuartos = Convert.ToInt32(anuncioRow["numeroQuartos"].ToString());
@@ -251,6 +246,26 @@ namespace bsn.core.analise
         {
             return string.Format("<Anuncio  Bairro = '{0}' Preço = '{1}'/>", 
                 this.Bairro, this.Preco);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Anuncio))
+                return false;
+
+            Anuncio outro = (Anuncio)obj;
+            bool igual = true;
+
+            if (this.Alvo.SiteOrigem.Nome != outro.Alvo.SiteOrigem.Nome)
+                igual = false;
+
+            if (this.Alvo.Id != outro.Alvo.Id)
+                igual = false;
+
+            if (this.area != outro.Area)
+                igual = false;
+
+            return igual;
         }
 
     }

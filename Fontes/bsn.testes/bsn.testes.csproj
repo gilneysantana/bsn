@@ -58,6 +58,7 @@
     <Compile Include="AnalisadorTest.cs" />
     <Compile Include="SiteTest.cs" />
     <Compile Include="SqlSiteTest.cs" />
+    <Compile Include="UtilTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Test References\" />

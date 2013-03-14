@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using bsn.core;
 using bsn.core.busca;
+using bsn.core.analise;
 using bsn.dal.sqlite;
 
 namespace bsn.testes
@@ -23,7 +24,7 @@ namespace bsn.testes
         }
 
         [TestMethod]
-        public void ParseCSVTest()
+        public void ParseToCSV_Roundtrip()
         {
             var alvoOrigem = new Alvo(siteInfonet, 1);
             alvoOrigem.HistoricoStatus = "teste";
@@ -32,7 +33,13 @@ namespace bsn.testes
             alvoOrigem.RetornoRequisicao = "codigo html da página";
             alvoOrigem.LinkVisitado = "http://teste.com.br";
 
-            var alvoDestino = Alvo.Parse(alvoOrigem.ToCSV());
+            alvoOrigem.Anuncio = new Anuncio(alvoOrigem);
+            alvoOrigem.Anuncio.Area = 111;
+            alvoOrigem.Anuncio.Bairro = "asdfqwer";
+            alvoOrigem.Anuncio.Preco = 222;
+
+            string alvoCSV = alvoOrigem.ToCSV();
+            var alvoDestino = Alvo.Parse(alvoCSV);
 
             Assert.AreEqual(alvoOrigem.UltimaVisita, alvoDestino.UltimaVisita);
             Assert.AreEqual(alvoOrigem.HistoricoStatus, alvoDestino.HistoricoStatus);
@@ -40,6 +47,12 @@ namespace bsn.testes
             Assert.AreEqual(alvoOrigem.DuracaoVisita, alvoDestino.DuracaoVisita);
             Assert.AreEqual(alvoOrigem.RetornoRequisicao, alvoDestino.RetornoRequisicao);
             Assert.AreEqual(alvoOrigem.LinkVisitado, alvoDestino.LinkVisitado);
+
+            Assert.IsNotNull(alvoDestino.Anuncio);
+            Assert.AreEqual(alvoOrigem.Anuncio.Area, alvoDestino.Anuncio.Area);
+            Assert.AreEqual(alvoOrigem.Anuncio.Bairro, alvoDestino.Anuncio.Bairro);
+            Assert.AreEqual(alvoOrigem.Anuncio.Preco, alvoDestino.Anuncio.Preco);
+            Assert.IsTrue(alvoOrigem.Anuncio.Equals(alvoDestino.Anuncio));
         }
 
 

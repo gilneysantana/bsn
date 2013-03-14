@@ -81,5 +81,29 @@ namespace bsn.core.utils
 
             return utf.GetString(utf8Bytes);  
         }
+
+        public static string ToCSV(params object[] campos)
+        {
+            var s = new string[campos.Length];
+
+            for(int i = 0; i < campos.Length; i++)
+              s[i] = string.Format("\"{0}\"", campos[i]
+                  .ToString().Replace("\"","\\\""));
+
+            return string.Join(",", s);
+        }
+
+        public static string[] FromCSV(string strCSV)
+        {
+            string[] x = strCSV.Split(',');
+            var y = new List<string>();
+
+            foreach (string s in x)
+            {
+                y.Add(s.Trim('"'));
+            }
+
+            return y.ToArray();
+        }
     }
 }

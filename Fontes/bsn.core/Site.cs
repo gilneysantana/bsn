@@ -33,6 +33,7 @@ namespace bsn.core
          * Place holder used in the url template.
          */
         public static string PLACE_HOLDER = "${PLACE_HOLDER}";
+        //todo: excluir linha acima
 
         #region Variáveis privadas
         private string nome;
@@ -47,6 +48,11 @@ namespace bsn.core
         private string regexTipoImovel;
         private string regexTipoTransacao;
         #endregion
+
+        public Site(string nome)
+        {
+            this.Nome = nome;
+        }
 
         public string Nome
         {
@@ -358,9 +364,8 @@ namespace bsn.core
 
         private static Site Parse(DataRow row)
         {
-            Site retorno = new Site();
+            Site retorno = new Site(row["nome"].ToString());
 
-            retorno.Nome = row["nome"].ToString();
             retorno.RegexBairro = row["regexBairro"].ToString();
             retorno.RegexNumeroQuartos = row["regexNumeroQuartos"].ToString();
             retorno.RegexPreco = row["regexPreco"].ToString();

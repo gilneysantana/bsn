@@ -156,6 +156,7 @@ namespace bsn.core
             string nomeSite = campos[0].Trim('"', ' ');
             int id = Convert.ToInt32(campos[1].Trim('"', ' '));
             string historico = campos[2].Trim('"', ' ');
+            string anuncio = campos[3];
             string duracao = campos[4].Trim('"', ' ');
             string ultimaVisita = campos[5].Trim('"', ' ');
             string retornoReq = campos[6].Trim('"', ' ');
@@ -163,7 +164,7 @@ namespace bsn.core
 
             var alvo = new Alvo(nomeSite, id);
             alvo.HistoricoStatus = historico;
-            alvo.Anuncio = Anuncio.Parse(campos[3]);
+            alvo.Anuncio = Anuncio.Parse(anuncio);
             alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(duracao));
             alvo.UltimaVisita = DateTime.Parse(ultimaVisita);
             alvo.RetornoRequisicao = retornoReq;
@@ -174,14 +175,12 @@ namespace bsn.core
 
         public string ToCSV()
         {
-            string anuncio = this.Anuncio != null ? this.Anuncio.ToString() : "";
+            string anuncio = this.Anuncio != null ? this.Anuncio.ToCSV() : "";
             string duracaoVisita = this.DuracaoVisita.TotalSeconds.ToString("F3");
 
-            return string.Format(@"""{0}"",""{1}"",""{2}"",""{3}"",""{4}"",""{5}"",""{6}"",""{7}""", 
-                this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, anuncio, 
+            return utils.Utils.ToCSV(this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, anuncio, 
                     duracaoVisita, this.UltimaVisita, this.RetornoRequisicao,
-                    this.LinkVisitado); 
-           
+                    this.LinkVisitado);
         }
 
         public static Alvo Parse(System.Data.DataRow alvoRow)
