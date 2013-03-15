@@ -30,7 +30,7 @@ namespace bsn.core.busca
         /// <summary>
         /// Atualiza uma Url contra seu Site de origem
         /// </summary>
-        public Alvo GetAlvoAtualizado(Alvo alvo)
+        public Alvo Buscar(Alvo alvo)
         {
             if (alvo.Status == "x")
                 throw new Exception("Não é permitido atualizar uma Url em status 'x'");

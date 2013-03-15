@@ -147,16 +147,18 @@ namespace bsn.core.analise
             return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""Anuncio"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado""";
         }
 
-        public static Anuncio Parse(string anuncioCSV)
+        public static Anuncio FromCSV(string anuncioCSV)
         {
-            anuncioCSV = anuncioCSV.Replace("\",\"", "\"^\"");
-            var campos = anuncioCSV.Split('^');
+            if (string.IsNullOrEmpty(anuncioCSV))
+                return null;
 
-            string preco = campos[0].Trim('"', ' ');
-            string area = campos[1].Trim('"', ' ');
-            string bairro = campos[2].Trim('"', ' ');
-            string alvoSite = campos[3].Trim('"', ' ');
-            int alvoId = Convert.ToInt32(campos[4].Trim('"', ' '));
+            var campos = Utils.FromCSV(anuncioCSV);
+
+            string preco = campos[0];
+            string area = campos[1];
+            string bairro = campos[2];
+            string alvoSite = campos[3];
+            int alvoId = Convert.ToInt32(campos[4]);
 
             var retorno = new Anuncio();
             retorno.Preco = Convert.ToDecimal(preco);

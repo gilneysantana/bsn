@@ -65,7 +65,7 @@ namespace bsn.testes
         }
 
         [TestMethod]
-        public void ParseCSV_Roundtrip()
+        public void FromCSV_ToCSV_Roundtrip()
         {
             var alvoOrigem = new Alvo(new Site("asdf"), 1);
 
@@ -74,7 +74,7 @@ namespace bsn.testes
             anuncioOrigem.Preco = 222;
             anuncioOrigem.Bairro = "zzz";
 
-            var anuncioDestino = Anuncio.Parse(anuncioOrigem.ToCSV());
+            var anuncioDestino = Anuncio.FromCSV(anuncioOrigem.ToCSV());
 
             Assert.AreEqual(anuncioOrigem.Area, anuncioDestino.Area);
             Assert.AreEqual(anuncioOrigem.Preco, anuncioDestino.Preco);

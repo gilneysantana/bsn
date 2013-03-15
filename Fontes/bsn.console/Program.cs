@@ -120,7 +120,7 @@ AJUDA
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
-                var alvo = Alvo.Parse(csvAlvo);
+                var alvo = Alvo.FromCSV(csvAlvo);
                 Console.WriteLine(bsn.GetAlvoAtualizado(alvo).ToCSV());
             }
         }
@@ -138,7 +138,7 @@ AJUDA
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
-                var alvo = Alvo.Parse(csvAlvo);
+                var alvo = Alvo.FromCSV(csvAlvo);
                 Console.WriteLine(bsn.GetAnuncioAlvo(alvo).ToCSV());
             }
         }
@@ -161,7 +161,7 @@ AJUDA
                 string alvoCsv;
                 while ((alvoCsv = Console.ReadLine()) != null)
                 {
-                    var alvo = Alvo.Parse(alvoCsv);
+                    var alvo = Alvo.FromCSV(alvoCsv);
                     alvo.SqliteSalvar();
                     Console.WriteLine(string.Format("Alvo ('{0}', {1})",
                         alvo.SiteOrigem.Nome, alvo.Id));

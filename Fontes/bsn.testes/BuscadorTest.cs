@@ -31,7 +31,7 @@ namespace bsn.testes
         {
             Alvo alvo = new Alvo("Infonet", 1);
 
-            var alvoAtualizado = buscador.GetAlvoAtualizado(alvo);
+            var alvoAtualizado = buscador.Buscar(alvo);
 
             Assert.AreEqual("r", alvoAtualizado.Status);
         }
@@ -41,7 +41,7 @@ namespace bsn.testes
         {
             var alvo = new Alvo("Infonet", 242506);
 
-            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+            var alvoAtual = buscador.Buscar(alvo);
 
             Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
                 "sendo 3 suites"));
@@ -52,7 +52,7 @@ namespace bsn.testes
         {
             var alvo = new Alvo("Felizola", 908);
 
-            var alvoAtual = buscador.GetAlvoAtualizado(alvo);
+            var alvoAtual = buscador.Buscar(alvo);
 
             //Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
             //    "3 SALAS, 2 VARANDAS,"));

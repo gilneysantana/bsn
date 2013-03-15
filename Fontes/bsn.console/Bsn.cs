@@ -30,7 +30,7 @@ namespace bsn.console
                 buscador.UrlProxy = UrlProxy;
             }
 
-            return buscador.GetAlvoAtualizado(alvo);
+            return buscador.Buscar(alvo);
         }
 
 

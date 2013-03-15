@@ -88,22 +88,34 @@ namespace bsn.core.utils
 
             for(int i = 0; i < campos.Length; i++)
               s[i] = string.Format("\"{0}\"", campos[i]
-                  .ToString().Replace("\"","\\\""));
+                  .ToString()
+                  .Replace("\"", escAspa)
+                  .Replace(",", escVirg));
 
             return string.Join(",", s);
         }
 
+        private static string escAspa = "\"\"";
+        private static string escVirg = "\\,";
+        private static string escVirgTemp = "${virgula}";
+
         public static string[] FromCSV(string strCSV)
         {
-            string[] x = strCSV.Split(',');
-            var y = new List<string>();
+            strCSV = strCSV.Replace(escVirg, escVirgTemp);
+            string[] arr = strCSV.Split(',');
 
-            foreach (string s in x)
+            var arrStrings = new List<string>();
+
+            foreach (string campo in arr)
             {
-                y.Add(s.Trim('"'));
+                arrStrings.Add(campo
+                    .Remove(campo.Length - 1)
+                    .Substring(1)
+                    .Replace(escAspa, "\"")
+                    .Replace(escVirgTemp, ","));
             }
 
-            return y.ToArray();
+            return arrStrings.ToArray();
         }
     }
 }

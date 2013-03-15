@@ -39,7 +39,7 @@ namespace bsn.testes
             alvoOrigem.Anuncio.Preco = 222;
 
             string alvoCSV = alvoOrigem.ToCSV();
-            var alvoDestino = Alvo.Parse(alvoCSV);
+            var alvoDestino = Alvo.FromCSV(alvoCSV);
 
             Assert.AreEqual(alvoOrigem.UltimaVisita, alvoDestino.UltimaVisita);
             Assert.AreEqual(alvoOrigem.HistoricoStatus, alvoDestino.HistoricoStatus);
@@ -55,6 +55,25 @@ namespace bsn.testes
             Assert.IsTrue(alvoOrigem.Anuncio.Equals(alvoDestino.Anuncio));
         }
 
+        [TestMethod]
+        public void ParseToCSV_Roundtrip_AnuncioNulo()
+        {
+            var alvoOrigem = new Alvo(siteInfonet, 1);
+            alvoOrigem.HistoricoStatus = "teste";
+            alvoOrigem.UltimaVisita = new DateTime(2013, 2, 1, 1, 1, 1);
+            alvoOrigem.DuracaoVisita = new TimeSpan(1, 0, 0);
+            alvoOrigem.RetornoRequisicao = "codigo html da página";
+            alvoOrigem.LinkVisitado = "http://teste.com.br";
 
+            string alvoCSV = alvoOrigem.ToCSV();
+            var alvoDestino = Alvo.FromCSV(alvoCSV);
+
+            Assert.AreEqual(alvoOrigem.UltimaVisita, alvoDestino.UltimaVisita);
+            Assert.AreEqual(alvoOrigem.HistoricoStatus, alvoDestino.HistoricoStatus);
+            Assert.AreEqual(alvoOrigem.UltimaVisita, alvoDestino.UltimaVisita);
+            Assert.AreEqual(alvoOrigem.DuracaoVisita, alvoDestino.DuracaoVisita);
+            Assert.AreEqual(alvoOrigem.RetornoRequisicao, alvoDestino.RetornoRequisicao);
+            Assert.AreEqual(alvoOrigem.LinkVisitado, alvoDestino.LinkVisitado);
+        }
     }
 }

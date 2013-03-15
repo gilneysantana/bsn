@@ -28,16 +28,17 @@ namespace bsn.testes
         [TestMethod]
         public void ToCSV_ExemploWikipedia()
         {
-            string x = Utils.ToCSV(1997,"Ford","E350","Super, \"luxurious\" truck");
-            Assert.AreEqual(@"""1997"",""Ford"",""E350"",""Super, \""luxurious\"" truck""", x);
+            string orig = Utils.ToCSV(1997,"Ford","E350","Super, \"luxurious\" truck");
+            string dest = "\"1997\",\"Ford\",\"E350\",\"Super\\, \"\"luxurious\"\" truck\"";
+            Assert.AreEqual(dest, orig);
         }
 
         [TestMethod]
         public void FromCSV_ToCSV_Roundtrip()
         {
-            var arrOrigem = new string[] { "a", "b", "c" };
-
-            var arrDestino = Utils.FromCSV(Utils.ToCSV(arrOrigem));
+            var arrOrigem = new string[] { "aaa", "bbb", "\"ccc\",\"ddd\"" };
+            string csv = Utils.ToCSV(arrOrigem);
+            var arrDestino = Utils.FromCSV(csv);
 
             Assert.IsTrue(arrOrigem.SequenceEqual(arrDestino));
         }

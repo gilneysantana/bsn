@@ -148,27 +148,17 @@ namespace bsn.core
             return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""Anuncio"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado""";
         }
 
-        public static Alvo Parse(string alvoCSV)
+        public static Alvo FromCSV(string alvoCSV)
         {
-            alvoCSV = alvoCSV.Replace("\",\"", "\"^\"");
-            var campos = alvoCSV.Split('^');
+            var campos = utils.Utils.FromCSV(alvoCSV);
 
-            string nomeSite = campos[0].Trim('"', ' ');
-            int id = Convert.ToInt32(campos[1].Trim('"', ' '));
-            string historico = campos[2].Trim('"', ' ');
-            string anuncio = campos[3];
-            string duracao = campos[4].Trim('"', ' ');
-            string ultimaVisita = campos[5].Trim('"', ' ');
-            string retornoReq = campos[6].Trim('"', ' ');
-            string linkVisitado = campos[7].Trim('"', ' ');
-
-            var alvo = new Alvo(nomeSite, id);
-            alvo.HistoricoStatus = historico;
-            alvo.Anuncio = Anuncio.Parse(anuncio);
-            alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(duracao));
-            alvo.UltimaVisita = DateTime.Parse(ultimaVisita);
-            alvo.RetornoRequisicao = retornoReq;
-            alvo.LinkVisitado = linkVisitado;
+            var alvo = new Alvo(campos[0], Convert.ToInt32(campos[1]));
+            alvo.HistoricoStatus = campos[2];
+            alvo.Anuncio = Anuncio.FromCSV(campos[3]);
+            alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(campos[4]));
+            alvo.UltimaVisita = DateTime.Parse(campos[5]);
+            alvo.RetornoRequisicao = campos[6];
+            alvo.LinkVisitado = campos[7];
 
             return alvo;
         }
