@@ -15,6 +15,12 @@ namespace bsn.testes
     public class SqlSiteTest
     {
 
+        [TestInitialize]
+        public void TestInitialize()
+        {
+
+        }
+
         [TestMethod]
         public void Site_GetSitePorNome_Infonet()
         {
@@ -37,16 +43,27 @@ namespace bsn.testes
         }
 
         [TestMethod]
-        public void Alvo_SqliteSalvar_Update_Infonet1()
+        public void Alvo_SqliteSalvar_Update_Roundtrip()
         {
             var site = Site.GetSitePorNome("Infonet");
-            var alvo = new Alvo(site, 1);
-            alvo.LinkVisitado = "http://teste";
-            alvo.Status = "n";
-            alvo.UltimaVisita = DateTime.Now;
-            alvo.RetornoRequisicao = "<html/>";
+            var alvoOrigem = new Alvo(site, 1);
+            alvoOrigem.LinkVisitado = "http://teste";
+            alvoOrigem.Status = "n";
+            alvoOrigem.UltimaVisita = DateTime.Today.AddMinutes(100);
+            alvoOrigem.RetornoRequisicao = "<html/>";
+            alvoOrigem.UltimaExcecao = "TooManyNerdsException";
 
-            alvo.SqliteSalvar();
+            alvoOrigem.SqliteSalvar();
+
+            var alvoDestino = Alvo.SqliteFind(alvoOrigem.SiteOrigem.Nome, 
+                alvoOrigem.Id);
+
+            Assert.AreEqual(alvoOrigem, alvoDestino);
+            Assert.AreEqual(alvoOrigem.LinkVisitado, alvoDestino.LinkVisitado);
+            Assert.AreEqual(alvoOrigem.Status, alvoDestino.Status);
+            Assert.AreEqual(alvoOrigem.UltimaVisita, alvoDestino.UltimaVisita);
+            Assert.AreEqual(alvoOrigem.RetornoRequisicao, alvoDestino.RetornoRequisicao);
+            Assert.AreEqual(alvoOrigem.UltimaExcecao, alvoDestino.UltimaExcecao);
         }
 
         [TestMethod]
@@ -55,6 +72,13 @@ namespace bsn.testes
             var alvo = Alvo.SqliteFind("Infonet", 248534);
 
             Assert.AreEqual(248534, alvo.Id);
+        }
+
+        [TestMethod]
+        public void Alvo_SqliteFind_Infonet_ComDataPreenchida()
+        {
+            var alvo = Alvo.SqliteFind("Infonet", 1);
+            Assert.AreEqual(1, alvo.Id);
         }
 
         [TestMethod]

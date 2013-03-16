@@ -19,7 +19,7 @@ namespace bsn.testes
             bsn.UrlProxy = "http://inet-se.petrobras.com.br";
             var alvo = new Alvo("Infonet", 248534);
 
-            bsn.GetAlvoAtualizado(alvo);
+            bsn.Buscar(alvo);
         }
     }
 }

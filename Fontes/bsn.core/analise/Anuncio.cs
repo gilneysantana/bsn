@@ -29,13 +29,13 @@ namespace bsn.core.analise
         {
         }
 
-        public Anuncio(Alvo paginaOrigem)
+        public Anuncio(Alvo alvoOrigem)
         {
-            this.Alvo = paginaOrigem;
+            this.Alvo = alvoOrigem;
         }
 
-        public Anuncio(Alvo paginaOrigem, string bairro, int numberOfRooms, decimal area,
-                decimal price)
+        public Anuncio(Alvo alvoOrigem, string bairro, int numberOfRooms, 
+            decimal area, decimal price)
         {
             this.bairro = bairro;
             this.numeroQuartos = numberOfRooms;

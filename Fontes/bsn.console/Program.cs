@@ -121,13 +121,15 @@ AJUDA
             while ((csvAlvo = Console.ReadLine()) != null)
             {
                 var alvo = Alvo.FromCSV(csvAlvo);
-                Console.WriteLine(bsn.GetAlvoAtualizado(alvo).ToCSV());
+                Console.WriteLine(bsn.Buscar(alvo).ToCSV());
             }
         }
 
         static void analisar(string[] args)
         {
             var bsn = new Bsn();
+            //bsn.ModoVerboso = true;
+
             // Ignoro as duas primeiras linhas (cabeçalho)
             Console.ReadLine();
             Console.ReadLine();
@@ -139,7 +141,7 @@ AJUDA
             while ((csvAlvo = Console.ReadLine()) != null)
             {
                 var alvo = Alvo.FromCSV(csvAlvo);
-                Console.WriteLine(bsn.GetAnuncioAlvo(alvo).ToCSV());
+                Console.WriteLine(bsn.Analisar(alvo).ToCSV());
             }
         }
 
@@ -162,9 +164,17 @@ AJUDA
                 while ((alvoCsv = Console.ReadLine()) != null)
                 {
                     var alvo = Alvo.FromCSV(alvoCsv);
-                    alvo.SqliteSalvar();
+                    try
+                    {
+                        alvo.SqliteSalvar();
                     Console.WriteLine(string.Format("Alvo ('{0}', {1})",
                         alvo.SiteOrigem.Nome, alvo.Id));
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Erro ao persistir {0}: {1}\n{2}", 
+                            alvo, ex.Message, ex.StackTrace);
+                    }
                 }
             }
             else

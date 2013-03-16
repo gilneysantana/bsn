@@ -105,6 +105,7 @@ namespace bsn.dal.sqlite
         {
             String vals = "";
             Boolean returnCode = true;
+            string update = string.Empty;
             if (data.Count >= 1)
             {
                 foreach (KeyValuePair<String, String> val in data)
@@ -115,14 +116,14 @@ namespace bsn.dal.sqlite
             }
             try
             {
-                string update = String.Format("update {0} set {1} where {2};", tableName, vals, where);
+                update = String.Format("update {0} set {1} where {2};", tableName, vals, where);
                 this.ExecuteNonQuery(update);
             }
             catch (Exception ex)
             {
-                string msg = string.Format("Erro ao executar update em '{0}': {1}", 
-                    tableName, ex.Message);
-                throw new Exception();
+                string msg = string.Format("Erro ao executar update em '{0}': '{1}'", 
+                    tableName, update);
+                throw new Exception(msg, ex);
             }
             return returnCode;
         }

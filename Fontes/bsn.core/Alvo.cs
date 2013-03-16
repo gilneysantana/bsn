@@ -141,11 +141,9 @@ namespace bsn.core
             return this.SiteOrigem.GetUrlMontada(this.Id);
         }
 
-        #region Persistencia/Stream
-
         public static string CabecalhoCSV()
         {
-            return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""Anuncio"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado""";
+            return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado"", ""Anuncio"", ""UltimaExcecao""";
         }
 
         public static Alvo FromCSV(string alvoCSV)
@@ -154,11 +152,12 @@ namespace bsn.core
 
             var alvo = new Alvo(campos[0], Convert.ToInt32(campos[1]));
             alvo.HistoricoStatus = campos[2];
-            alvo.Anuncio = Anuncio.FromCSV(campos[3]);
-            alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(campos[4]));
-            alvo.UltimaVisita = DateTime.Parse(campos[5]);
-            alvo.RetornoRequisicao = campos[6];
-            alvo.LinkVisitado = campos[7];
+            alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(campos[3]));
+            alvo.UltimaVisita = DateTime.Parse(campos[4]);
+            alvo.RetornoRequisicao = campos[5];
+            alvo.LinkVisitado = campos[6];
+            alvo.Anuncio = Anuncio.FromCSV(campos[7]);
+            alvo.UltimaExcecao = campos[8];
 
             return alvo;
         }
@@ -168,19 +167,26 @@ namespace bsn.core
             string anuncio = this.Anuncio != null ? this.Anuncio.ToCSV() : "";
             string duracaoVisita = this.DuracaoVisita.TotalSeconds.ToString("F3");
 
-            return utils.Utils.ToCSV(this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, anuncio, 
+            return utils.Utils.ToCSV(this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, 
                     duracaoVisita, this.UltimaVisita, this.RetornoRequisicao,
-                    this.LinkVisitado);
+                    this.LinkVisitado, anuncio, this.UltimaExcecao);
         }
 
+        #region Persistencia/Stream
         public static Alvo Parse(System.Data.DataRow alvoRow)
         {
+            Alvo retorno = null;
             var siteOrigem = Site.GetSitePorNome(alvoRow["siteOrigem"].ToString());
             var id = Convert.ToInt32(alvoRow["id"]);
-            Alvo retorno = new Alvo(siteOrigem, id);
+            retorno = new Alvo(siteOrigem, id);
             retorno.RetornoRequisicao = alvoRow["retornoRequisicao"].ToString();
             retorno.LinkVisitado = alvoRow["linkVisitado"].ToString();
             retorno.HistoricoStatus = alvoRow["historicoStatus"].ToString();
+            retorno.UltimaExcecao = alvoRow["ultimaExcecao"].ToString();
+            var ultimaVisita = alvoRow["ultimaVisita"].ToString();
+            if (!string.IsNullOrEmpty(ultimaVisita))
+                retorno.UltimaVisita = Convert.ToDateTime(ultimaVisita);
+
             return retorno;
         }
 
@@ -195,6 +201,8 @@ namespace bsn.core
             campos.Add("retornoRequisicao", this.RetornoRequisicao);
             campos.Add("linkVisitado", this.LinkVisitado);
             campos.Add("historicoStatus", this.HistoricoStatus);
+            campos.Add("ultimaVisita", this.UltimaVisita.ToString("yyyy-MM-dd HH:mm:ss"));
+            campos.Add("ultimaExcecao", this.UltimaExcecao);
 
             if (alvoExistente == null)
             {
@@ -236,6 +244,17 @@ namespace bsn.core
         {
             return string.Format("({0}, {1})", 
                 this.SiteOrigem.Nome, this.Id); 
+        }
+
+        public override bool Equals(object obj)
+        {
+            var outro = (Alvo)obj;
+            bool retorno = true;
+
+            if (this.SiteOrigem.Nome != outro.SiteOrigem.Nome) retorno = false;
+            if (this.Id != outro.Id) retorno = false;
+
+            return retorno;
         }
     }
 

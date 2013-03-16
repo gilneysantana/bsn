@@ -14,6 +14,7 @@ namespace bsn.console
     {
         private Analisador analisador = new Analisador();
         public string UrlProxy { get; set; }
+        public bool ModoVerboso { get; set; }
 
         /// <summary>
         /// Pede que o buscador se conecte ao Site de Origem e retorna uma
@@ -21,7 +22,7 @@ namespace bsn.console
         /// </summary>
         /// <param name="alvo"></param>
         /// <returns></returns>
-        public Alvo GetAlvoAtualizado(Alvo alvo)
+        public Alvo Buscar(Alvo alvo)
         {
             Buscador buscador = new Buscador();
 
@@ -39,9 +40,20 @@ namespace bsn.console
         /// </summary>
         /// <param name="alvo"></param>
         /// <returns></returns>
-        public Alvo GetAnuncioAlvo(Alvo alvo)
+        public Alvo Analisar(Alvo alvo)
         {
-            return analisador.Analisar(alvo);
+            var alvoAnalisado = analisador.Analisar(alvo);
+
+            if (ModoVerboso)
+            {
+                alvoAnalisado.RetornoRequisicao = "...RetornoRequisicao...";
+                alvoAnalisado.LinkVisitado = "...LinkVisitado...";
+                Console.WriteLine(string.Format("Anuncio: '{0}'", 
+                    alvoAnalisado.Anuncio));
+
+            }
+
+            return alvoAnalisado;
         }
 
         /// <summary>

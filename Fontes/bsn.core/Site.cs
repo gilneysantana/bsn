@@ -238,7 +238,7 @@ namespace bsn.core
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Exceção ocorreu ao tentar buscar a regex '{0}' no Alvo({1},{2})",
+                throw new Exception(string.Format("Excecao ocorreu ao tentar buscar a regex #{0}# no Alvo({1},{2})",
                     RegexTipoImovel, alvo.SiteOrigem, alvo.Id), ex);
             }
         }
