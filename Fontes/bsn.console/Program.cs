@@ -147,6 +147,8 @@ AJUDA
 
         static void sqlite(string[] args)
         {
+            var bsn = new Bsn();
+
             Console.WriteLine(string.Format("Conectado ao '{0}'",
                 Utils.DB().DbConnection));
 
@@ -166,9 +168,9 @@ AJUDA
                     var alvo = Alvo.FromCSV(alvoCsv);
                     try
                     {
-                        alvo.SqliteSalvar();
-                    Console.WriteLine(string.Format("Alvo ('{0}', {1})",
-                        alvo.SiteOrigem.Nome, alvo.Id));
+                        bsn.Persistir(alvo);
+                        Console.WriteLine(string.Format("Alvo ('{0}', {1})",
+                            alvo.SiteOrigem.Nome, alvo.Id));
                     }
                     catch (Exception ex)
                     {

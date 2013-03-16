@@ -99,5 +99,31 @@ namespace bsn.testes
             alvo.SqliteSalvar();
         }
 
+        [TestMethod]
+        public void Alvo_SqliteSalvar_HistoricoIgual()
+        {
+            var alvo = new Alvo(new Site("Infonet"), 4);
+            alvo.RetornoRequisicao = DateTime.Now.ToString();
+            alvo.Status = "nn";
+            alvo.SqliteSalvar();
+
+            var alvoDestino = Alvo.SqliteFind("Infonet", 4);
+
+            Assert.AreEqual(alvo.RetornoRequisicao, alvoDestino.RetornoRequisicao);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ApplicationException))]
+        public void Alvo_SqliteSalvar_HistoricoMenor()
+        {
+            var alvo = new Alvo(new Site("Infonet"), 5);
+            alvo.RetornoRequisicao = DateTime.Now.ToString();
+            alvo.Status = "n";
+            alvo.SqliteSalvar();
+
+            var alvoDestino = Alvo.SqliteFind("Infonet", 5);
+
+            Assert.AreEqual(alvo.RetornoRequisicao, alvoDestino.RetornoRequisicao);
+        }
     }
 }

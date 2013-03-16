@@ -78,7 +78,7 @@ namespace bsn.console
 
         public void Persistir(Alvo alvo)
         {
-
+            alvo.SqliteSalvar();
         }
     }
 }
