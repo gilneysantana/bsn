@@ -210,6 +210,26 @@ namespace bsn.core
             return Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
         }
 
+        private decimal ExtrairCampoDecimal(string strRegex, Alvo pagina)
+        {
+            var campo = Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
+
+            if (!string.IsNullOrEmpty(campo))
+                return Convert.ToDecimal(campo);
+            else
+                return -1m;
+        }
+
+        private int ExtrairCampoInt(string strRegex, Alvo pagina)
+        {
+            var campo = Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
+
+            if (!string.IsNullOrEmpty(campo))
+                return Convert.ToInt32(campo);
+            else
+                return -1;
+        }
+
         //private bool ExisteRegex(string strRegex, Alvo pagina)
         //{
         //    Regex regex = new Regex(strRegex, RegexOptions.IgnoreCase);
@@ -231,9 +251,7 @@ namespace bsn.core
                     case "CASA":
                         return TipoImovel.Casa;
                     default:
-                        throw new Exception(string.Format("Não foi possivel detectar"
-                            + " o TipoImovel para a Pagina {0}. A extração do campo retorno '{1}'.",
-                            alvo.SiteOrigem, tipoImovel));
+                        return TipoImovel.Desconhecido;
                 }
             }
             catch (Exception ex)
@@ -261,9 +279,7 @@ namespace bsn.core
                 case "VENDA":
                     return TipoTransacao.Venda;
                 default:
-                    throw new Exception(string.Format("Não foi possível detectar o TipoTransacao para a Pagina" 
-                        + " {0}. A extração do campo retornou '{1}'.", 
-                        pagina.SiteOrigem, tipoTransacao));
+                    return TipoTransacao.Desconhecido;
             }
         }
 
@@ -272,14 +288,12 @@ namespace bsn.core
             try
             {
                 var novoAnuncio = new Anuncio(alvo);
-                novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, alvo).Trim();
-                novoAnuncio.Preco = Convert.ToDecimal(this.ExtrairCampo(this.RegexPreco, alvo));
-                novoAnuncio.NumeroQuartos = Convert.ToInt32(this.ExtrairCampo(this.RegexNumeroQuartos, alvo));
+                novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, alvo);
+                novoAnuncio.Preco = this.ExtrairCampoDecimal(this.RegexPreco, alvo);
+                novoAnuncio.NumeroQuartos = this.ExtrairCampoInt(this.RegexNumeroQuartos, alvo);
+                novoAnuncio.Area = ExtrairCampoDecimal(this.RegexArea, alvo);
                 novoAnuncio.TipoImovel = ObterTipoImovel(alvo);
                 novoAnuncio.TipoTransacao = ObterTipoTransacao(alvo);
-                string area = ExtrairCampo(RegexArea, alvo);
-                if (area != null)
-                    novoAnuncio.Area = Convert.ToDecimal(area);
 
                 return novoAnuncio;
             }

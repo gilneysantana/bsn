@@ -276,13 +276,15 @@ namespace bsn.core.analise
     {
         NaoInformado,
         Casa,
-        Apartamento
+        Apartamento,
+        Desconhecido
     }
 
     public enum TipoTransacao
     {
         NaoInformado,
         Venda,
-        Aluguel
+        Aluguel,
+        Desconhecido
     }
 }

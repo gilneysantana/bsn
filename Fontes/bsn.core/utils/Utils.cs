@@ -22,9 +22,6 @@ namespace bsn.core.utils
             else
             {
                 return null;
-                //throw new ApplicationException(string.Format(
-                //    "Não foi possível extrair a regex '{0}'. O Match retornou {1} grupo(s): '{2}'",
-                //    strRegex, retorno.Groups.Count, retorno.Groups[0].Value));
             }
         }
 
