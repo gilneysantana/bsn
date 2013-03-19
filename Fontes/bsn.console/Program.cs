@@ -149,13 +149,13 @@ AJUDA
         {
             var bsn = new Bsn();
 
-            Console.WriteLine(string.Format("Conectado ao '{0}'",
-                Utils.DB().DbConnection));
-
             if (args.Length == 1)
             {
                 string tipo = Console.ReadLine();
                 string colunas = Console.ReadLine();
+
+                Console.WriteLine(string.Format("Conectado ao '{0}'",
+                    Utils.DB().DbConnection));
 
                 if (tipo != "#TYPE bsn.core.Alvo")
                     throw new Exception("Não é um Alvo");

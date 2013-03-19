@@ -7,6 +7,7 @@ using System.Collections;
 
 using bsn.core.busca;
 using bsn.core.analise;
+using bsn.core.utils;
 using bsn.dal.sqlite;   
 
 namespace bsn.core
@@ -148,16 +149,31 @@ namespace bsn.core
 
         public static Alvo FromCSV(string alvoCSV)
         {
-            var campos = utils.Utils.FromCSV(alvoCSV);
+            var campos = Utils.FromCSV(alvoCSV);
 
-            var alvo = new Alvo(campos[0], Convert.ToInt32(campos[1]));
-            alvo.HistoricoStatus = campos[2];
-            alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(campos[3]));
-            alvo.UltimaVisita = DateTime.Parse(campos[4]);
-            alvo.RetornoRequisicao = campos[5];
-            alvo.LinkVisitado = campos[6];
-            alvo.Anuncio = Anuncio.FromCSV(campos[7]);
-            alvo.UltimaExcecao = campos[8];
+            if (campos.Length != 9)
+                throw new Exception(string.Format(
+                    "A string '{0}' deveria retornar um array de 9 itens. Retornou {1}.",
+                    alvoCSV, campos.Length));
+
+            Alvo alvo;
+
+            try
+            {
+                alvo = new Alvo(campos[0], Convert.ToInt32(campos[1]));
+                alvo.HistoricoStatus = campos[2];
+                alvo.DuracaoVisita = TimeSpan.FromSeconds(Convert.ToDouble(campos[3]));
+                alvo.UltimaVisita = DateTime.Parse(campos[4]);
+                alvo.RetornoRequisicao = campos[5];
+                alvo.LinkVisitado = campos[6];
+                alvo.Anuncio = Anuncio.FromCSV(campos[7]);
+                alvo.UltimaExcecao = campos[8];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("Erro ao parsear a strind '{0}'. Array gerado tem tamanho {1}.",
+                    alvoCSV, campos.Length), ex);
+            }
 
             return alvo;
         }
@@ -167,7 +183,7 @@ namespace bsn.core
             string anuncio = this.Anuncio != null ? this.Anuncio.ToCSV() : "";
             string duracaoVisita = this.DuracaoVisita.TotalSeconds.ToString("F3");
 
-            return utils.Utils.ToCSV(this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, 
+            return Utils.ToCSV(this.SiteOrigem, this.Id.ToString(), this.HistoricoStatus, 
                     duracaoVisita, this.UltimaVisita, this.RetornoRequisicao,
                     this.LinkVisitado, anuncio, this.UltimaExcecao);
         }
@@ -194,7 +210,7 @@ namespace bsn.core
         {
             var alvoExistente = Alvo.SqliteFind(this.SiteOrigem.Nome, this.Id);
 
-            var db = utils.Utils.DB();
+            var db = Utils.DB();
             var campos = new Dictionary<string, string>();
             campos.Add("siteOrigem", this.SiteOrigem.Nome);
             campos.Add("id", this.Id.ToString());
@@ -225,7 +241,7 @@ namespace bsn.core
 
         public static Alvo SqliteFind(string site, int id)
         {
-            var db = utils.Utils.DB(); 
+            var db = Utils.DB(); 
             string sql = string.Format(
                 @"select * 
                   from alvo 
