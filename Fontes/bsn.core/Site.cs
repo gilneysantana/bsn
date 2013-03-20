@@ -251,7 +251,7 @@ namespace bsn.core
                     case "CASA":
                         return TipoImovel.Casa;
                     default:
-                        return TipoImovel.Desconhecido;
+                        return TipoImovel.Invalido;
                 }
             }
             catch (Exception ex)
@@ -266,9 +266,7 @@ namespace bsn.core
             string tipoTransacao = ExtrairCampo(RegexTipoTransacao, pagina);
 
             if (tipoTransacao == null)
-                throw new ApplicationException(
-                    string.Format("Extração da Regex '{0}' retornou nulo",
-                    RegexTipoTransacao));
+                return TipoTransacao.Invalido;
 
             switch (tipoTransacao.ToUpper())
             {
@@ -279,7 +277,7 @@ namespace bsn.core
                 case "VENDA":
                     return TipoTransacao.Venda;
                 default:
-                    return TipoTransacao.Desconhecido;
+                    return TipoTransacao.Invalido;
             }
         }
 

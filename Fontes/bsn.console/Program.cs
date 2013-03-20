@@ -16,8 +16,13 @@ namespace bsn.console
 {
     class Program
     {
+        private static bool modoVerboso = false;
+
         static void Main(string[] args)
         {
+            if (args.Contains("-v"))
+                modoVerboso = true;
+
             try
             {
                 switch (args[0])
@@ -128,7 +133,9 @@ AJUDA
         static void analisar(string[] args)
         {
             var bsn = new Bsn();
-            //bsn.ModoVerboso = true;
+            bsn.ModoVerboso = modoVerboso;
+
+            WriteLineVerbose("Iniciando análise em modo verbodo.");
 
             // Ignoro as duas primeiras linhas (cabeçalho)
             Console.ReadLine();
@@ -141,8 +148,15 @@ AJUDA
             while ((csvAlvo = Console.ReadLine()) != null)
             {
                 var alvo = Alvo.FromCSV(csvAlvo);
-                Console.WriteLine(bsn.Analisar(alvo).ToCSV());
+                WriteLineVerbose("Alvo após FromCSV: " + alvo);
+
+                var alvoAnalisado = bsn.Analisar(alvo);
+                WriteLineVerbose("Alvo Analisado: ");
+                Console.WriteLine(alvoAnalisado.ToCSV());
             }
+
+            WriteLineVerbose("Fim análise em modo verboso.");
+            WriteLineVerbose("-----------------------------------");
         }
 
         static void sqlite(string[] args)
@@ -218,6 +232,12 @@ AJUDA
                 }
             }
 
+        }
+
+        private static void WriteLineVerbose(string msg, params object[] args)
+        {
+            if (modoVerboso)
+                Console.WriteLine(string.Format(msg, args));
         }
     }
 }

@@ -277,7 +277,7 @@ namespace bsn.core.analise
         NaoInformado,
         Casa,
         Apartamento,
-        Desconhecido
+        Invalido
     }
 
     public enum TipoTransacao
@@ -285,6 +285,6 @@ namespace bsn.core.analise
         NaoInformado,
         Venda,
         Aluguel,
-        Desconhecido
+        Invalido
     }
 }

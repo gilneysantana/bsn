@@ -46,11 +46,10 @@ namespace bsn.console
 
             if (ModoVerboso)
             {
-                alvoAnalisado.RetornoRequisicao = "...RetornoRequisicao...";
-                alvoAnalisado.LinkVisitado = "...LinkVisitado...";
+                alvoAnalisado.RetornoRequisicao = "...RetornoRequisicao...(Modo verboso)";
+                alvoAnalisado.LinkVisitado = "...LinkVisitado...(Modo verboso)";
                 Console.WriteLine(string.Format("Anuncio: '{0}'", 
                     alvoAnalisado.Anuncio));
-
             }
 
             return alvoAnalisado;
