@@ -35,8 +35,8 @@ namespace bsn.testes
             var alvo = new Alvo("Infonet", 2);
             var anuncio = new Anuncio(alvo);
             anuncio.NumeroQuartos = 0;
-            anuncio.TipoImovel = TipoImovel.Casa;
-            anuncio.TipoTransacao = TipoTransacao.Venda;
+            anuncio.TipoImovel = TipoImovel.CS;
+            anuncio.TipoTransacao = TipoTransacao.VD;
             anuncio.Bairro = "Cirurgia";
 
             anuncio.SqliteSalvar();
@@ -100,8 +100,8 @@ namespace bsn.testes
             alvo.RetornoRequisicao = "<html/>";
 
             alvo.Anuncio = new Anuncio(alvo);
-            alvo.Anuncio.TipoImovel = TipoImovel.Casa;
-            alvo.Anuncio.TipoTransacao = TipoTransacao.Venda;
+            alvo.Anuncio.TipoImovel = TipoImovel.CS;
+            alvo.Anuncio.TipoTransacao = TipoTransacao.VD;
             alvo.Anuncio.Bairro = "...";
 
             alvo.SqliteSalvar();

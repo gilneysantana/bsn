@@ -241,7 +241,7 @@ namespace bsn.core
             string tipoImovel = ExtrairCampo(RegexTipoImovel, alvo);
 
             if (tipoImovel == null)
-                return TipoImovel.Invalido;
+                return TipoImovel.IN;
 
             try
             {
@@ -249,12 +249,12 @@ namespace bsn.core
                 {
                     case "APARTAMENTOS":
                     case "APARTAMENTO":
-                        return TipoImovel.Apartamento;
+                        return TipoImovel.AP;
                     case "CASAS":
                     case "CASA":
-                        return TipoImovel.Casa;
+                        return TipoImovel.CS;
                     default:
-                        return TipoImovel.Invalido;
+                        return TipoImovel.IN;
                 }
             }
             catch (Exception ex)
@@ -269,18 +269,18 @@ namespace bsn.core
             string tipoTransacao = ExtrairCampo(RegexTipoTransacao, pagina);
 
             if (tipoTransacao == null)
-                return TipoTransacao.Invalido;
+                return TipoTransacao.IN;
 
             switch (tipoTransacao.ToUpper())
             {
                 case "ALUGAR":
                 case "ALUGUEL":
-                    return TipoTransacao.Aluguel;
+                    return TipoTransacao.AL;
                 case "VENDER":
                 case "VENDA":
-                    return TipoTransacao.Venda;
+                    return TipoTransacao.VD;
                 default:
-                    return TipoTransacao.Invalido;
+                    return TipoTransacao.IN;
             }
         }
 

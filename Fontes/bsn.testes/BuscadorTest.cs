@@ -39,12 +39,12 @@ namespace bsn.testes
         [TestMethod]
         public void GetAlvoAtualizadoTest_RetornoRequisicaoConteudoCorreto()
         {
-            var alvo = new Alvo("Infonet", 242506);
+            var alvo = new Alvo("Infonet", 246201);
 
             var alvoAtual = buscador.Buscar(alvo);
 
             Assert.IsTrue(alvoAtual.RetornoRequisicao.Contains(
-                "sendo 3 suites"));
+                "estacionamento  2 salas cozinha WC varanda"));
         }
 
         [TestMethod]

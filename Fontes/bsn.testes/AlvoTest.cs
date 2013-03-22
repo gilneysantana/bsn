@@ -38,6 +38,8 @@ namespace bsn.testes
             alvoOrigem.Anuncio.Area = 111;
             alvoOrigem.Anuncio.Bairro = "asdfqwer";
             alvoOrigem.Anuncio.Preco = 222;
+            alvoOrigem.Anuncio.TipoImovel = TipoImovel.AP;
+            alvoOrigem.Anuncio.TipoTransacao = TipoTransacao.AL;
 
             string alvoCSV = alvoOrigem.ToCSV();
             var alvoDestino = Alvo.FromCSV(alvoCSV);
@@ -54,6 +56,8 @@ namespace bsn.testes
             Assert.AreEqual(alvoOrigem.Anuncio.Area, alvoDestino.Anuncio.Area);
             Assert.AreEqual(alvoOrigem.Anuncio.Bairro, alvoDestino.Anuncio.Bairro);
             Assert.AreEqual(alvoOrigem.Anuncio.Preco, alvoDestino.Anuncio.Preco);
+            Assert.AreEqual(alvoOrigem.Anuncio.TipoImovel, alvoDestino.Anuncio.TipoImovel);
+            Assert.AreEqual(alvoOrigem.Anuncio.TipoTransacao, alvoDestino.Anuncio.TipoTransacao);
             Assert.IsTrue(alvoOrigem.Anuncio.Equals(alvoDestino.Anuncio));
         }
 

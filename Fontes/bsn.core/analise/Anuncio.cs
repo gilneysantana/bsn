@@ -20,8 +20,8 @@ namespace bsn.core.analise
         private string bairro;
         private int numeroQuartos;
         private decimal area;
-        private TipoImovel tipoImovel = TipoImovel.NaoInformado;
-        private TipoTransacao tipoTransacao = TipoTransacao.NaoInformado;
+        private TipoImovel tipoImovel = TipoImovel.NI;
+        private TipoTransacao tipoTransacao = TipoTransacao.NI;
 
         private decimal preco;
 
@@ -55,38 +55,6 @@ namespace bsn.core.analise
         {
             get { return tipoTransacao; }
             set { tipoTransacao = value; }
-        }
-
-        public string TipoTransacaoBD
-        {
-            get 
-            {
-                switch (this.TipoTransacao)
-                {
-                    case analise.TipoTransacao.Aluguel:
-                        return "a";
-                    case analise.TipoTransacao.Venda:
-                        return "v";
-                    default:
-                        throw new Exception("TipoTransacao não tem representação em DB");
-                }
-            }
-        }
-
-        public string TipoImovelBD
-        {
-            get 
-            {
-                switch (this.TipoImovel)
-                {
-                    case analise.TipoImovel.Apartamento:
-                        return "a";
-                    case analise.TipoImovel.Casa:
-                        return "c";
-                    default:
-                        throw new Exception("TipoImovel não tem representação em DB");
-                }
-            }
         }
 
         public decimal Area
@@ -145,8 +113,8 @@ namespace bsn.core.analise
                 int sucesso = 0;
 
                 if (Bairro != "") sucesso++;
-                if (TipoImovel != TipoImovel.Invalido) sucesso++;
-                if (TipoTransacao != TipoTransacao.Invalido) sucesso++;
+                if (TipoImovel != TipoImovel.IN) sucesso++;
+                if (TipoTransacao != TipoTransacao.IN) sucesso++;
                 if (Preco != -1) sucesso++;
                 if (Area != -1) sucesso++;
 
@@ -175,18 +143,26 @@ namespace bsn.core.analise
             string bairro = campos[2];
             string alvoSite = campos[3];
             int alvoId = Convert.ToInt32(campos[4]);
+            string imovel = campos[5];
+            string transacao = campos[6];
 
             var retorno = new Anuncio();
             retorno.Preco = Convert.ToDecimal(preco);
             retorno.Area = Convert.ToDecimal(area);
             retorno.Bairro = bairro;
             retorno.Alvo = new Alvo(new Site(alvoSite), alvoId);
+            retorno.TipoImovel 
+                = (TipoImovel) Enum.Parse(typeof(TipoImovel), imovel);
+            retorno.TipoTransacao 
+                = (TipoTransacao) Enum.Parse(typeof(TipoTransacao), transacao);
             return retorno;
         }
 
         public string ToCSV()
         {
-            return Utils.ToCSV(this.Preco, this.Area, this.Bairro, this.Alvo.SiteOrigem.Nome, this.Alvo.Id);
+            return Utils.ToCSV(this.Preco, this.Area, this.Bairro, 
+                this.Alvo.SiteOrigem.Nome, this.Alvo.Id, this.TipoImovel,
+                this.TipoTransacao);
         }
 
         public static Anuncio Parse(System.Data.DataRow anuncioRow)
@@ -201,9 +177,9 @@ namespace bsn.core.analise
             ret.Preco = Convert.ToDecimal(anuncioRow["preco"].ToString());
 
             string ti = anuncioRow["tipoImovel"].ToString();
-            ret.TipoImovel = (ti == "a") ? TipoImovel.Apartamento : TipoImovel.Casa;
+            ret.TipoImovel = (ti == "a") ? TipoImovel.AP : TipoImovel.CS;
             string tt = anuncioRow["tipoTransacao"].ToString();
-            ret.TipoTransacao = (tt == "a") ? TipoTransacao.Aluguel : TipoTransacao.Venda;
+            ret.TipoTransacao = (tt == "a") ? TipoTransacao.AL : TipoTransacao.VD;
 
             return ret;
         }
@@ -224,8 +200,8 @@ namespace bsn.core.analise
             campos.Add("preco", this.Preco.ToString());
             campos.Add("area", this.Area.ToString());
             campos.Add("numeroQuartos", this.NumeroQuartos.ToString());
-            campos.Add("tipoImovel", this.TipoImovelBD);
-            campos.Add("tipoTransacao", this.TipoTransacaoBD);
+            campos.Add("tipoImovel", this.TipoImovel.ToString());
+            campos.Add("tipoTransacao", this.TipoTransacao.ToString());
 
             if (anuncio == null)
             {
@@ -288,19 +264,19 @@ namespace bsn.core.analise
 
     }
 
-    public enum TipoImovel
+    public enum TipoImovel  
     {
-        NaoInformado,
-        Casa,
-        Apartamento,
-        Invalido
+        NI,
+        AP,
+        CS,
+        IN
     }
 
     public enum TipoTransacao
     {
-        NaoInformado,
-        Venda,
-        Aluguel,
-        Invalido
+        NI,
+        AL,
+        VD,
+        IN
     }
 }

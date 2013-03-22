@@ -26,9 +26,6 @@ namespace bsn.console
             if (args.Contains("--debug"))
                 Debugger.Break(); 
 
-            if (args.Contains("--delay"))
-                Thread.Sleep(1000);
-
             try
             {
                 switch (args[0])
@@ -71,6 +68,7 @@ namespace bsn.console
             string linha;
             while ((linha = Console.ReadLine()) != null)
             {
+                Thread.Sleep(segundos * 1000);
                 WriteLineVerbose("Dormindo");
                 Console.WriteLine(linha);
             }
@@ -144,6 +142,9 @@ AJUDA
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
+                if (args.Contains("--delay"))
+                    Thread.Sleep(3000);
+
                 var alvo = Alvo.FromCSV(csvAlvo);
                 Console.WriteLine(bsn.Buscar(alvo).ToCSV());
             }
@@ -198,6 +199,9 @@ AJUDA
                 string alvoCsv;
                 while ((alvoCsv = Console.ReadLine()) != null)
                 {
+                    //if (args.Contains("--delay"))
+                    //    Thread.Sleep(3000);
+
                     var alvo = Alvo.FromCSV(alvoCsv);
                     try
                     {
