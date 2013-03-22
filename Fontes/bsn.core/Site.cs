@@ -207,12 +207,12 @@ namespace bsn.core
 
         private string ExtrairCampo(string strRegex, Alvo pagina)
         {
-            return Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
+            return Utils.ExtrairCampoString(strRegex, pagina.RetornoRequisicao);
         }
 
         private decimal ExtrairCampoDecimal(string strRegex, Alvo pagina)
         {
-            var campo = Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
+            var campo = Utils.ExtrairCampoString(strRegex, pagina.RetornoRequisicao);
 
             if (!string.IsNullOrEmpty(campo))
                 return Convert.ToDecimal(campo);
@@ -222,7 +222,7 @@ namespace bsn.core
 
         private int ExtrairCampoInt(string strRegex, Alvo pagina)
         {
-            var campo = Utils.ExtrairCampo(strRegex, pagina.RetornoRequisicao);
+            var campo = Utils.ExtrairCampoString(strRegex, pagina.RetornoRequisicao);
 
             if (!string.IsNullOrEmpty(campo))
                 return Convert.ToInt32(campo);
@@ -239,6 +239,9 @@ namespace bsn.core
         private TipoImovel ObterTipoImovel(Alvo alvo)
         {
             string tipoImovel = ExtrairCampo(RegexTipoImovel, alvo);
+
+            if (tipoImovel == null)
+                return TipoImovel.Invalido;
 
             try
             {
@@ -298,7 +301,7 @@ namespace bsn.core
             catch (Exception ex)
             {
                 throw new Exception(string.Format(
-                    "Erro ao tentar extrair Anuncio do Alvo({0})", alvo), ex);
+                    "Não foi possível extrair Anuncio do Alvo({0}).", alvo), ex);
             }
         }
 

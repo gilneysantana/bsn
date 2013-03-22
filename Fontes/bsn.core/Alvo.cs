@@ -4,6 +4,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Collections;
+using System.Data;
 
 using bsn.core.busca;
 using bsn.core.analise;
@@ -188,7 +189,7 @@ namespace bsn.core
                     this.LinkVisitado, anuncio, this.UltimaExcecao);
         }
 
-        #region Persistencia/Stream
+        #region Persistencia
         public static Alvo Parse(System.Data.DataRow alvoRow)
         {
             Alvo retorno = null;
@@ -258,6 +259,24 @@ namespace bsn.core
             return Alvo.Parse(dt.Rows[0]);
         }
 
+        public static IList<Alvo> SqliteFind(string site)
+        {
+            var db = Utils.DB(); 
+            string sql = string.Format(
+                @"select * 
+                  from alvo 
+                  where siteOrigem = '{0}'", site);
+
+            var dt = db.GetDataTable(sql);
+            var alvos = new List<Alvo>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                alvos.Add(Alvo.Parse(row));
+            }
+
+            return alvos;
+        }
         #endregion
 
         public override string ToString()

@@ -82,6 +82,14 @@ namespace bsn.testes
         }
 
         [TestMethod]
+        public void Alvo_SqliteFind_Infonet_Colecao()
+        {
+            var x = Alvo.SqliteFind("Infonet");
+
+            Assert.IsTrue(x.Count > 0); 
+        }
+
+        [TestMethod]
         public void Alvo_SqliteSalvar_ComAnuncio()
         {
             var site = Site.GetSitePorNome("Infonet");

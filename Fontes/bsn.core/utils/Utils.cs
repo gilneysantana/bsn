@@ -12,7 +12,7 @@ namespace bsn.core.utils
 {
     public class Utils
     {
-        public static string ExtrairCampo(string strRegex, string conteudo)
+        public static string ExtrairCampoString(string strRegex, string conteudo)
         {
             Regex regex = new Regex(strRegex, RegexOptions.IgnoreCase);
             Match retorno = regex.Match(conteudo);
@@ -21,7 +21,7 @@ namespace bsn.core.utils
                 return retorno.Groups[1].Value.Trim();
             else
             {
-                return null;
+                return string.Empty;
             }
         }
 

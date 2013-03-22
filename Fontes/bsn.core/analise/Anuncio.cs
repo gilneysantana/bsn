@@ -45,6 +45,12 @@ namespace bsn.core.analise
 
         #region Propriedades
 
+        public TipoImovel TipoImovel
+        {
+            get { return tipoImovel; }
+            set { tipoImovel = value; }
+        }
+
         public TipoTransacao TipoTransacao
         {
             get { return tipoTransacao; }
@@ -132,10 +138,20 @@ namespace bsn.core.analise
             return "www.infonet.com.br?codigo=99999";
         }
 
-        public TipoImovel TipoImovel
+        public decimal PercentualSucesso
         {
-            get { return tipoImovel; }
-            set { tipoImovel = value; }
+            get
+            {
+                int sucesso = 0;
+
+                if (Bairro != "") sucesso++;
+                if (TipoImovel != TipoImovel.Invalido) sucesso++;
+                if (TipoTransacao != TipoTransacao.Invalido) sucesso++;
+                if (Preco != -1) sucesso++;
+                if (Area != -1) sucesso++;
+
+                return Math.Round((sucesso / 5m) * 100, 2);
+            }
         }
 
         #endregion

@@ -5,12 +5,12 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using System.IO;
+using System.Diagnostics;
 
 using bsn.core;
-using System.Management.Automation.Runspaces;
-using System.Management.Automation;
 using bsn.core.utils;
-using bsn.dal.sqlite;   
+using bsn.dal.sqlite;
+using System.Threading;   
 
 namespace bsn.console
 {
@@ -22,6 +22,12 @@ namespace bsn.console
         {
             if (args.Contains("-v"))
                 modoVerboso = true;
+
+            if (args.Contains("--debug"))
+                Debugger.Break(); 
+
+            if (args.Contains("--delay"))
+                Thread.Sleep(1000);
 
             try
             {
@@ -46,6 +52,9 @@ namespace bsn.console
                     case "help":
                         printHelp();
                         break;
+                    case "delay":
+                        Delay(Convert.ToInt32(args[1]));
+                        break;
                     default:
                         Console.WriteLine("Comando desconhecido: '{0}'", args[0]);
                         break;
@@ -54,6 +63,16 @@ namespace bsn.console
             catch (Exception ex)
             {
                 Console.Error.WriteLine(string.Format("Erro no uso da opção '{0}': {1}", args[0], ex));
+            }
+        }
+
+        private static void Delay(int segundos)
+        {
+            string linha;
+            while ((linha = Console.ReadLine()) != null)
+            {
+                WriteLineVerbose("Dormindo");
+                Console.WriteLine(linha);
             }
         }
 
@@ -112,7 +131,7 @@ AJUDA
         {
             var bsn = new Bsn();
 
-            if (args.Length == 2 && "-p".Equals(args[1]))
+            if (args.Contains("-p"))
                 bsn.UrlProxy = "http://inet-se.petrobras.com.br";
 
             // Ignoro as duas primeiras linhas (cabeçalho)
@@ -200,17 +219,34 @@ AJUDA
 
                 if (tabela == "alvo")
                 {
-                    string id = args[3];
-                    var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
+                    Console.WriteLine("#TYPE bsn.core.Alvo");
+                    Console.WriteLine(Alvo.CabecalhoCSV());
 
-                    if (alvo != null)
+                    if (args.Length == 4)
                     {
-                        Console.WriteLine("#TYPE bsn.core.Alvo");
-                        Console.WriteLine(Alvo.CabecalhoCSV());
-                        Console.WriteLine(alvo.ToCSV());
+                        string id = args[3];
+                        var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
+
+                        if (alvo != null)
+                        {
+                            Console.WriteLine(alvo.ToCSV());
+                        }
+                        else
+                            Console.WriteLine("Nenhum registro encontrado");
                     }
                     else
-                        Console.WriteLine("Nenhum registro encontrado");
+                    {
+                        var alvos = Alvo.SqliteFind(nomeSite);
+
+                        foreach (Alvo a in alvos)
+                        {
+                            Console.WriteLine(a.ToCSV());
+                        }
+
+                        if (alvos.Count == 0)
+                            Console.WriteLine("Nenhum registro encontrado");
+                    }
+
                 }
                 else if (tabela == "site")
                 {
