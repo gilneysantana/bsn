@@ -264,12 +264,18 @@ namespace bsn.core.analise
 
     }
 
+    /// <summary>
+    /// SC = Sala Comercial
+    /// PC = Ponto Comercial
+    /// </summary>
     public enum TipoImovel  
     {
         NI,
         AP,
         CS,
-        IN
+        IN,
+        SC,
+        PC
     }
 
     public enum TipoTransacao

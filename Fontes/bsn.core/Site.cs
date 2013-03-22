@@ -252,7 +252,12 @@ namespace bsn.core
                         return TipoImovel.AP;
                     case "CASAS":
                     case "CASA":
+                    case "CASA EM CONDOMINIO":
                         return TipoImovel.CS;
+                    case "SALA COMERCIAL":
+                        return TipoImovel.SC;
+                    case "PONTO COMERCIAL":
+                        return TipoImovel.PC;
                     default:
                         return TipoImovel.IN;
                 }
@@ -313,6 +318,13 @@ namespace bsn.core
         }
 
         public string RegexNumeroQuartos { get; set; }
+
+        /*
+         INSERT INTO "someTable" VALUES ("Infonet","<span[^>]*>Bairro:\s*</span>([\d\w\s]*)<br/>","<span[^>]*>N&uacute;mero de quartos:\s*</span>(\S*)\s*<br/>","<span[^>]*>Pre&ccedil;o:\s*</span>(\S*)\s*<br/>","<span[^>]*>&Aacute;rea:\s*</span>(\S*)\s*<br/>","<a[^>]*>\s*(\w*) para (?:vender|alugar)</a>","<a[^>]*>(?:Apartamentos|Casas) para (\w*)</a>","http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}");
+INSERT INTO "someTable" VALUES ("Felizola","<span .*?>Bairro</span>: (.*?)<br>","<span .*?>N. de Quartos:</span> (.*?)<br />","<span .*?>Valor:</span> (?:R\$)*(.*?),00<br />","<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>","<span .*?>Imovel:</span> (.*?)<br />","<span .*?>Tipo de Negocio</span>: (.*?)<br>","http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}");
+INSERT INTO "someTable" VALUES ("Zelar","<b>Bairro: </b>([\d\w\s]*)</td>","<td>([\d]*) - Quarto</td>","Valor R\$ <[^>]*>([\d\.,]*)</td>",null,"<b>Tipo:.</b>([\w\s]*)</td>","<b>Pretensao:.</b>(\w*)</td>","http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=");
+         
+         */
 
         //private static IQueryable<Site> Repositorio()
         //{
