@@ -218,12 +218,6 @@ namespace bsn.core
                 return -1;
         }
 
-        //private bool ExisteRegex(string strRegex, Alvo pagina)
-        //{
-        //    Regex regex = new Regex(strRegex, RegexOptions.IgnoreCase);
-        //    return regex.IsMatch(pagina.RetornoRequisicao);
-        //}
-
         private TipoImovel ObterTipoImovel(Alvo alvo)
         {
             string tipoImovel = ExtrairCampo(RegexTipoImovel, alvo);
