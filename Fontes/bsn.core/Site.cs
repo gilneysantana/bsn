@@ -155,18 +155,6 @@ namespace bsn.core
             return textsInIgnoredPages;
         }
 
-        ///**
-        // * Returns the URL of a specific Announcement, which is the of Announcement
-        // * applied to site's Template URL
-        // * 
-        // * @param announcementCode
-        // * */
-        //public string getAnnouncementURL(int announcementCode)
-        //{
-        //    return this.TemplateUrl.Replace(Site.PLACE_HOLDER,
-        //            announcementCode.ToString());
-        //}
-
         /**
          * Return true when the Page doesn't match any Ignored signature
          * 
