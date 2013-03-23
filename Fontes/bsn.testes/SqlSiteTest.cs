@@ -128,10 +128,6 @@ namespace bsn.testes
             alvo.RetornoRequisicao = DateTime.Now.ToString();
             alvo.Status = "n";
             alvo.SqliteSalvar();
-
-            var alvoDestino = Alvo.SqliteFind("Infonet", 5);
-
-            Assert.AreEqual(alvo.RetornoRequisicao, alvoDestino.RetornoRequisicao);
         }
     }
 }

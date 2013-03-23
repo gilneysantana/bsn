@@ -199,20 +199,17 @@ AJUDA
                 string alvoCsv;
                 while ((alvoCsv = Console.ReadLine()) != null)
                 {
-                    //if (args.Contains("--delay"))
-                    //    Thread.Sleep(3000);
-
                     var alvo = Alvo.FromCSV(alvoCsv);
                     try
                     {
-                        bsn.Persistir(alvo);
-                        Console.WriteLine(string.Format("Alvo ('{0}', {1})",
+                        Console.Write(string.Format("Alvo ('{0}', {1})",
                             alvo.SiteOrigem.Nome, alvo.Id));
+                        bsn.Persistir(alvo);
+                        Console.WriteLine(" - OK");
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("Erro ao persistir {0}: {1}\n{2}", 
-                            alvo, ex.Message, ex.StackTrace);
+                        Console.WriteLine(" - FALHOU: {0}", ex.Message);
                     }
                 }
             }

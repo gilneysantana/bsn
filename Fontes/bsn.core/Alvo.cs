@@ -228,8 +228,8 @@ namespace bsn.core
             else
             {
                 if (!this.HistoricoStatus.StartsWith(alvoExistente.HistoricoStatus))
-                    throw new ApplicationException(string.Format("Não é permitido atualizar um alvo com histórico menor que o atual. Atual: '{0}'; Nova: '{1}'",
-                        alvoExistente.HistoricoStatus, this.HistoricoStatus));
+                    throw new ApplicationException(string.Format("Novo histórico é menor que o atual. '{0}' < '{1}'",
+                        this.HistoricoStatus, alvoExistente.HistoricoStatus));
 
                 string where = string.Format("siteOrigem = '{0}' and id = '{1}'", 
                     this.SiteOrigem.Nome, this.Id);

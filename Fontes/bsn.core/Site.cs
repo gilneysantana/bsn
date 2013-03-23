@@ -319,47 +319,6 @@ namespace bsn.core
 
         public string RegexNumeroQuartos { get; set; }
 
-        /*
-         INSERT INTO "someTable" VALUES ("Infonet","<span[^>]*>Bairro:\s*</span>([\d\w\s]*)<br/>","<span[^>]*>N&uacute;mero de quartos:\s*</span>(\S*)\s*<br/>","<span[^>]*>Pre&ccedil;o:\s*</span>(\S*)\s*<br/>","<span[^>]*>&Aacute;rea:\s*</span>(\S*)\s*<br/>","<a[^>]*>\s*(\w*) para (?:vender|alugar)</a>","<a[^>]*>(?:Apartamentos|Casas) para (\w*)</a>","http://classificados.infonet.com.br/ClassificadosApp/publico/retrieveAnuncioPortal.jsp?CdAnuncio={0}");
-INSERT INTO "someTable" VALUES ("Felizola","<span .*?>Bairro</span>: (.*?)<br>","<span .*?>N. de Quartos:</span> (.*?)<br />","<span .*?>Valor:</span> (?:R\$)*(.*?),00<br />","<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>","<span .*?>Imovel:</span> (.*?)<br />","<span .*?>Tipo de Negocio</span>: (.*?)<br>","http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}");
-INSERT INTO "someTable" VALUES ("Zelar","<b>Bairro: </b>([\d\w\s]*)</td>","<td>([\d]*) - Quarto</td>","Valor R\$ <[^>]*>([\d\.,]*)</td>",null,"<b>Tipo:.</b>([\w\s]*)</td>","<b>Pretensao:.</b>(\w*)</td>","http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=");
-         
-         */
-
-        //private static IQueryable<Site> Repositorio()
-        //{
-        //    var sites = new List<Site>();
-
-        //    Site novoSite = new Site();
-
-        //    //novoSite = new Site();
-        //    //novoSite.Nome = "Felizola";
-        //    //novoSite.RegexBairro = "<span .*?>Bairro</span>: (.*?)<br>";
-        //    //novoSite.RegexNumeroQuartos = "<span .*?>Nº de Quartos:</span> (.*?)<br />";
-        //    //novoSite.RegexPreco = "<span .*?>Valor:</span> (?:R\\$)*(.*?),00<br />";
-        //    //novoSite.RegexArea = "<span.*>&Aacute;rea:.*</span><span.*>(.*)</span>";
-        //    //novoSite.RegexTipoImovel = "<span .*?>Imóvel:</span> (.*?)<br />";
-        //    //novoSite.RegexTipoTransacao = "<span .*?>Tipo de Negócio</span>: (.*?)<br>";
-        //    //novoSite.TemplateUrl = string.Format("http://felizolaimobiliaria.com.br/index.php?option=com_hotproperty&task=view&id={0}", 
-        //    //    Site.PLACE_HOLDER);
-        //    //sites.Add(novoSite);
-
-        //    novoSite = new Site();
-        //    novoSite.Nome = "Zelar";
-        //    novoSite.RegexBairro = "<b>Bairro: </b>(.*)</td>";
-        //    novoSite.RegexNumeroQuartos = "<td>([\\d]*) - Quarto</td>";
-        //    novoSite.RegexPreco = "Valor R\\$ <.*>(.*)</td>";
-        //    novoSite.RegexArea = "";
-        //    novoSite.RegexTipoImovel = "<b>Tipo: </b>(.*)</td>";
-        //    novoSite.RegexTipoTransacao = "<b>Pretensão: </b>(.*)</td>";
-        //    novoSite.TemplateUrl = string.Format("http://www.mostraimoveis.com.br/SE/zelar/MeusImoveis.php?txtParceiro=80&txtImovel={0}&txtEstado=&txtCidade=&txtBairro=&txtTipoImovel=&txtPretensao=&xValor=&yValor=",
-        //        Site.PLACE_HOLDER);
-        //    sites.Add(novoSite);
-
-
-        //    return sites.AsQueryable<Site>();
-        //}
-
         public static Site GetSitePorNome(string nomeSite)
         {
             var sqliteDB = Utils.DB();
