@@ -110,6 +110,10 @@
     <None Include="bsn.console_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\bsn.cmdlet\bsn.cmdlet.csproj">
+      <Project>{C5528A92-DC24-4BE4-8B0E-4C0B374DE6F2}</Project>
+      <Name>bsn.cmdlet</Name>
+    </ProjectReference>
     <ProjectReference Include="..\bsn.console.sqlite\bsn.dal.sqlite.csproj">
       <Project>{CBE94B45-F563-4994-AD39-6024D59DAA57}</Project>
       <Name>bsn.dal.sqlite</Name>

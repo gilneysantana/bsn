@@ -54,6 +54,9 @@ namespace bsn.console
                     case "delay":
                         Delay(Convert.ToInt32(args[1]));
                         break;
+                    case "acao":
+                        acao(param);
+                        break;
                     default:
                         Console.WriteLine("Comando desconhecido: '{0}'", args[0]);
                         break;
@@ -96,9 +99,10 @@ AJUDA
 
     bsn sqlite
         pipe_de_alvos | .\bsn sqlite - Persiste alvos 
-        .\bsn sqlite -t select -tabela alvo -site Felizola -todos
-        .\bsn sqlite -t select -tabela alvo -site Felizola -desativar
-        .\bsn sqlite -t select -tabela alvo -site Felizola -id X
+        .\bsn sqlite -tabela alvo -site Felizola -ativo
+        .\bsn sqlite -tabela alvo -site Felizola -inutil
+        .\bsn sqlite -tabela alvo -site Felizola -id #x
+        .\bsn sqlite -tabela alvo -site Felizola -hist #padrao
 
     Atribuindo à variáveis:
         $alvo = .\bsn alvo Infonet 235250 | .\bsn.exe buscar | ConvertFrom-Csv
@@ -133,15 +137,11 @@ AJUDA
         {
             var bsn = new Bsn();
 
-            if (args.Contains("-p"))
+            if (args.Contains("-proxy"))
                 bsn.UrlProxy = "http://inet-se.petrobras.com.br";
 
-            // Ignoro as duas primeiras linhas (cabeçalho)
-            Console.ReadLine();
-            Console.ReadLine();
-
-            Console.WriteLine("#TYPE bsn.core.Alvo");
-            Console.WriteLine(Alvo.CabecalhoCSV());
+            Console.WriteLine(Console.ReadLine());
+            Console.WriteLine(Console.ReadLine());
 
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
@@ -184,7 +184,7 @@ AJUDA
         {
             var bsn = new Bsn();
 
-            if (param["-t"] == "insert")
+            if (param.ContainsKey("-alterar"))
             {
                 string tipo = Console.ReadLine();
                 string colunas = Console.ReadLine();
@@ -214,65 +214,45 @@ AJUDA
                     }
                 }
             }
-            else if (param["-t"] == "select")
+            else 
             {
                 string tabela = param["-tabela"];
                 string nomeSite = param["-site"];
 
                 if (tabela == "alvo")
                 {
-                    Console.WriteLine("#TYPE bsn.core.Alvo");
-                    Console.WriteLine(Alvo.CabecalhoCSV());
+                    IList<Alvo> alvos = new List<Alvo>();
 
                     if (param.ContainsKey("-id"))
                     {
-                        string id = param["-id"];
-                        var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
-
-                        if (alvo != null)
-                        {
-                            Console.WriteLine(alvo.ToCSV());
-                        }
-                        else
-                            Console.WriteLine("Nenhum registro encontrado");
+                        var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(param["-id"]));
+                        if (alvo != null) alvos.Add(alvo);
                     }
                     else if (param.ContainsKey("-hist"))
                     {
-                        var alvos = Alvo.SqliteFindPorHistorico(param["-hist"]);
-
-                        foreach (Alvo a in alvos)
-                        {
-                            Console.WriteLine(a.ToCSV());
-                        }
-
-                        if (alvos.Count == 0)
-                            Console.WriteLine("Nenhum registro encontrado");
+                        alvos = Alvo.SqliteFindPorHistorico(param["-hist"]);
                     }
-                    else if (param.ContainsKey("-desativar"))
+                    else if (param.ContainsKey("-inutil"))
                     {
-                        var alvos = Alvo.SqliteFindCandidatosDesativacao();
-
-                        foreach (Alvo a in alvos)
-                        {
-                            Console.WriteLine(a.ToCSV());
-                        }
-
-                        if (alvos.Count == 0)
-                            Console.WriteLine("Nenhum registro encontrado");
+                        alvos = Alvo.SqliteFindCandidatosDesativacao();
                     }
-                    else if (param.ContainsKey("-todos"))
+                    else if (param.ContainsKey("-ativo"))
                     {
-                        var alvos = Alvo.SqliteFind(nomeSite);
+                        alvos = Alvo.SqliteFind(nomeSite);
+                    }
+                    else
+                        Console.WriteLine("Informe uma opção: -id, -hist, -desativar, -todos");
+
+                    if (alvos.Count == 0)
+                        Console.WriteLine("Nenhum registro encontrado");
+                    else
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Alvo");
+                        Console.WriteLine(Alvo.CabecalhoCSV());
 
                         foreach (Alvo a in alvos)
-                        {
                             Console.WriteLine(a.ToCSV());
-                        }
-
-                        if (alvos.Count == 0)
-                            Console.WriteLine("Nenhum registro encontrado");
                     }
-
                 }
                 else if (tabela == "site")
                 {
@@ -294,6 +274,27 @@ AJUDA
                 }
             }
 
+        }
+
+        static void acao(IDictionary<string, string> param)
+        {
+            Console.WriteLine(Console.ReadLine());
+            Console.WriteLine(Console.ReadLine());
+
+            string csvAlvo;
+            while ((csvAlvo = Console.ReadLine()) != null)
+            {
+                var alvo = Alvo.FromCSV(csvAlvo);
+
+                if (param.ContainsKey("-cancelar"))
+                {
+                    Trace.Assert(alvo.HistoricoStatus.Contains("[0]ar[0]ar[0]a")); 
+                    alvo.Status = "x";
+                    alvo.RetornoRequisicao = "";
+                }
+
+                Console.WriteLine(alvo.ToCSV());
+            }
         }
 
         private static void WriteLineVerbose(string msg, params object[] args)
