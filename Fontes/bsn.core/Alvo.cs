@@ -236,7 +236,7 @@ namespace bsn.core
                 db.Update("alvo", campos, where);
             }
 
-            if (this.Anuncio != null)
+            if (this.Anuncio != null && this.Anuncio.PercentualSucesso >= 50m)
                 this.Anuncio.SqliteSalvar();
         }
 
@@ -265,7 +265,8 @@ namespace bsn.core
             string sql = string.Format(
                 @"select * 
                   from alvo 
-                  where siteOrigem = '{0}'", site);
+                  where siteOrigem = '{0}'
+                    and historicoStatus not like '%x'", site);
 
             var dt = db.GetDataTable(sql);
             var alvos = new List<Alvo>();
@@ -277,6 +278,32 @@ namespace bsn.core
 
             return alvos;
         }
+
+        public static IList<Alvo> SqliteFindPorHistorico(string padraoHistorico)
+        {
+            var db = Utils.DB(); 
+            string sql = string.Format(
+                @"select * 
+                  from alvo 
+                  where historicoStatus like '{0}'", padraoHistorico);
+
+            var dt = db.GetDataTable(sql);
+            var alvos = new List<Alvo>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                alvos.Add(Alvo.Parse(row));
+            }
+
+            return alvos;
+        }
+
+        public static IList<Alvo> SqliteFindCandidatosDesativacao()
+        {
+            return SqliteFindPorHistorico(padrao_PARA_DESATIVAR);
+        }
+
+        public static string padrao_PARA_DESATIVAR = "%[0]a%[0]a%[0]a";
         #endregion
 
         public override string ToString()

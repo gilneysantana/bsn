@@ -14,16 +14,18 @@ using System.Threading;
 
 namespace bsn.console
 {
-    class Program
+    public class Program
     {
         private static bool modoVerboso = false;
 
         static void Main(string[] args)
         {
-            if (args.Contains("-v"))
+            var param = TratarArgumentos(args);
+
+            if (param.ContainsKey("-v"))
                 modoVerboso = true;
 
-            if (args.Contains("--debug"))
+            if (param.ContainsKey("-debug"))
                 Debugger.Break(); 
 
             try
@@ -44,7 +46,7 @@ namespace bsn.console
                         Utils.Matches(args[1], conteudo);
                         break;
                     case "sqlite":
-                        sqlite(args);
+                        sqlite(param);
                         break;
                     case "help":
                         printHelp();
@@ -94,7 +96,9 @@ AJUDA
 
     bsn sqlite
         pipe_de_alvos | .\bsn sqlite - Persiste alvos 
-        .\bsn Infonet 254932 - Busca o alvo informado e joga na saida do pipe
+        .\bsn sqlite -t select -tabela alvo -site Felizola -todos
+        .\bsn sqlite -t select -tabela alvo -site Felizola -desativar
+        .\bsn sqlite -t select -tabela alvo -site Felizola -id X
 
     Atribuindo à variáveis:
         $alvo = .\bsn alvo Infonet 235250 | .\bsn.exe buscar | ConvertFrom-Csv
@@ -142,9 +146,6 @@ AJUDA
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
-                if (args.Contains("--delay"))
-                    Thread.Sleep(3000);
-
                 var alvo = Alvo.FromCSV(csvAlvo);
                 Console.WriteLine(bsn.Buscar(alvo).ToCSV());
             }
@@ -179,11 +180,11 @@ AJUDA
             WriteLineVerbose("-----------------------------------");
         }
 
-        static void sqlite(string[] args)
+        static void sqlite(IDictionary<string, string> param)
         {
             var bsn = new Bsn();
 
-            if (args.Length == 1)
+            if (param["-t"] == "insert")
             {
                 string tipo = Console.ReadLine();
                 string colunas = Console.ReadLine();
@@ -213,19 +214,19 @@ AJUDA
                     }
                 }
             }
-            else
+            else if (param["-t"] == "select")
             {
-                string tabela = args[1];
-                string nomeSite = args[2];
+                string tabela = param["-tabela"];
+                string nomeSite = param["-site"];
 
                 if (tabela == "alvo")
                 {
                     Console.WriteLine("#TYPE bsn.core.Alvo");
                     Console.WriteLine(Alvo.CabecalhoCSV());
 
-                    if (args.Length == 4)
+                    if (param.ContainsKey("-id"))
                     {
-                        string id = args[3];
+                        string id = param["-id"];
                         var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(id));
 
                         if (alvo != null)
@@ -235,7 +236,31 @@ AJUDA
                         else
                             Console.WriteLine("Nenhum registro encontrado");
                     }
-                    else
+                    else if (param.ContainsKey("-hist"))
+                    {
+                        var alvos = Alvo.SqliteFindPorHistorico(param["-hist"]);
+
+                        foreach (Alvo a in alvos)
+                        {
+                            Console.WriteLine(a.ToCSV());
+                        }
+
+                        if (alvos.Count == 0)
+                            Console.WriteLine("Nenhum registro encontrado");
+                    }
+                    else if (param.ContainsKey("-desativar"))
+                    {
+                        var alvos = Alvo.SqliteFindCandidatosDesativacao();
+
+                        foreach (Alvo a in alvos)
+                        {
+                            Console.WriteLine(a.ToCSV());
+                        }
+
+                        if (alvos.Count == 0)
+                            Console.WriteLine("Nenhum registro encontrado");
+                    }
+                    else if (param.ContainsKey("-todos"))
                     {
                         var alvos = Alvo.SqliteFind(nomeSite);
 
@@ -275,6 +300,27 @@ AJUDA
         {
             if (modoVerboso)
                 Console.WriteLine(string.Format(msg, args));
+        }
+
+        public static IDictionary<string, string> TratarArgumentos(string[] args)
+        {
+            var retorno = new Dictionary<string, string>();
+
+            for (int i = 1; i < args.Length; i++)
+            {
+                string param = args[i];
+
+                string valor = null;
+                if ((i+1) < args.Length && !args[i+1].StartsWith("-"))
+                {
+                    valor = args[i + 1];
+                    i++;
+                }
+
+                retorno.Add(param, valor);
+            }
+
+            return retorno;
         }
     }
 }

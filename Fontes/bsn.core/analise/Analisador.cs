@@ -21,14 +21,12 @@ namespace bsn.core.analise
 
                 alvo.Anuncio = alvo.SiteOrigem.ExtrairAnuncio(alvo);
 
-                if (alvo.Anuncio.PercentualSucesso != 100m)
-                    throw new Exception("Percentual de Sucesso inaceitável: " + alvo.Anuncio.PercentualSucesso);
-
-                alvo.Status = "a";
+                var perc = Math.Round(alvo.Anuncio.PercentualSucesso);
+                alvo.Status = string.Format("[{0}]a", perc);
             }
             catch (Exception ex)
             {
-                alvo.Status = "ae";
+                alvo.Status = "[e]a";
                 alvo.UltimaExcecao = Utils.ObterExcecoes(ex);
             }
 
