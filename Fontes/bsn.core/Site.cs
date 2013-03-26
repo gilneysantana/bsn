@@ -21,14 +21,6 @@ namespace bsn.core
      */
     public class Site
     {
-        private SQLiteDatabase sqliteDB;
-
-        public SQLiteDatabase SqliteDB
-        {
-            get { return sqliteDB; }
-            set { sqliteDB = value; }
-        }
-
         /**
          * Place holder used in the url template.
          */
