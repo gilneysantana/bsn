@@ -16,6 +16,7 @@
 *.ilk
 *.log
 *.lib
+*.swp
 *.sbr
 *.sdf
 ipch/
