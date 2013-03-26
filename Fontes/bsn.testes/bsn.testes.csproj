@@ -65,10 +65,6 @@
     <Folder Include="Test References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bsn.console.sqlite\bsn.dal.sqlite.csproj">
-      <Project>{CBE94B45-F563-4994-AD39-6024D59DAA57}</Project>
-      <Name>bsn.dal.sqlite</Name>
-    </ProjectReference>
     <ProjectReference Include="..\bsn.console\bsn.console.csproj">
       <Project>{38E7A104-2D28-455E-97A5-38573AC8638A}</Project>
       <Name>bsn.console</Name>
@@ -76,6 +72,10 @@
     <ProjectReference Include="..\bsn.core\bsn.core.csproj">
       <Project>{2DD5DAE7-ADE7-4C60-AF20-724C5A05372E}</Project>
       <Name>bsn.core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\bsn.dal.sqlite\bsn.dal.sqlite.csproj">
+      <Project>{CBE94B45-F563-4994-AD39-6024D59DAA57}</Project>
+      <Name>bsn.dal.sqlite</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

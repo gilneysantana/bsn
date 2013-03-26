@@ -55,7 +55,7 @@
     <Compile Include="utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bsn.console.sqlite\bsn.dal.sqlite.csproj">
+    <ProjectReference Include="..\bsn.dal.sqlite\bsn.dal.sqlite.csproj">
       <Project>{CBE94B45-F563-4994-AD39-6024D59DAA57}</Project>
       <Name>bsn.dal.sqlite</Name>
     </ProjectReference>

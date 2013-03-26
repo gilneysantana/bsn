@@ -8,10 +8,11 @@
     <ProjectGuid>{CBE94B45-F563-4994-AD39-6024D59DAA57}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>bsn.console.sqlite</RootNamespace>
-    <AssemblyName>sqlite</AssemblyName>
+    <RootNamespace>bsn.dal.sqlite</RootNamespace>
+    <AssemblyName>bsn.dal.sqlite</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

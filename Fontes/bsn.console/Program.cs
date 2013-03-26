@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 using bsn.core;
 using bsn.core.utils;
-using bsn.dal.sqlite;
+//using bsn.dal.sqlite;
 using System.Threading;   
 
 namespace bsn.console
@@ -189,8 +189,7 @@ AJUDA
                 string tipo = Console.ReadLine();
                 string colunas = Console.ReadLine();
 
-                Console.WriteLine(string.Format("Conectado ao '{0}'",
-                    Utils.DB().DbConnection));
+                //Console.WriteLine(string.Format("Conectado ao '{0}'", Utils.DB().DbConnection));
 
                 if (tipo != "#TYPE bsn.core.Alvo")
                     throw new Exception("Não é um Alvo");
