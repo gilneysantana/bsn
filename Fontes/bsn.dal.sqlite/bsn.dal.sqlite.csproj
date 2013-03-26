@@ -53,6 +53,9 @@
     <Compile Include="SQLiteDatabase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="site.sqlite">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="SQLite.Interop.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

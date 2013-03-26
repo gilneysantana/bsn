@@ -40,7 +40,12 @@ namespace bsn.core.utils
         public static SQLiteDatabase DB()
         {
             string strCon = ConfigurationManager.ConnectionStrings["strCon"].ConnectionString;
-
+            return new SQLiteDatabase(strCon);
+        }
+        
+        public static SQLiteDatabase DBSite()
+        {
+            string strCon = ConfigurationManager.ConnectionStrings["strConSite"].ConnectionString;
             return new SQLiteDatabase(strCon);
         }
 

@@ -303,7 +303,7 @@ namespace bsn.core
 
         public static Site GetSitePorNome(string nomeSite)
         {
-            var sqliteDB = Utils.DB();
+            var sqliteDB = Utils.DBSite();
 
             string sql = string.Format(@"
                 select * from site where nome = '{0}'", nomeSite);
