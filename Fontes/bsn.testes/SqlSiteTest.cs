@@ -8,17 +8,33 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using bsn.dal.sqlite;
 using bsn.core;
 using bsn.core.analise;
+using bsn.core.utils;
+using bsn.console;
 
 namespace bsn.testes
 {
     [TestClass]
     public class SqlSiteTest
     {
+        private SQLiteDatabase cashew_tdd = Utils.DB();
 
         [TestInitialize]
         public void TestInitialize()
         {
+            var d = new Dictionary<string,string>();
+            d.Add("siteOrigem", "Infonet");
+            d.Add("id", "1");
+            d.Add("area", "100");
+            d.Add("numeroQuartos", "4");
+            d.Add("preco", "9.99");
+            cashew_tdd.Insert("anuncio", d);
+        }
 
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            cashew_tdd.Delete("anuncio", "siteOrigem = 'Infonet' and id = 1");
+            cashew_tdd.Delete("anuncio", "siteOrigem = 'Infonet' and id = 3");
         }
 
         [TestMethod]
@@ -27,19 +43,6 @@ namespace bsn.testes
             var site = Site.GetSitePorNome("Infonet");
 
             Assert.AreEqual("Infonet", site.Nome);
-        }
-
-        [TestMethod]
-        public void Anuncio_SqliteSalvar_Update_Infonet2()
-        {
-            var alvo = new Alvo("Infonet", 2);
-            var anuncio = new Anuncio(alvo);
-            anuncio.NumeroQuartos = 0;
-            anuncio.TipoImovel = TipoImovel.CS;
-            anuncio.TipoTransacao = TipoTransacao.VD;
-            anuncio.Bairro = "Cirurgia";
-
-            anuncio.SqliteSalvar();
         }
 
         [TestMethod]
@@ -129,5 +132,47 @@ namespace bsn.testes
             alvo.Status = "n";
             alvo.SqliteSalvar();
         }
+
+
+        [TestMethod]
+        public void Anuncio_SqliteFind()
+        {
+            var anuncio = Anuncio.SqliteFind("Infonet", 1);
+
+            Assert.AreEqual(9.99m, anuncio.Preco);
+        }
+
+        [TestMethod]
+        public void Anuncio_SqliteSalvar_Insert_Roundtrip()
+        {
+            var alvo = new Alvo("Infonet", 3);
+            var anuncioOrigem = new Anuncio(alvo);
+            anuncioOrigem.NumeroQuartos = 4;
+            anuncioOrigem.Area = 555.55m;
+            anuncioOrigem.TipoImovel = TipoImovel.CS;
+            anuncioOrigem.TipoTransacao = TipoTransacao.VD;
+            anuncioOrigem.Preco = 9.99m;
+            anuncioOrigem.Bairro = "Cirurgia";
+
+            anuncioOrigem.SqliteSalvar();
+            var anuncioDestino = Anuncio.SqliteFind("Infonet", 3);
+
+            Assert.AreEqual(anuncioOrigem.NumeroQuartos, anuncioDestino.NumeroQuartos);
+            Assert.AreEqual(anuncioOrigem.Area, anuncioDestino.Area);
+            Assert.AreEqual(anuncioOrigem.TipoImovel, anuncioDestino.TipoImovel);
+            Assert.AreEqual(anuncioOrigem.TipoTransacao, anuncioDestino.TipoTransacao);
+            Assert.AreEqual(anuncioOrigem.Preco, anuncioDestino.Preco);
+            Assert.AreEqual(anuncioOrigem.Bairro, anuncioDestino.Bairro);
+        }
+
+        //[TestMethod]
+        //public void Bsn_ConsultarSqlite()
+        //{
+        //    Bsn bsn = new Bsn();
+
+        //    var param = new Dictionary<string, string>();
+
+        //    bsn.ConsultarSqlite(param);
+        //}
     }
 }

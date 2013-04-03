@@ -79,5 +79,80 @@ namespace bsn.console
         {
             alvo.SqliteSalvar();
         }
+
+        public void ConsultarSqlite(IDictionary<string, string> param)
+        {
+                string tabela = param["-tabela"];
+                string nomeSite = param["-site"];
+
+                if (tabela == "alvo")
+                {
+                    IList<Alvo> alvos = new List<Alvo>();
+
+                    if (param.ContainsKey("-id"))
+                    {
+                        var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(param["-id"]));
+                        if (alvo != null) alvos.Add(alvo);
+                    }
+                    else if (param.ContainsKey("-hist"))
+                    {
+                        alvos = Alvo.SqliteFindPorHistorico(param["-hist"]);
+                    }
+                    else if (param.ContainsKey("-inutil"))
+                    {
+                        alvos = Alvo.SqliteFindCandidatosDesativacao();
+                    }
+                    else if (param.ContainsKey("-ativo"))
+                    {
+                        alvos = Alvo.SqliteFind(nomeSite);
+                    }
+                    else
+                        Console.WriteLine("Informe uma opção: -id, -hist, -desativar, -todos");
+
+                    if (alvos.Count == 0)
+                        Console.WriteLine("Nenhum registro encontrado");
+                    else
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Alvo");
+                        Console.WriteLine(Alvo.CabecalhoCSV());
+
+                        foreach (Alvo a in alvos)
+                            Console.WriteLine(a.ToCSV());
+                    }
+                }
+                else if (tabela == "site")
+                {
+                    var site = Site.GetSitePorNome(nomeSite);
+
+                    if (site != null)
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Site");
+                        Console.WriteLine(Site.CabecalhoCSV());
+                        Console.WriteLine(site.ToCSV());
+                    }
+                    else
+                        Console.WriteLine("Site '{0}' não foi encontrado na tabela '{1}'",
+                            nomeSite, tabela);
+                }
+                else if (tabela == "anuncio")
+                {
+                    var anuncio = Anuncio.SqliteFind(nomeSite, Convert.ToInt32(param["-id"]));
+
+                    if (anuncio != null)
+                    {
+                        Console.WriteLine("#TYPE bsn.core.Anuncio");
+                        Console.WriteLine(Anuncio.CabecalhoCSV());
+                        Console.WriteLine(anuncio.ToCSV());
+                    }
+                    else
+                        Console.WriteLine("Site '{0}' não foi encontrado na tabela '{1}'",
+                            nomeSite, tabela);
+                }
+                else
+                {
+                    Console.WriteLine("Tabela {0} não é reconhecida", tabela);
+                }
+            
+        }
     }
 }

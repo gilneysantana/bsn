@@ -42,8 +42,11 @@ namespace bsn.core.busca
             }
             catch (Exception ex)
             {
-                throw new Exception(string.Format("Não foi possível recuperar o conteúdo da URL '{0}'.",
-                    alvo.GetLink()), ex);
+                //throw new Exception(string.Format("Não foi possível recuperar o conteúdo da URL '{0}'.", alvo.GetLink()), ex);
+                alvo.Status = "[H]e";
+                alvo.UltimaExcecao = ex.Message;
+                alvo.RetornoRequisicao = "ERRO: Ver 'UltimaExcecao'";
+                return alvo;
             }
 
             if (alvo.SiteOrigem.Nome == "Felizola")

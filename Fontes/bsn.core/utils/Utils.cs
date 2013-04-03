@@ -18,7 +18,13 @@ namespace bsn.core.utils
             Match retorno = regex.Match(conteudo);
 
             if (retorno.Groups.Count == 2)
+            {
                 return retorno.Groups[1].Value.Trim();
+            }
+            else if (retorno.Groups.Count == 3)
+            {
+                return (retorno.Groups[1].Value + retorno.Groups[2].Value).Trim();
+            }
             else
             {
                 return string.Empty;

@@ -271,13 +271,31 @@ namespace bsn.core
             }
         }
 
+        private decimal ObterPreco(Alvo alvo)
+        {
+            string preco = Utils.ExtrairCampoString(this.RegexPreco, alvo.RetornoRequisicao);
+
+            if (string.IsNullOrEmpty(preco))
+                return -1;
+
+            decimal retorno;
+            if (Decimal.TryParse(preco, out retorno))
+            {
+                return retorno;
+            }
+            else 
+            {
+                return 0;
+            }
+        }
+
         public Anuncio ExtrairAnuncio(Alvo alvo)
         {
             try
             {
                 var novoAnuncio = new Anuncio(alvo);
                 novoAnuncio.Bairro = this.ExtrairCampo(this.RegexBairro, alvo);
-                novoAnuncio.Preco = this.ExtrairCampoDecimal(this.RegexPreco, alvo);
+                novoAnuncio.Preco = ObterPreco(alvo);
                 novoAnuncio.NumeroQuartos = this.ExtrairCampoInt(this.RegexNumeroQuartos, alvo);
                 novoAnuncio.Area = ExtrairCampoDecimal(this.RegexArea, alvo);
                 novoAnuncio.TipoImovel = ObterTipoImovel(alvo);

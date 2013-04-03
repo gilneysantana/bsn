@@ -17,16 +17,21 @@ namespace bsn.console
     public class Program
     {
         private static bool modoVerboso = false;
+        private static bool force = false;
+        private static IDictionary<string,string> param;
 
         static void Main(string[] args)
         {
-            var param = TratarArgumentos(args);
+            param = TratarArgumentos(args);
 
             if (param.ContainsKey("-v"))
                 modoVerboso = true;
 
             if (param.ContainsKey("-debug"))
-                Debugger.Break(); 
+                Debugger.Break();
+
+            if (param.ContainsKey("-force"))
+                force = true;
 
             try
             {
@@ -51,9 +56,9 @@ namespace bsn.console
                     case "help":
                         printHelp();
                         break;
-                    case "delay":
-                        Delay(Convert.ToInt32(args[1]));
-                        break;
+                    //case "delay":
+                    //    Delay(Convert.ToInt32(args[1]));
+                    //    break;
                     case "acao":
                         acao(param);
                         break;
@@ -68,16 +73,16 @@ namespace bsn.console
             }
         }
 
-        private static void Delay(int segundos)
-        {
-            string linha;
-            while ((linha = Console.ReadLine()) != null)
-            {
-                Thread.Sleep(segundos * 1000);
-                WriteLineVerbose("Dormindo");
-                Console.WriteLine(linha);
-            }
-        }
+        //private static void Delay(int segundos)
+        //{
+        //    string linha;
+        //    while ((linha = Console.ReadLine()) != null)
+        //    {
+        //        Thread.Sleep(segundos * 1000);
+        //        WriteLineVerbose("Dormindo");
+        //        Console.WriteLine(linha);
+        //    }
+        //}
 
         private static void printHelp()
         {
@@ -146,6 +151,9 @@ AJUDA
             string csvAlvo;
             while ((csvAlvo = Console.ReadLine()) != null)
             {
+                if (param.ContainsKey("-delay"))
+                    Thread.Sleep(Convert.ToInt32(param["-delay"]) * 1000);
+
                 var alvo = Alvo.FromCSV(csvAlvo);
                 Console.WriteLine(bsn.Buscar(alvo).ToCSV());
             }
@@ -171,6 +179,9 @@ AJUDA
                 var alvo = Alvo.FromCSV(csvAlvo);
                 WriteLineVerbose("Alvo após FromCSV: " + alvo);
 
+                if (force)
+                    alvo.Status = "[force]r";
+
                 var alvoAnalisado = bsn.Analisar(alvo);
                 WriteLineVerbose("Alvo Analisado: ");
                 Console.WriteLine(alvoAnalisado.ToCSV());
@@ -189,8 +200,6 @@ AJUDA
                 string tipo = Console.ReadLine();
                 string colunas = Console.ReadLine();
 
-                //Console.WriteLine(string.Format("Conectado ao '{0}'", Utils.DB().DbConnection));
-
                 if (tipo != "#TYPE bsn.core.Alvo")
                     throw new Exception("Não é um Alvo");
 
@@ -202,8 +211,7 @@ AJUDA
                     var alvo = Alvo.FromCSV(alvoCsv);
                     try
                     {
-                        Console.Write(string.Format("Alvo ('{0}', {1})",
-                            alvo.SiteOrigem.Nome, alvo.Id));
+                        Console.Write(alvo);
                         bsn.Persistir(alvo);
                         Console.WriteLine(" - OK");
                     }
@@ -215,62 +223,7 @@ AJUDA
             }
             else 
             {
-                string tabela = param["-tabela"];
-                string nomeSite = param["-site"];
-
-                if (tabela == "alvo")
-                {
-                    IList<Alvo> alvos = new List<Alvo>();
-
-                    if (param.ContainsKey("-id"))
-                    {
-                        var alvo = Alvo.SqliteFind(nomeSite, Convert.ToInt32(param["-id"]));
-                        if (alvo != null) alvos.Add(alvo);
-                    }
-                    else if (param.ContainsKey("-hist"))
-                    {
-                        alvos = Alvo.SqliteFindPorHistorico(param["-hist"]);
-                    }
-                    else if (param.ContainsKey("-inutil"))
-                    {
-                        alvos = Alvo.SqliteFindCandidatosDesativacao();
-                    }
-                    else if (param.ContainsKey("-ativo"))
-                    {
-                        alvos = Alvo.SqliteFind(nomeSite);
-                    }
-                    else
-                        Console.WriteLine("Informe uma opção: -id, -hist, -desativar, -todos");
-
-                    if (alvos.Count == 0)
-                        Console.WriteLine("Nenhum registro encontrado");
-                    else
-                    {
-                        Console.WriteLine("#TYPE bsn.core.Alvo");
-                        Console.WriteLine(Alvo.CabecalhoCSV());
-
-                        foreach (Alvo a in alvos)
-                            Console.WriteLine(a.ToCSV());
-                    }
-                }
-                else if (tabela == "site")
-                {
-                    var site = Site.GetSitePorNome(nomeSite);
-
-                    if (site != null)
-                    {
-                        Console.WriteLine("#TYPE bsn.core.Site");
-                        Console.WriteLine(Site.CabecalhoCSV());
-                        Console.WriteLine(site.ToCSV());
-                    }
-                    else
-                        Console.WriteLine("Site '{0}' não foi encontrado na tabela '{1}'",
-                            nomeSite, tabela);
-                }
-                else
-                {
-                    Console.WriteLine("Tabela {0} não é reconhecida", tabela);
-                }
+                bsn.ConsultarSqlite(param);
             }
 
         }

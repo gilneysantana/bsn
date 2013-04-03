@@ -56,10 +56,11 @@ namespace bsn.testes
             anuncio.Area = 123;
             anuncio.Preco = 456;
             anuncio.Bairro = "bairro";
+            anuncio.NumeroQuartos = 4;
 
             string strCSV = anuncio.ToCSV();
 
-            Assert.AreEqual("\"456\",\"123\",\"bairro\",\"adsf\",\"1\",\"NI\",\"NI\"",
+            Assert.AreEqual("\"456\",\"123\",\"bairro\",\"adsf\",\"1\",\"NI\",\"NI\",\"4\"",
                 strCSV);
         }
 
@@ -74,6 +75,7 @@ namespace bsn.testes
             anuncioOrigem.Bairro = "zzz";
             anuncioOrigem.TipoImovel = TipoImovel.AP;
             anuncioOrigem.TipoTransacao = TipoTransacao.AL;
+            anuncioOrigem.NumeroQuartos = 4;
 
             var anuncioDestino = Anuncio.FromCSV(anuncioOrigem.ToCSV());
 
@@ -82,6 +84,7 @@ namespace bsn.testes
             Assert.AreEqual(anuncioOrigem.Bairro, anuncioDestino.Bairro);
             Assert.AreEqual(anuncioOrigem.TipoImovel, anuncioDestino.TipoImovel);
             Assert.AreEqual(anuncioOrigem.TipoTransacao, anuncioDestino.TipoTransacao);
+            Assert.AreEqual(anuncioOrigem.NumeroQuartos, anuncioDestino.NumeroQuartos);
 
             Assert.IsTrue(anuncioOrigem.Equals(anuncioDestino));
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 
 using bsn.core.utils;
 
@@ -11,8 +12,8 @@ namespace bsn.core.analise
     {
         public Alvo Analisar(Alvo alvo)
         {
-            if (alvo == null)
-                throw new ApplicationException("O alvo passado como parâmetro não pode ser nulo");
+            Trace.Assert(alvo != null, "O alvo passado como parâmetro não pode ser nulo");
+            string status = "/";
 
             try
             {
@@ -20,14 +21,17 @@ namespace bsn.core.analise
                     throw new Exception("Não é permitido analisar um alvo que não esteja no status de 'Refreshed'");
 
                 alvo.Anuncio = alvo.SiteOrigem.ExtrairAnuncio(alvo);
-
-                var perc = Math.Round(alvo.Anuncio.PercentualSucesso);
-                alvo.Status = string.Format("[{0}]a", perc);
+                
+                status += string.Format("[{0}]", Math.Round(alvo.Anuncio.PercentualSucesso));
             }
             catch (Exception ex)
             {
-                alvo.Status = "[e]a";
+                status += "[e]";
                 alvo.UltimaExcecao = Utils.ObterExcecoes(ex);
+            }
+            finally
+            {
+                alvo.Status = status + "a";
             }
 
             return alvo;

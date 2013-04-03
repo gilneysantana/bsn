@@ -236,7 +236,7 @@ namespace bsn.core
                 db.Update("alvo", campos, where);
             }
 
-            if (this.Anuncio != null && this.Anuncio.PercentualSucesso >= 50m)
+            if (this.Anuncio != null)
                 this.Anuncio.SqliteSalvar();
         }
 
@@ -266,7 +266,8 @@ namespace bsn.core
                 @"select * 
                   from alvo 
                   where siteOrigem = '{0}'
-                    and historicoStatus not like '%x'", site);
+                    and historicoStatus not like '%x'
+                  order by ultimaVisita", site);
 
             var dt = db.GetDataTable(sql);
             var alvos = new List<Alvo>();
@@ -308,8 +309,8 @@ namespace bsn.core
 
         public override string ToString()
         {
-            return string.Format("({0}, {1})", 
-                this.SiteOrigem.Nome, this.Id); 
+            return string.Format("Alvo ({0}, {1}, {2})", 
+                this.SiteOrigem.Nome, this.Id, this.HistoricoStatus); 
         }
 
         public override bool Equals(object obj)

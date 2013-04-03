@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 using bsn.core.utils;
 
@@ -128,7 +129,8 @@ namespace bsn.core.analise
 
         public static string CabecalhoCSV()
         {
-            return @"""SiteOrigem"", ""Id"", ""HistoricoStatus"", ""Anuncio"", ""DuracaoVisita"", ""UltimaVisita"", ""RetornoRequisicao"", ""LinkVisitado""";
+            return @"""Preco"", ""Area"", ""Bairro"", ""SiteOrigem"", ""Id"", " + 
+                @"""TipoImovel"", ""TipoTransacao"", ""NumeroQuartos""";
         }
 
         public static Anuncio FromCSV(string anuncioCSV)
@@ -145,6 +147,7 @@ namespace bsn.core.analise
             int alvoId = Convert.ToInt32(campos[4]);
             string imovel = campos[5];
             string transacao = campos[6];
+            int numeroQuartos = Convert.ToInt32(campos[7]);
 
             var retorno = new Anuncio();
             retorno.Preco = Convert.ToDecimal(preco);
@@ -155,6 +158,7 @@ namespace bsn.core.analise
                 = (TipoImovel) Enum.Parse(typeof(TipoImovel), imovel);
             retorno.TipoTransacao 
                 = (TipoTransacao) Enum.Parse(typeof(TipoTransacao), transacao);
+            retorno.NumeroQuartos = numeroQuartos;
             return retorno;
         }
 
@@ -162,7 +166,7 @@ namespace bsn.core.analise
         {
             return Utils.ToCSV(this.Preco, this.Area, this.Bairro, 
                 this.Alvo.SiteOrigem.Nome, this.Alvo.Id, this.TipoImovel,
-                this.TipoTransacao);
+                this.TipoTransacao, this.NumeroQuartos);
         }
 
         public static Anuncio Parse(System.Data.DataRow anuncioRow)
@@ -172,9 +176,9 @@ namespace bsn.core.analise
 
             var ret = new Anuncio(new Alvo(siteOrigem, id));
             ret.Bairro = anuncioRow["bairro"].ToString();
-            ret.Area = Convert.ToDecimal(anuncioRow["area"].ToString());
+            ret.Area = (decimal)anuncioRow["area"];
             ret.NumeroQuartos = Convert.ToInt32(anuncioRow["numeroQuartos"].ToString());
-            ret.Preco = Convert.ToDecimal(anuncioRow["preco"].ToString());
+            ret.Preco = (decimal)anuncioRow["preco"];
 
             string ti = anuncioRow["tipoImovel"].ToString();
             ret.TipoImovel = (ti == "a") ? TipoImovel.AP : TipoImovel.CS;
@@ -186,8 +190,10 @@ namespace bsn.core.analise
 
         public void SqliteSalvar()
         {
-            if (this.Alvo == null)
-                throw new ApplicationException("Não foi possível persitir o Anuncio. A propriedade 'Alvo' é null");
+            Trace.Assert(this.Alvo != null);
+
+            if (this.PercentualSucesso < 50m)
+                return;
 
             var anuncio = Anuncio.SqliteFind(
                 this.Alvo.SiteOrigem.Nome, this.Alvo.Id);
@@ -197,8 +203,8 @@ namespace bsn.core.analise
             campos.Add("siteOrigem", this.Alvo.SiteOrigem.Nome);
             campos.Add("id", this.Alvo.Id.ToString());
             campos.Add("bairro", this.Bairro);
-            campos.Add("preco", this.Preco.ToString());
-            campos.Add("area", this.Area.ToString());
+            campos.Add("preco", this.Preco.ToString().Replace(',','.'));
+            campos.Add("area", this.Area.ToString().Replace(',','.'));
             campos.Add("numeroQuartos", this.NumeroQuartos.ToString());
             campos.Add("tipoImovel", this.TipoImovel.ToString());
             campos.Add("tipoTransacao", this.TipoTransacao.ToString());
