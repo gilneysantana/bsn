@@ -28,3 +28,4 @@ Ankh.NoLoad
 *.trx
 TestResults/
 Deploy/
+*.py~
