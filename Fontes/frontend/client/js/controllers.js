@@ -1,13 +1,17 @@
-angular.module('Test', ['ngResource']).controller('corsCtrl', function ($scope, $http, $resource) {
+'use strict';
 
-  $http.defaults.useXDomain = true;	
+/* Controllers */
 
-  $http.get('http://localhost:8888/phones').success(function(data) {
-    $scope.phones = data;
-  });
+angular.module('myApp.controllers', []).
+  controller('MyCtrl1', [function() {
 
-  $scope.orderProp = 'age';
+  }])
+  .controller('MyCtrl2', [function() {
 
-});
-
-
+  }])
+  .controller('anunciosCtrl', [function ($scope, $http, $resource) {
+	  $http.defaults.useXDomain = true;	
+	  $http.get('http://localhost:8888/anuncios').success(function(data) {
+	    $scope.sites = data;
+	  });
+  }]);

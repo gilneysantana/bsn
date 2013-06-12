@@ -1,4 +1,5 @@
 from bottle import Bottle, route, run, template, debug, get, post, request, response, hook
+import banco
 
 @hook('after_request')
 def enableCORSAfterRequestHook():
@@ -27,8 +28,19 @@ def api_status():
         "name": "Motorola XOOM with Wi-Fi", 
         "snippet": "Gilney Santana"
     }]'''
-    
 
+@route('/alvos', method=['GET', 'OPTIONS'])
+def api_alvos():
+	return banco.alvos()
+    
+@route('/anuncios', method=['GET', 'OPTIONS'])
+def api_anuncios():
+	return banco.anuncios()
+
+@route('/sites', method=['GET', 'OPTIONS'])
+def api_sites():
+	return banco.sites()
+    
 debug(True)
 run(host='localhost', port=8888, debug=True, reloader=True)
 
