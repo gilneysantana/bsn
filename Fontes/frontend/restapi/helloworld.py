@@ -1,46 +1,48 @@
 from bottle import Bottle, route, run, template, debug, get, post, request, response, hook
 import banco
+import json 
 
 @hook('after_request')
 def enableCORSAfterRequestHook():
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = 'X-Requested-With'
  
-
-@route('/phones', method=['GET', 'OPTIONS'])
-def api_status():
-    return '''[ {
-        "age": 0, 
-        "id": "motorola-xoom-with-wi-fi", 
-        "imageUrl": "img/phones/i.0.jpg", 
-        "name": "Motorola XOOM with Wi-Fi", 
-        "snippet": "The Next, Next gilney tablet powered by Android 3.0 (Honeycomb)."
-    }, {
-        "age": 1, 
-        "id": "Manuella Machado", 
-        "imageUrl": "img/phones/i.0.jpg", 
-        "name": "Motorola XOOM with Wi-Fi", 
-        "snippet": "Manuuu"
-    }, {
-        "age": 2, 
-        "id": "Gilney Santana", 
-        "imageUrl": "img/phones/i.0.jpg", 
-        "name": "Motorola XOOM with Wi-Fi", 
-        "snippet": "Gilney Santana"
-    }]'''
+#########################
 
 @route('/alvos', method=['GET', 'OPTIONS'])
 def api_alvos():
 	return banco.alvos()
     
+#########################
+
 @route('/anuncios', method=['GET', 'OPTIONS'])
 def api_anuncios():
 	return banco.anuncios()
 
+#########################
+
 @route('/sites', method=['GET', 'OPTIONS'])
-def api_sites():
+def sites_list():
 	return banco.sites()
     
+@route('/sites/<name>', method=['GET', 'OPTIONS'])
+def site_show( name="Nao informado"):
+	return "Show site " + name
+    
+@route('/sites/<name>', method=['DELETE', 'OPTIONS'])
+def site_delete( name="Nao informado"):
+	return "DELETE site " + name
+    
+@route('/sites/<name>', method=['PUT', 'OPTIONS'])
+def site_delete(name):
+    data = request.body.readline()
+    if not data:
+        abort(400, 'No data received')
+	
+    return "PUT site: " + name 
+
+#########################
+
 debug(True)
 run(host='localhost', port=8888, debug=True, reloader=True)
 
