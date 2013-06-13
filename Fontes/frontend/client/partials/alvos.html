@@ -4,26 +4,12 @@
 	</div>
 	<div>
         <table>
-	  <tr>
-		  <th>Foto</th>
-		  <th>Imobiliaria</th>
-		  <th>Id</th>
-		  <th>No Quartos</th>
-		  <th>Area</th>
-		  <th>Tipo</th>
-		  <th>Transacao</th>
-		  <th>Preco</th>
-	  </tr>
           <tr ng-repeat="anuncio in anuncios" >
 	  <td> <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="http://apl.ti.petrobras.com.br/fotos/09746521.jpg" height=20></a> </td>
 	  <td>{{anuncio[0]}}</td>
-	  <td>{{anuncio[1]}}</td>
-	  <td>{{anuncio[2]}}</td>
-	  <td>{{anuncio[3]}}</td>
 	  <td>{{anuncio[4]}}</td>
 	  <td>{{anuncio[5]}}</td>
 	  <td>{{anuncio[6]}}</td>
-	  <td>{{anuncio[7]}}</td>
           </tr>
         </table>
 </div>

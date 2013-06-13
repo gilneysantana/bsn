@@ -10,4 +10,11 @@ angular.module('myApp.controllers', []).
 	  $http.get('http://localhost:8888/anuncios').success(function(data) {
 	    $scope.anuncios = data;
 	  });
-  });
+  })
+  .controller('alvosCtrl', function ($scope, $http) {
+	  $http.defaults.useXDomain = true;	
+	  $http.get('http://localhost:8888/alvos').success(function(data) {
+	    $scope.anuncios = data;
+	  });
+  })
+  ;
