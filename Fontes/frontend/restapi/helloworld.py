@@ -5,7 +5,8 @@ import json
 @hook('after_request')
 def enableCORSAfterRequestHook():
     response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Headers'] = 'X-Requested-With'
+    response.headers['Access-Control-Allow-Headers'] = 'Origin, Accept, Content-Type, X-Requested-With, X-CSRF-Token'
+    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS, PUT, DELETE'
  
 #########################
 
@@ -25,21 +26,21 @@ def api_anuncios():
 def sites_list():
 	return banco.sites()
     
-@route('/sites/<name>', method=['GET', 'OPTIONS'])
-def site_show( name="Nao informado"):
-	return "Show site " + name
+#@route('/sites/<name>', method=['GET', 'OPTIONS'])
+#def site_show( name="Nao informado"):
+#	return "Show site " + name
+#    
+#@route('/sites/<name>', method=['DELETE', 'OPTIONS'])
+#def site_delete( name="Nao informado"):
+#	return "DELETE site " + name
     
-@route('/sites/<name>', method=['DELETE', 'OPTIONS'])
-def site_delete( name="Nao informado"):
-	return "DELETE site " + name
-    
-@route('/sites/<name>', method=['PUT', 'OPTIONS'])
-def site_delete(name):
+@route('/sites/novo', method=['POST', 'OPTIONS'])
+def site_delete():
     data = request.body.readline()
     if not data:
-        abort(400, 'No data received')
+        return "400, 'No data received'"
 	
-    return "PUT site: " + name 
+    return "POST - idade=" + request.forms.idade
 
 #########################
 

@@ -17,4 +17,13 @@ angular.module('myApp.controllers', []).
 	    $scope.anuncios = data;
 	  });
   })
-  ;
+  .controller('alvosNovoCtrl', function ($scope, $http) {
+      $http.defaults.useXDomain = true;	
+      $scope.user = {};
+      $scope.createUser = function() {
+        $http({
+            method : 'POST',
+            url : 'http://localhost:8888/sites/novo',
+            data : $scope.user });
+        }
+  });

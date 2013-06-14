@@ -1,0 +1,17 @@
+<form ng-controller="alvosNovoCtrl" ng-submit="createUser()">
+
+    <legend>Novo Site</legend>
+
+    <label>Name</label> 
+    <input type="text" id="name" name="name" ng-model="user.name" placeholder="User Name"> 
+
+    <label>Email</label>
+    <input type="text" id="email" name="email" ng-model="user.email" placeholder="ur email here"> 
+
+    <label>Password</label>
+    <input type="text" id="pwd" name="pwd" ng-model="user.pwd" placeholder="ur own pwd here">
+
+    <button>Register</button>
+
+</form>
+

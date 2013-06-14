@@ -31,3 +31,4 @@ Deploy/
 *.py~
 __pycache__/
 *.html~
+*.*~
