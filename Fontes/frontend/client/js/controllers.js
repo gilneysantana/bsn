@@ -19,11 +19,13 @@ angular.module('myApp.controllers', []).
   })
   .controller('alvosNovoCtrl', function ($scope, $http) {
       $http.defaults.useXDomain = true;	
-      $scope.user = {};
+      $scope.site = {};
       $scope.createUser = function() {
         $http({
             method : 'POST',
             url : 'http://localhost:8888/sites/novo',
-            data : $scope.user });
+            data : $scope.site }).success(function(data) {
+	    	$scope.resultado = data;
+	    });
         }
   });

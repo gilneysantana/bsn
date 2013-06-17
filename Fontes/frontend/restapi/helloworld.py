@@ -35,12 +35,12 @@ def sites_list():
 #	return "DELETE site " + name
     
 @route('/sites/novo', method=['POST', 'OPTIONS'])
-def site_delete():
+def site_novo():
     data = request.body.readline()
     if not data:
         return "400, 'No data received'"
 	
-    return "POST - idade=" + request.forms.idade
+    return "POST: site=" + request.forms
 
 #########################
 
