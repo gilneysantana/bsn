@@ -40,7 +40,7 @@ def site_novo():
     if not data:
         return "400, 'No data received'"
 	
-    return "POST: site=" + request.forms
+    return "No servidor" + str(request.json)
 
 #########################
 
