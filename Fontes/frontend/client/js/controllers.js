@@ -7,13 +7,13 @@ angular.module('myApp.controllers', []).
   .controller('MyCtrl2', [function() {}])
   .controller('anunciosCtrl', function ($scope, $http) {
 	  $http.defaults.useXDomain = true;	
-	  $http.get('http://localhost:8888/anuncios').success(function(data) {
+	  $http.get(restApi + '/anuncios').success(function(data) {
 	    $scope.anuncios = data;
 	  });
   })
   .controller('alvosCtrl', function ($scope, $http) {
 	  $http.defaults.useXDomain = true;	
-	  $http.get('http://localhost:8888/alvos').success(function(data) {
+	  $http.get(restApi + '/alvos').success(function(data) {
 	    $scope.anuncios = data;
 	  });
   })
@@ -23,9 +23,16 @@ angular.module('myApp.controllers', []).
       $scope.createUser = function() {
         $http({
             method : 'POST',
-            url : 'http://localhost:8888/sites/novo',
+            url : restApi + '/sites/novo',
             data : $scope.site }).success(function(data) {
 	    	$scope.resultado = data;
 	    });
         }
-  });
+  })
+  .controller('sitesCtrl', function ($scope, $http) {
+	  $http.defaults.useXDomain = true;	
+	  $http.get(restApi + '/sites').success(function(data) {
+	    $scope.sites = data;
+	  });
+  })
+;

@@ -13,12 +13,6 @@ function GetSite ([string]$nomeSite)
 	.\bsn sqlite -tabela site -site $nomeSite | ConvertFrom-Csv 
 }
 
-Function ShowHtml ([string]$nomeSite, [string]$idAlvo)   
-{
-   GetAlvo $nomeSite $idAlvo | Out-File .\a.htm
-   .\a.htm
-}
-
 function OpenLink ([string]$nomeSite, [string]$idAlvo)
 {
 	start-process (GetAlvo $nomeSite $idAlvo).LinkVisitado

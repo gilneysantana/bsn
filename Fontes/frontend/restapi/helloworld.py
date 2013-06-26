@@ -14,6 +14,11 @@ def enableCORSAfterRequestHook():
 def api_alvos():
 	return banco.alvos()
     
+@route('/alvos/<site_id>', method=['GET', 'OPTIONS'])
+def api_alvo(site_id):
+	site, id_ = site_id.split("-")
+	return banco.alvo(site, id_)
+    
 #########################
 
 @route('/anuncios', method=['GET', 'OPTIONS'])
@@ -25,14 +30,6 @@ def api_anuncios():
 @route('/sites', method=['GET', 'OPTIONS'])
 def sites_list():
 	return banco.sites()
-    
-#@route('/sites/<name>', method=['GET', 'OPTIONS'])
-#def site_show( name="Nao informado"):
-#	return "Show site " + name
-#    
-#@route('/sites/<name>', method=['DELETE', 'OPTIONS'])
-#def site_delete( name="Nao informado"):
-#	return "DELETE site " + name
     
 @route('/sites/novo', method=['POST', 'OPTIONS'])
 def site_novo():
