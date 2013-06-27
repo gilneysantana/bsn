@@ -17,6 +17,12 @@ angular.module('myApp.controllers', []).
 	    $scope.anuncios = data;
 	  });
   })
+  .controller('alvosDetailCtrl', function ($scope, $http, $routeParams) {
+	  $http.defaults.useXDomain = true;	
+	  $http.get(restApi + '/alvos/' + $routeParams.site_id).success(function(data) {
+	    $scope.alvo = data;
+	  });
+  })
   .controller('alvosNovoCtrl', function ($scope, $http) {
       $http.defaults.useXDomain = true;	
       $scope.site = {};

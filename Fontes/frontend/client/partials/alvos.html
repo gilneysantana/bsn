@@ -6,18 +6,22 @@
 	<table>
 		<tr>
 		  <th>Site</th>
-		  <th>Link Visitado</th>
+		  <th>Id</th>
 		  <th>Historico</th>
 		  <th>Ultima Excecao</th>
 		  <th>Ultima Visita</th>
+		  <th>Link Visitado</th>
+		  <th>Detalhe</th>
 		</tr>
           <tr ng-repeat="anuncio in anuncios" >
 		  <td>{{anuncio[0]}}</td>
-		  <td><a href="{{anuncio[3]}}" target="_blank">Abrir link</a></td>
+		  <td>{{anuncio[1]}}</td>
 		  <td>{{anuncio[4]}}</td>
 		  <td>{{anuncio[5]}}</td>
 		  <td>{{anuncio[6]}}</td>
-		  <td><a href="#/alvos/detalhe">Detalhe</a></td>
+		  <td><a href="{{anuncio[3]}}" target="_blank">Abrir link</a></td>
+		  <td><a href="#/alvos/{{anuncio[0]}}-{{anuncio[1]}}">Detalhe</a></td>
+		  <td><a href="#/alvos/buscar/{{anuncio[0]}}-{{anuncio[1]}}">Buscar</a></td>
           </tr>
         </table>
 </div>

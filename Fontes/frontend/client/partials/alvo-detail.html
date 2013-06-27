@@ -1,21 +1,16 @@
-<form ng-controller="alvosNovoCtrl" ng-submit="createUser()">
-
+<div>
     <legend>Detalhe do Alvo</legend>
 
-    <label>Nome</label> 
-    <input type="text" id="nome" name="nome" ng-model="site.nome" placeholder="Nome do Site"> 
-
-    <label>Template</label>
-    <input type="text" id="template" name="template" ng-model="site.template" placeholder="Template de url"> 
-
-    <button>Register</button>
-    
-    <div>
-    <label>{{site}}</label>
+    <p>
+	    <label>Site:</label> 
+	    <span>{{alvo[0][0]}}</span>
     </p>
-    <label>{{resultado}}</label>
-    </div>
-
-</form>
-
-
+    <p>
+	    <label>Id:</label> 
+	    <span>{{alvo[0][1]}}</span>
+    </p>
+    <p>
+	    <label>Html:</label> 
+	    <span>{{alvo[0][2]}}</span>
+    </p>
+</div>

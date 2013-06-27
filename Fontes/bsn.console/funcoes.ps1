@@ -13,11 +13,6 @@ function GetSite ([string]$nomeSite)
 	.\bsn sqlite -tabela site -site $nomeSite | ConvertFrom-Csv 
 }
 
-function OpenLink ([string]$nomeSite, [string]$idAlvo)
-{
-	start-process (GetAlvo $nomeSite $idAlvo).LinkVisitado
-}
-
 #############
 
 function BuscarAlvo ([string]$nomeSite) {
