@@ -17,6 +17,13 @@ def alvo(site, id_):
 	c.close()
 	return dados_json
 
+def alvoRow(site, id_):
+	conn = sqlite3.connect('cashew.sqlite')
+	conn.row_factory = sqlite3.Row
+	cur = conn.cursor()
+	retorno = cur.execute("select * from alvo where siteOrigem =%(nomeSite)s and id=%(idAlvo)s" % {"nomeSite":site, "idAlvo":id_})
+	return retorno.fetchone();
+
 def anuncios():
 	conn = sqlite3.connect('cashew.sqlite')
 	c = conn.cursor()
