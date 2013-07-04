@@ -20,10 +20,14 @@ def api_alvo(site_id):
 	site, id_ = site_id.split("-")
 	return banco.alvo(site, id_)
     
-@route('/alvos/<site_id>/update', method=['GET', 'OPTIONS'])
-def api_alvo(site_id):
+@route('/alvos/<site_id>', method=['PUT', 'OPTIONS'])
+def api_alvo_update(site_id):
+	data = request.body.readline()
+	if not data:
+	    return "400, 'No data received'"
 	site, id_ = site_id.split("-")
-	buscador.atualizarHtml(site, id_)
+	#buscador.atualizarHtml(site, id_)
+	return "***COMENTADO*** Status do Alvo alterado para " + str(request.json['novoStatusAlvo'])
     
 #########################
 

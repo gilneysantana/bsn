@@ -16,6 +16,16 @@ angular.module('myApp.controllers', []).
 	  $http.get(restApi + '/alvos').success(function(data) {
 	    $scope.anuncios = data;
 	  });
+
+	  $scope.statusAlvo = '{"novoStatusAlvo":"[r]"}';
+	  $scope.updateHtmlAlvo = function() {
+		  $http({
+			  method : 'PUT',
+			  url : restApi + '/alvos/2-1233',
+			  data : $scope.statusAlvo }).success(function(data) {
+			  	$scope.resultadoUpdate = data;
+			  });
+	  }
   })
   .controller('alvosDetailCtrl', function ($scope, $http, $routeParams) {
 	  $http.defaults.useXDomain = true;	

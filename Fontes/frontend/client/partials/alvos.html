@@ -1,8 +1,11 @@
-<hr/>
-	<div>
-		<p>Alvos</p>
+<div>
+	<p>Alvos</p>
+</div>
+<div>
+	<div id="display-success" >
+		Messagem: {{resultadoUpdate}}
 	</div>
-	<div>
+	
 	<table>
 		<tr>
 		  <th>Site</th>
@@ -21,8 +24,7 @@
 		  <td>{{anuncio[6]}}</td>
 		  <td><a href="{{anuncio[3]}}" target="_blank">Abrir link</a></td>
 		  <td><a href="#/alvos/{{anuncio[0]}}-{{anuncio[1]}}">Detalhe</a></td>
-		  <td><a href="#/alvos/buscar/{{anuncio[0]}}-{{anuncio[1]}}">Buscar</a></td>
+		  <td><a href ng-click="updateHtmlAlvo('gilney')">Update</a></td>
           </tr>
         </table>
 </div>
-<hr/>
