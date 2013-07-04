@@ -1,6 +1,7 @@
 from bottle import Bottle, route, run, template, debug, get, post, request, response, hook
 import banco
-import json 
+import json
+import buscador
 
 @hook('after_request')
 def enableCORSAfterRequestHook():
@@ -18,6 +19,11 @@ def api_alvos():
 def api_alvo(site_id):
 	site, id_ = site_id.split("-")
 	return banco.alvo(site, id_)
+    
+@route('/alvos/<site_id>/update', method=['GET', 'OPTIONS'])
+def api_alvo(site_id):
+	site, id_ = site_id.split("-")
+	buscador.atualizarHtml(site, id_)
     
 #########################
 
