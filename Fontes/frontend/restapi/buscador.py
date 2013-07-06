@@ -4,4 +4,4 @@ import classes
 def atualizarHtml(site, id_):
 	alvo = classes.Alvo(banco.alvoRow(site, id_))
 	alvo.atualizarHtml()
-	banco.updateAlvo(alvo)
+	banco.alvoUpdate(alvo)

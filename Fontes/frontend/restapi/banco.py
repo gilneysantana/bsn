@@ -27,7 +27,11 @@ def alvoRow(site, id_):
 def alvoUpdate(alvo):
 	conn = sqlite3.connect('cashew.sqlite')
 	c = conn.cursor()
-	sql = "update alvo set retornoRequisicao = 'agora vai' where site_cd_site = 2 and alvo_cd_alvo = 1233"
+	sql = "update alvo set \
+	         ultimaVisita = '{2}', \
+		 historicoStatus = '{3}' \
+	       where site_cd_site = {0} and alvo_cd_alvo = {1}" \
+	       .format(alvo.cdSite, alvo.cdAlvo, alvo.ultimaVisita, alvo.historicoStatus)
 	retorno = c.execute(sql)
 	conn.commit()
 	c.close()

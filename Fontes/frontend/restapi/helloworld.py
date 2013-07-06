@@ -27,7 +27,7 @@ def api_alvo_update(site_id):
 	    return "400, 'No data received'"
 	site, id_ = site_id.split("-")
 	#buscador.atualizarHtml(site, id_)
-	return "***COMENTADO*** Status do Alvo alterado para " + str(request.json['novoStatusAlvo'])
+	return "***COMENTADO*** Status do Alvo({0}) alterado para {1}".format(site_id, str(request.json['novoStatusAlvo']))
     
 #########################
 

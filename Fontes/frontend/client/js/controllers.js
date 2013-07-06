@@ -18,10 +18,10 @@ angular.module('myApp.controllers', []).
 	  });
 
 	  $scope.statusAlvo = '{"novoStatusAlvo":"[r]"}';
-	  $scope.updateHtmlAlvo = function() {
+	  $scope.updateHtmlAlvo = function(site_id) {
 		  $http({
 			  method : 'PUT',
-			  url : restApi + '/alvos/2-1233',
+			  url : restApi + '/alvos/' + site_id,
 			  data : $scope.statusAlvo }).success(function(data) {
 			  	$scope.resultadoUpdate = data;
 			  });
