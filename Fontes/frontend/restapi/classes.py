@@ -1,4 +1,4 @@
-import requests 
+﻿import requests 
 from datetime import datetime
 
 class Alvo:
@@ -28,5 +28,13 @@ class Alvo:
 
 	def atualizarHtml(self):
 		self.retornoRequisicao = requests.get(self.linkVisitado).text
+		self.retornoRequisicao = self.retornoRequisicao \
+			.replace('\r\n', '').replace('\n', '').replace('\r', '') \
+			.replace('"','').replace("'",'').replace('&acirc;','â') \
+			.replace('ó', 'o').replace('á','a').replace('é','e') \
+			.replace('í','i').replace('ú','u').replace('ã','a') \
+			.replace('â','a').replace('&nbsp;', ' ').replace('^','') \
+			.replace(',','')
+
 		self.historicoStatus += 'r'
 		self.ultimaVisita = str(datetime.now())

@@ -29,9 +29,10 @@ def alvoUpdate(alvo):
 	c = conn.cursor()
 	sql = "update alvo set \
 	         ultimaVisita = '{2}', \
-		 historicoStatus = '{3}' \
+		 historicoStatus = '{3}', \
+		 retornoRequisicao = '{4}' \
 	       where site_cd_site = {0} and alvo_cd_alvo = {1}" \
-	       .format(alvo.cdSite, alvo.cdAlvo, alvo.ultimaVisita, alvo.historicoStatus)
+	       .format(alvo.cdSite, alvo.cdAlvo, alvo.ultimaVisita, alvo.historicoStatus, alvo.retornoRequisicao)
 	retorno = c.execute(sql)
 	conn.commit()
 	c.close()
