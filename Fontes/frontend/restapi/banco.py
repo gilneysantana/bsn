@@ -22,7 +22,7 @@ def alvoRow(site, id_):
 	conn.row_factory = sqlite3.Row
 	cur = conn.cursor()
 	retorno = cur.execute("select * from alvo where site_cd_site=%(nomeSite)s and alvo_cd_alvo=%(idAlvo)s" % {"nomeSite":site, "idAlvo":id_})
-	return retorno.fetchone();
+	return retorno.fetchone()
 
 def alvoUpdate(alvo):
 	conn = sqlite3.connect('cashew.sqlite')
@@ -37,6 +37,8 @@ def alvoUpdate(alvo):
 	conn.commit()
 	c.close()
 
+###################################	
+
 def anuncios():
 	conn = sqlite3.connect('cashew.sqlite')
 	c = conn.cursor()
@@ -45,6 +47,8 @@ def anuncios():
 	c.close()
 	return dados_json
 
+###################################	
+
 def sites():
 	conn = sqlite3.connect('cashew.sqlite')
 	c = conn.cursor()
@@ -52,3 +56,10 @@ def sites():
 	dados_json = json.dumps(retorno.fetchall())
 	c.close()
 	return dados_json
+
+def siteRow(cdSite):
+	conn = sqlite3.connect('cashew.sqlite')
+	conn.row_factory = sqlite3.Row
+	cur = conn.cursor()
+	retorno = cur.execute("select * from site where site_cd_site={0}".format(cdSite))
+	return retorno.fetchone()

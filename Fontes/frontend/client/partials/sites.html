@@ -3,10 +3,30 @@
 		<p>Sites</p>
 	</div>
 	<div>
-        <table>
+        <table border="1">
+	  <tr>
+		  <th>Foto</th>
+		  <th>Codigo</th>
+		  <th>Nome</th>
+		  <th>Bairro</th>
+		  <th>Numero Quartos</th>
+		  <th>Preco</th>
+		  <th>Area</th>
+		  <th>Tipo Imovel</th>
+		  <th>Tipo Transacao</th>
+		  <th>Template Url</th>
+	  </tr>
           <tr ng-repeat="site in sites" >
-	  <td> <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="http://apl.ti.petrobras.com.br/fotos/09746521.jpg" height=10></a> </td>
-	  <td>{{site[0]}}</td>
+		  <td> <a href="#/phones/{{phone.id}}" class="thumb"><img ng-src="http://apl.ti.petrobras.com.br/fotos/09746521.jpg" height=10></a> </td>
+		  <td>{{site[0]}}</td>
+		  <td>{{site[1]}}</td>
+		  <td>{{site[2]}}</td>
+		  <td>{{site[3]}}</td>
+		  <td>{{site[4]}}</td>
+		  <td>{{site[5]}}</td>
+		  <td>{{site[6]}}</td>
+		  <td>{{site[7]}}</td>
+		  <td>{{site[8]}}</td>
           </tr>
         </table>
 </div>
