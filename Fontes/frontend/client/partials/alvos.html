@@ -16,15 +16,16 @@
 		  <th>Link Visitado</th>
 		  <th>Detalhe</th>
 		</tr>
-          <tr ng-repeat="anuncio in anuncios" >
-		  <td>{{anuncio[0]}}</td>
-		  <td>{{anuncio[1]}}</td>
-		  <td>{{anuncio[4]}}</td>
-		  <td>{{anuncio[5]}}</td>
-		  <td>{{anuncio[6]}}</td>
-		  <td><a href="{{anuncio[3]}}" target="_blank">Abrir link</a></td>
-		  <td><a href="#/alvos/{{anuncio[0]}}-{{anuncio[1]}}">Detalhe</a></td>
-		  <td><a href ng-click="updateHtmlAlvo(anuncio[0] + '-' + anuncio[1])">Update</a></td>
+          <tr ng-repeat="alvo in alvos" >
+		  <td>{{alvo[0]}}</td>
+		  <td>{{alvo[1]}}</td>
+		  <td>{{alvo[4]}}</td>
+		  <td>{{alvo[5]}}</td>
+		  <td>{{alvo[6]}}</td>
+		  <td><a href="{{alvo[3]}}" target="_blank">Abrir link</a></td>
+		  <td><a href="#/alvos/{{alvo[0]}}-{{alvo[1]}}">Detalhe</a></td>
+		  <td><a href ng-click="updateHtmlAlvo(alvo[0] + '-' + alvo[1])">Update</a></td>
+		  <td><a href ng-click="getAnuncio(alvo[0] + '-' + alvo[1])">Ver Anuncio</a></td>
           </tr>
         </table>
 </div>

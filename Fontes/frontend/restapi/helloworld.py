@@ -30,6 +30,11 @@ def api_alvo_update(site_id):
 	return "Status do Alvo({0}) alterado para {1}" \
 		.format(site_id, str(request.json['novoStatusAlvo']))
     
+@route('/alvos/<site_id>/anuncio', method=['GET', 'OPTIONS'])
+def api_alvo(site_id):
+	site, id_ = site_id.split("-")
+	return json.dumps(buscador.extrairAnuncio(site, id_).__dict__)
+    
 #########################
 
 @route('/anuncios', method=['GET', 'OPTIONS'])
