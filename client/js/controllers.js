@@ -2,9 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
-   controller('MyCtrl1', [function() {}])
-  .controller('MyCtrl2', [function() {}])
+angular.module('myApp.controllers', [])
   .controller('anunciosCtrl', function ($scope, $http) {
 	  $http.defaults.useXDomain = true;	
 	  $http.get(restApi + '/anuncios').success(function(data) {
@@ -13,12 +11,13 @@ angular.module('myApp.controllers', []).
   })
   .controller('alvosCtrl', function ($scope, $http) {
 	  $http.defaults.useXDomain = true;	
+
 	  $http.get(restApi + '/alvos').success(function(data) {
 	    $scope.alvos = data;
 	  });
 
-	  $scope.statusAlvo = '{"novoStatusAlvo":"[r]"}';
 	  $scope.updateHtmlAlvo = function(site_id) {
+		  $scope.statusAlvo = '{"novoStatusAlvo":"[r]"}';
 		  $http({
 			  method : 'PUT',
 			  url : restApi + '/alvos/' + site_id,
@@ -45,6 +44,7 @@ angular.module('myApp.controllers', []).
   .controller('alvosNovoCtrl', function ($scope, $http) {
       $http.defaults.useXDomain = true;	
       $scope.site = {};
+
       $scope.createUser = function() {
         $http({
             method : 'POST',

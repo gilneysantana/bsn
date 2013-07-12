@@ -1,12 +1,17 @@
 <div>
-	<p>Pesquisa</p>
-    	<input type="text" id="pesqsite" name="pesqsite" ng-model="pesq.site"> 
+	<a href="#/alvos/novo">Novo Alvo</a>
+</div>
+<div>
+	<form method="get" action="#/alvos">
+		<p>Pesquisa</p>
+		<input type="text" id="pesqsite" name="pesq_site"> 
+		<button type="submit">Pesquisar</button>
+	</form>
 </div>
 <div>
 	<div id="display-success" >
 		Messagem: {{resultadoUpdate}}
 	</div>
-	
 	<table>
 		<tr>
 		  <th>Site</th>

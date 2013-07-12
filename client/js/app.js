@@ -9,5 +9,5 @@ angular.module('myApp', ['myApp.filters', 'myApp.services', 'myApp.directives', 
     $routeProvider.when('/alvos/novo', {templateUrl: 'partials/alvo-novo.html', controller: 'alvosNovoCtrl'});
     $routeProvider.when('/alvos/:site_id', {templateUrl: 'partials/alvo-detail.html', controller: 'alvosDetailCtrl'});
     $routeProvider.when('/sites', {templateUrl: 'partials/sites.html', controller: 'sitesCtrl'});
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/alvos'});
   }]);
